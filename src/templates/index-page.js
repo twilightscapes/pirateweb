@@ -50,10 +50,15 @@ const HomePage = ({ data }) => {
     const titleMatch = query === "" || title.toLowerCase().includes(query.toLowerCase());
     const categoryMatch = selectedCategory === "" || (Array.isArray(categories) && categories.includes(selectedCategory));
     const tagMatch = selectedTag === "" || (tags && Array.isArray(tags) && tags.includes(selectedTag));
-    const spotlightMatch = spotlight === undefined || spotlight; // Include posts where spotlight is true or the field is not present
   
-    return titleMatch && categoryMatch && tagMatch && spotlightMatch;
+    // Check if spotlight is explicitly set to false or is undefined
+    if (spotlight === false || spotlight === undefined) {
+      return false; // Exclude posts with spotlight: false
+    }
+  
+    return titleMatch && categoryMatch && tagMatch;
   });
+  
   
 
   const sortedTags = allTags
@@ -498,6 +503,7 @@ export const pageQuery = graphql`
             tags
             slug
             draft 
+            spotlight
           }
         }
       }
