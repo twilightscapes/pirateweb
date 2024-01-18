@@ -46,14 +46,15 @@ const HomePage = ({ data }) => {
   const allTags = Array.from(allTagsSet);
 
   const filteredPosts = allPosts.filter(({ node }) => {
-    const { title, tags, category: categories } = node.frontmatter;
+    const { title, tags, category: categories, spotlight } = node.frontmatter;
     const titleMatch = query === "" || title.toLowerCase().includes(query.toLowerCase());
     const categoryMatch = selectedCategory === "" || (Array.isArray(categories) && categories.includes(selectedCategory));
     const tagMatch = selectedTag === "" || (tags && Array.isArray(tags) && tags.includes(selectedTag));
-    
-
-    return titleMatch && categoryMatch && tagMatch;
+    const spotlightMatch = spotlight === undefined || spotlight; // Include posts where spotlight is true or the field is not present
+  
+    return titleMatch && categoryMatch && tagMatch && spotlightMatch;
   });
+  
 
   const sortedTags = allTags
   .filter(tag => tag)

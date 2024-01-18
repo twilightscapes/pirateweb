@@ -1074,6 +1074,8 @@ body.contactpage .ReactModal__Content{padding-top:10vh !important;}
     z-index:3;
 }
 
+select:focus-visible{outline:var(--theme-ui-colors-siteColor);}
+
 
 #gobacker{position:fixed; top:60px ; right:1vw; z-index:11;}
 
