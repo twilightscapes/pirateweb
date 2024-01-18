@@ -910,6 +910,7 @@ ul li{display:inline-block}
 
 .horizontal-scroll{margin:10vh auto 0 auto !important;}
 
+#modalCloser {top:60px ; right:1vw;}
 
 @media(max-width:48rem) {
   .mobilehide{display:none}
@@ -1073,8 +1074,6 @@ body.contactpage .ReactModal__Content{padding-top:10vh !important;}
     margin:0 auto 0 auto;
     z-index:3;
 }
-
-select:focus-visible{outline:var(--theme-ui-colors-siteColor);}
 
 
 #gobacker{position:fixed; top:60px ; right:1vw; z-index:11;}
