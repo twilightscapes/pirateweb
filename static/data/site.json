@@ -33,6 +33,7 @@
       "ShowDisclaimer": false,
       "showLegal": false,
       "showConsent": false,
+      "showDefault": false,
       "showPopup": false
     },
     "magicOptions": {

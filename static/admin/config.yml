@@ -502,7 +502,7 @@ collections:
                 collapsed: true
                 fields:
                   - widget: boolean
-                    name: showModals
+                    name: xshowModals
                     label: Show Posts in Modal Window
                     required: false
                   - widget: boolean
@@ -525,6 +525,11 @@ collections:
                     name: xshowConsent
                     label: Show Cookie Consent Banner
                     required: false
+                  - widget: boolean
+                    name: xshowDefault
+                    label: Show Swipe(horizontal scroll) by default
+                    required: false
+                    default: false
 
 
 
