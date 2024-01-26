@@ -34,6 +34,7 @@
       "showLegal": false,
       "showConsent": false,
       "showDefault": false,
+      "startUrl": "",
       "showPopup": false
     },
     "magicOptions": {

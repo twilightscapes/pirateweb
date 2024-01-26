@@ -17,7 +17,6 @@ const useSiteMetadata = () => {
           postcount
           homecount
 
-
           featureOptions{
             showfooter
             showDates
@@ -37,6 +36,7 @@ const useSiteMetadata = () => {
             showPopup
             ShowDisclaimer
             showDefault
+            startUrl
           }
           navOptions{
             showFooterMenu
