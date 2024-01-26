@@ -13,7 +13,7 @@ import { AiOutlinePicLeft } from "react-icons/ai";
 // import { getSrc } from "gatsby-plugin-image";
 const BlogPosts = ({ isSliderVisible }) => {
 
-  const { postcount, homecount, language, magicOptions, featureOptions, proOptions, navOptions  } = useSiteMetadata();
+  const { postcount, language, magicOptions, featureOptions, proOptions, navOptions  } = useSiteMetadata();
 
 
   const data = useStaticQuery(graphql`
@@ -58,7 +58,7 @@ const BlogPosts = ({ isSliderVisible }) => {
     
 
 
-    const { showMagic, showMagicCat, showMagicTag, showMagicSearch } = magicOptions;
+    const { showMagic, showMagicCat, showMagicTag } = magicOptions;
   
     const { showModals, showPopup } = proOptions
     const { showDates, showArchive, showTitles } = featureOptions
@@ -68,9 +68,13 @@ const BlogPosts = ({ isSliderVisible }) => {
 
 
     useEffect(() => {
-        // Save the current state to local storage when isSliderVisible changes
-        localStorage.setItem("isSliderVisible", JSON.stringify(isSliderVisible));
-    }, [isSliderVisible]); // Include isSliderVisible in the dependency array
+      // Check if window is defined to ensure it's running in a client-side environment
+      if (typeof window !== 'undefined') {
+          // Save the current state to local storage when isSliderVisible changes
+          localStorage.setItem("isSliderVisible", JSON.stringify(isSliderVisible));
+      }
+  }, [isSliderVisible]); // Include isSliderVisible in the dependency array
+  
 
   const handleScroll = (e) => {
     if (scrollRef.current) {
@@ -90,7 +94,7 @@ const BlogPosts = ({ isSliderVisible }) => {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedTag, setSelectedTag] = useState("");
   // eslint-disable-next-line
-  const [visibleItems, setVisibleItems] = useState(homecount);
+  const [visibleItems, setVisibleItems] = useState(postcount);
 
   const allCategoriesSet = new Set(allPosts.flatMap(({ node }) => node.frontmatter.category));
   const allCategories = Array.from(allCategoriesSet);
@@ -147,13 +151,13 @@ const [playingIndex, setPlayingIndex] = useState(null);
 
 
   useEffect(() => {
-    setVisibleItems(homecount);
-  }, [filteredPosts, homecount]);
+    setVisibleItems(postcount);
+  }, [filteredPosts, postcount]);
 
   const handleSearch = (event) => {
     const query = event.target.value;
     setQuery(query);
-    setVisibleItems(homecount);
+    setVisibleItems(postcount);
   };
 
   const handleCategoryChange = (event) => {
@@ -165,7 +169,7 @@ const [playingIndex, setPlayingIndex] = useState(null);
       setSelectedCategory('');
     }
     setSelectedTag('');
-    setVisibleItems(homecount);
+    setVisibleItems(postcount);
   };
   
 
@@ -173,10 +177,10 @@ const [playingIndex, setPlayingIndex] = useState(null);
     const tag = event.target.value;
     setSelectedTag(tag);
     setSelectedCategory("");
-    setVisibleItems(homecount);
+    setVisibleItems(postcount);
   };
 
-  const [numVisibleItems, setNumVisibleItems] = useState(homecount);
+  const [numVisibleItems, setNumVisibleItems] = useState(postcount);
 
   const showMoreItems = () => {
     setNumVisibleItems((prevNumVisibleItems) => prevNumVisibleItems + postcount);
@@ -187,7 +191,7 @@ const [playingIndex, setPlayingIndex] = useState(null);
     setQuery('');
     setSelectedCategory('');
     setSelectedTag('');
-    setVisibleItems(homecount);
+    setVisibleItems(postcount);
   }
 
 
@@ -212,8 +216,8 @@ const [playingIndex, setPlayingIndex] = useState(null);
         >
 
           
-                <div className="horizontal-scroll1 contentpanel1" style={{ justifyContent: 'center', alignItems: 'center', paddingTop: showNav ? '8vw' : '8vw', }}>
-        <div className="sliderSpacer" style={{ height: '', paddingTop: '', display: '' }}></div>
+                {/* <div className="horizontal-scroll1 contentpanel1" style={{ justifyContent: 'center', alignItems: 'center', paddingTop: showNav ? '8vw' : '8vw', }}>
+        <div className="sliderSpacer" style={{ height: '', paddingTop: '', display: '' }}></div> */}
 
         {filteredPosts.slice(0, numVisibleItems).map(({ node }, index) => (
   
@@ -376,7 +380,7 @@ const [playingIndex, setPlayingIndex] = useState(null);
 
         
       </div>
-        </div>
+
       );
     } else {
       return (
@@ -553,13 +557,13 @@ const [playingIndex, setPlayingIndex] = useState(null);
   return (
     <>
       <div
-        className="horizontal-scroll1 contentpanel1"
+        className="todd"
         onWheel={handleScroll}
         ref={scrollRef}
         style={{
           overflowX: "auto",
           overflowY: "hidden",
-          whiteSpace: "nowrap",
+
         }}
       >
 
@@ -628,8 +632,6 @@ const [playingIndex, setPlayingIndex] = useState(null);
 
 
 
-              {showMagicSearch ? (
-                <>
                 
                     <input
                       id="clearme"
@@ -651,8 +653,7 @@ const [playingIndex, setPlayingIndex] = useState(null);
                       aria-label="Search"
                     />
                   
-                </>
-              ) : (
+
                 <input
                       id="clearme"
                       type="text"
@@ -673,7 +674,7 @@ const [playingIndex, setPlayingIndex] = useState(null);
                       }}
                       aria-label="Search"
                     />
-              )}
+            
 
               <button
                 type="reset"

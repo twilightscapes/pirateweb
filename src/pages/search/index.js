@@ -1,38 +1,39 @@
-// Test.js
 import React, { useState, useEffect } from "react";
 import Seo from "../../components/seo";
 import Layout from "../../components/siteLayout";
 import BlogPosts from "../../components/BlogPosts";
 
-const Test = () => {
-  const [isSliderVisible, setIsSliderVisible] = useState(() => {
-    const storedValue = localStorage.getItem("isSliderVisible");
-    try {
-      return JSON.parse(storedValue) ?? true;
-    } catch (error) {
-      return true;
-    }
-  });
+const Search = () => {
+  // Check if localStorage is available
+  const isLocalStorageAvailable = typeof window !== "undefined" && window.localStorage;
+
+  // Set the initial state directly from localStorage if available, otherwise set to true
+  const storedValue = isLocalStorageAvailable ? localStorage.getItem("isSliderVisible") : null;
+  const initialSliderVisible = storedValue ? JSON.parse(storedValue) : true;
+
+  const [isSliderVisible, setIsSliderVisible] = useState(initialSliderVisible);
 
   useEffect(() => {
-    // Update isSliderVisible when it changes in localStorage
-    const handleStorageChange = () => {
-      const storedValue = localStorage.getItem("isSliderVisible");
-      try {
-        setIsSliderVisible(JSON.parse(storedValue) ?? true);
-      } catch (error) {
-        setIsSliderVisible(true);
-      }
-    };
+    if (isLocalStorageAvailable) {
+      // Update isSliderVisible when it changes in localStorage
+      const handleStorageChange = () => {
+        const storedValue = localStorage.getItem("isSliderVisible");
+        try {
+          setIsSliderVisible(JSON.parse(storedValue) ?? true);
+        } catch (error) {
+          setIsSliderVisible(true);
+        }
+      };
 
-    // Add event listener for storage change
-    window.addEventListener("storage", handleStorageChange);
+      // Add event listener for storage change
+      window.addEventListener("storage", handleStorageChange);
 
-    // Cleanup function to remove event listener
-    return () => {
-      window.removeEventListener("storage", handleStorageChange);
-    };
-  }, []);
+      // Cleanup function to remove event listener
+      return () => {
+        window.removeEventListener("storage", handleStorageChange);
+      };
+    }
+  }, [isLocalStorageAvailable]);
 
   return (
     <Layout className="search">
@@ -46,4 +47,4 @@ const Test = () => {
   );
 };
 
-export default Test;
+export default Search;

@@ -15,6 +15,7 @@ const BlogPosts = ({ isSliderVisible }) => {
 
   const { postcount, homecount, language, magicOptions, featureOptions, proOptions, navOptions  } = useSiteMetadata();
 
+  
 
   const data = useStaticQuery(graphql`
   query ($homecount: Int) {
@@ -54,7 +55,7 @@ const BlogPosts = ({ isSliderVisible }) => {
 `);
 
 
-    const scrollRef = useRef(null);
+
     
 
 
@@ -68,9 +69,18 @@ const BlogPosts = ({ isSliderVisible }) => {
 
 
     useEffect(() => {
-        // Save the current state to local storage when isSliderVisible changes
-        localStorage.setItem("isSliderVisible", JSON.stringify(isSliderVisible));
-    }, [isSliderVisible]); // Include isSliderVisible in the dependency array
+      // Check if window is defined to ensure it's running in a client-side environment
+      if (typeof window !== 'undefined') {
+          // Save the current state to local storage when isSliderVisible changes
+          localStorage.setItem("isSliderVisible", JSON.stringify(isSliderVisible));
+      }
+  }, [isSliderVisible]); // Include isSliderVisible in the dependency array
+  
+
+
+
+
+  const scrollRef = useRef(null);
 
   const handleScroll = (e) => {
     if (scrollRef.current) {
@@ -78,6 +88,26 @@ const BlogPosts = ({ isSliderVisible }) => {
     }
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      // Your scroll handling logic
+    };
+  
+    const currentScrollRef = scrollRef.current;
+  
+    if (currentScrollRef) {
+      currentScrollRef.addEventListener("scroll", handleScroll);
+    }
+  
+    return () => {
+      if (currentScrollRef) {
+        currentScrollRef.removeEventListener("scroll", handleScroll);
+      }
+    };
+  }, [scrollRef]);
+
+
+  
 
 
   // const markdownRemark = data.allMarkdownRemark.edges[0]?.node;
@@ -205,9 +235,11 @@ const [playingIndex, setPlayingIndex] = useState(null);
       return (
         <div
           className="slider"
+          onWheel={handleScroll}
+        ref={scrollRef}
           style={{
             display: "flex",
-            flexDirection: "row",
+            flexDirection: "row"
           }}
         >
 
@@ -381,7 +413,7 @@ const [playingIndex, setPlayingIndex] = useState(null);
     } else {
       return (
         <div className="contentpanel1 grid-container" style={{ justifyContent: 'center', alignItems: 'center', paddingTop: showNav ? '8vw' : '8vw', width:'100vw' }}>
-        <div className="sliderSpacer" style={{ height: '', paddingTop: '', display: '' }}></div>
+
 
         {filteredPosts.slice(0, numVisibleItems).map(({ node }, index) => (
   
@@ -558,8 +590,7 @@ const [playingIndex, setPlayingIndex] = useState(null);
         ref={scrollRef}
         style={{
           overflowX: "auto",
-          overflowY: "hidden",
-          // whiteSpace: "nowrap",
+          overflowY: "hidden"
         }}
       >
 
