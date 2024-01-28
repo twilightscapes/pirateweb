@@ -35,6 +35,8 @@
       "showConsent": false,
       "showDefault": false,
       "startUrl": "youtube",
+      "showProfile": false,
+      "showFeature": false,
       "showPopup": false
     },
     "magicOptions": {
