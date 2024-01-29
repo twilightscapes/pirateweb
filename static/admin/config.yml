@@ -200,6 +200,35 @@ collections:
           - { label: "Secondary Image", name: "secondaryImage", widget: "image", hint: "this image is used for the profile photo in the info section", required: false }
           - { label: "Underlay Image", name: "underlayImage", widget: "image", required: false }
 
+          - label: "Call To Action Button (PIRATE Plus only)"
+            name: "xcta"
+            widget: "object"
+            fields:
+              - name: "showCTA"
+                label: "Show CTA (call to action button)"
+                widget: "boolean"
+              - name: "ctaText"
+                label: "CTA (call to action button) Text"
+                widget: "string"
+              - name: "ctaLink"
+                label: "CTA (call to action button) - Link"
+                widget: "string"
+
+          - label: "Cover Letter (PIRATE Plus only)"
+            name: "xcoverletter"
+            widget: "object"
+            fields:
+              - name: "showCover"
+                label: "Show Cover Link"
+                widget: "boolean"
+              - name: "coverText"
+                label: "Custom Cover Link Text"
+                widget: "string"
+              - name: "coverLink"
+                label: "Custom Cover Link"
+                widget: "string"
+
+
           - { label: "Body", name: "body", widget: "markdown" }
 
       
@@ -428,7 +457,14 @@ collections:
                     label: "Message Received"
                     widget: "string"
                     required: false
-
+                  - name: "xdicProfileAudioText"
+                    label: "I just listened to:"
+                    widget: "string"
+                    required: false
+                  - name: "xdicProfileAudioActionText"
+                    label: "Click to listen"
+                    widget: "string"
+                    required: false  
 
               - name: "magicOptions"
                 label: "Sort/Search Island options"

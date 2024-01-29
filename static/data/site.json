@@ -78,7 +78,9 @@
       "dicMessage": "Your Message",
       "dicSubmit": "Send Message",
       "dicPhone": "Your Phone Number",
-      "dicConfirmation": "Message Received"
+      "dicConfirmation": "Message Received",
+      "dicProfileAudioText": "I'm grooving to:",
+      "dicProfileAudioActionText": "Listen Now!"
     }
   }
 }
