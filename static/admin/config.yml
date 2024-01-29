@@ -502,6 +502,19 @@ collections:
                 collapsed: true
                 fields:
                   - widget: boolean
+                    name: xshowFeature
+                    label: Show Feature Image Video section on homepage
+                    required: false
+                  - widget: boolean
+                    name: xshowProfile
+                    label: Show Profile section on homepage
+                    required: false
+                  - widget: boolean
+                    name: showPosts
+                    label: Show posts section on homepage
+                    required: false
+                    default: true
+                  - widget: boolean
                     name: xshowModals
                     label: Show Posts in Modal Window
                     required: false
