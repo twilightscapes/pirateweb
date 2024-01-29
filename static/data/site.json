@@ -37,6 +37,7 @@
       "startUrl": "youtube",
       "showProfile": false,
       "showFeature": false,
+      "showHomePosts": true,
       "showPopup": false
     },
     "magicOptions": {
