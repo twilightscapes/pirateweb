@@ -1,4 +1,5 @@
 ---
+profileName: BECOME A PIRATE!
 addressText: The Fleet Launches Soon!
 youtube: ""
  youtuber: https://www.youtube.com/live/BAwRQvWtfVQ?si=HoVBMe-tdWNs75_X
