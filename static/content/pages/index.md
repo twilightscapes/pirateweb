@@ -1,6 +1,6 @@
 ---
 addressText: The Fleet Launches Soon!
-youtube: 
+youtube: ""
  youtuber: https://www.youtube.com/live/BAwRQvWtfVQ?si=HoVBMe-tdWNs75_X
  youtuber2: https://youtu.be/TLV4_xaYynY?si=KqEjW-0fs2w5ybVd
  youtubeshoworiginal: false
