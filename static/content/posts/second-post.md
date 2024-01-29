@@ -23,7 +23,8 @@ youtube:
  audioend: ""
  audiotitle: ""
  audiostart: ""
-
+ draft: null
+ spotlight: null
 
 ---
 

@@ -1,9 +1,10 @@
 ---
 profileName: BECOME A PIRATE!
+profileSocial: false
 addressText: The Fleet Launches Soon!
-youtube: ""
- youtuber: https://www.youtube.com/live/BAwRQvWtfVQ?si=HoVBMe-tdWNs75_X
- youtuber2: https://youtu.be/TLV4_xaYynY?si=KqEjW-0fs2w5ybVd
+youtube: 
+ youtuber: ""
+ youtuber2: ""
  youtubeshoworiginal: false
  youtubersuggestion1: "null"
  youtubersuggestion2: "null"
