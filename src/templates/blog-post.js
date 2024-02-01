@@ -459,7 +459,7 @@ const OriginalUrl = frontmatter.youtube.youtuber
 // const svgUrl = "../assets/" + frontmatter.svgImage.relativePath + ""
 
 const YouTube = frontmatter.youtube.youtuber
-  const YouTube2 = frontmatter.youtube.youtuber2
+  // const YouTube2 = frontmatter.youtube.youtuber2
   const AudioStart = frontmatter.youtube.audiostart
   const AudioEnd = frontmatter.youtube.audioend
   
@@ -1309,7 +1309,7 @@ zindex:'1'
 <div>
 
 {ShareThis ? (
-<header style={{ height:'', display:'grid', placeContent:'center'}}>
+<div style={{ height:'', display:'grid', placeContent:'center'}}>
 
   <div id="sharethis1" style={{width:'auto', height:'', padding:'0', display:'grid', placeContent:'center', border:'0px solid'}}>
   <ShareSocial />
@@ -1319,7 +1319,7 @@ zindex:'1'
     
   {showTitles ? (   
     <>
-            <h1 className="headline" style={{color:'#fff', borderRadius:''}}>{frontmatter.title}</h1>
+            <h1 className="headline" style={{color:'', borderRadius:''}}>{frontmatter.title}</h1>
             <time sx={{color: ""}}>{frontmatter.date}</time>
             Posted: <TimeAgo date={frontmatter.date} style={{color:''}} />
     </> 
@@ -1344,14 +1344,14 @@ zindex:'1'
       )}
 
   </div>
-</header>
+</div>
             ) : (
-              <header style={{ height:'', display:'grid', placeContent:'center'}}>
+              <div style={{ height:'', display:'grid', placeContent:'center'}}>
                 <div className="article-header" style={{textAlign:'center', paddingTop:'', height:'auto', color:'', borderRadius:'', marginTop:'0'}}>
 
                 {showTitles ? (   
     <>
-            <h1 className="headline" style={{color:'#fff', borderRadius:''}}>{frontmatter.title}</h1>
+            <h1 className="headline" style={{color:'', borderRadius:''}}>{frontmatter.title}</h1>
             <time sx={{color: ""}}>{frontmatter.date}</time>
             Posted: <TimeAgo date={frontmatter.date} style={{color:''}} />
     </> 
@@ -1379,7 +1379,7 @@ zindex:'1'
           
           
           </div>
-                </header>
+                </div>
             )}
 
 
@@ -1402,7 +1402,7 @@ zindex:'1'
 
 
 
-<header style={{ height:'', display:'grid', placeContent:'center'}}>
+<div style={{ height:'', display:'grid', placeContent:'center'}}>
 <div style={{width:'auto', height:'', padding:'0', display:'grid', placeContent:'center', border:'0px solid'}}>
     <ShareSocial style={{}} />
     </div>
@@ -1411,7 +1411,7 @@ zindex:'1'
 
 {showTitles ? (   
     <>
-            <h1 className="headline" style={{color:'#fff', borderRadius:''}}>{frontmatter.title}</h1>
+            <h1 className="headline" style={{color:'', borderRadius:''}}>{frontmatter.title}</h1>
     </> 
       ) : (
       ""
@@ -1458,15 +1458,15 @@ zindex:'1'
 
 
 </div>
-</header>
+</div>
               ) : (
-                <header style={{ height:'', display:'grid', placeContent:'center'}}>
+                <div style={{ height:'', display:'grid', placeContent:'center'}}>
                 <div className="article-header" style={{textAlign:'center', paddingTop:'', height:'auto', color:''}}>
 
 
                 {showTitles ? (   
     <>
-            <h1 className="headline" style={{color:'#fff', borderRadius:''}}>{frontmatter.title}</h1>
+            <h1 className="headline" style={{color:'', borderRadius:''}}>{frontmatter.title}</h1>
     </> 
       ) : (
       ""
@@ -1488,7 +1488,7 @@ zindex:'1'
         </>
       )}
 
-      </header>
+      </div>
               )}
 
 <div className="panel" style={{padding:'2vh 0', borderTop:'0px solid', margin:'0 0', textAlign:'center', fontSize:'1.5rem', minWidth:'50%', width:'100%', maxWidth:'', border:'0px solid yellow', borderRadius:''}}>

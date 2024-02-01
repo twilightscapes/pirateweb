@@ -24,6 +24,7 @@
       "showTitles": true,
       "showfooter": false,
       "showSocial": false,
+      "showDefault": false,
       "showSwipe": true
     },
     "proOptions": {
@@ -33,7 +34,6 @@
       "ShowDisclaimer": false,
       "showLegal": false,
       "showConsent": false,
-      "showDefault": false,
       "startUrl": "youtube",
       "showProfile": false,
       "showFeature": false,
