@@ -81,11 +81,24 @@ const Layout = ({ children }) => {
       <Seo />
 
       <ModalRoutingContext.Consumer>
-        {({ modal, closeTo }) => (
-          <>
-          </>
-        )}
-      </ModalRoutingContext.Consumer>
+  {({ modal, closeTo }) => {
+    // if (modal) {
+    //   document.body.style.position = 'fixed';
+    //   document.body.style.width = '100%';
+    //   return () => {
+    //     document.body.style.position = '';
+    //     document.body.style.width = '';
+    //   };
+    // }
+    return (
+      <>
+        <div>
+          {/* ... (modal-related code) */}
+        </div>
+      </>
+    );
+  }}
+</ModalRoutingContext.Consumer>
 
 
 
@@ -144,11 +157,49 @@ const Layout = ({ children }) => {
 
 
 
-      <main id="top" name="pagetop">
+      <main id="top" name="top">
         {children}
+      <div className={`upbar button ${showBackToTop ? 'visible' : ''}`}
+        style={{
+          position: 'fixed',
+          bottom: '20px',
+          zIndex: '60',
+          left: '',
+          right: '1vw',
+          display: 'flex',
+          justifyContent: 'center',
+          width: 'auto',
+          maxWidth: '80vw',
+          margin: '0 auto',
+          gap: '5vw',
+          padding: '0',
+          border: 'none',
+          borderRadius: '',
+          textShadow: '0 1px 1px rgba(0, 0, 0, .7)',
+          fontSize: '',
+          verticalAlign: 'center',
+          transform: showBackToTop ? 'translateY(0)' : 'translateY(200%)',
+        }}
+      >
+        <AnchorLink
+          to="#top"
+          aria-label="Link to Top"
+          onClick={scrollToTop}
+          style={{ cursor: 'pointer', height: '', fontSize: '', border: 'none', outline: 'none' }}
+          state={showModals ? { modal: true } : {}}
+        >
+          <div className="uparrow" style={{ display: 'flex', flexDirection: 'column', gap: '0', padding: '', alignItems: 'center', textAlign: 'center' }}>
+            <RiArrowUpFill
+              className=""
+              style={{ cursor: 'pointer', color: 'var(--theme-ui-colors-siteColorText)', fill: 'var(--theme-ui-colors-siteColorText)', fontSize: '3rem' }}
+            />
+          </div>
+        </AnchorLink>
+      </div>
+      </main>
 
-        {showfooter ? (
-        <Footer />
+      {showfooter ? (
+    <Footer />
       ) : (
         <footer className="" style={{display:'flex', flexDirection:'column', zIndex:'1', justifyContent:'end', padding:'0', marginTop:'0', width:'100vw',textAlign:'center'}}>
           {showBranding ? (
@@ -160,10 +211,6 @@ const Layout = ({ children }) => {
           )}
         </footer>
       )}
-      
-      </main>
-
-
 
 
 
@@ -191,42 +238,7 @@ const Layout = ({ children }) => {
       )}
 
 
-<div className={`upbar button ${showBackToTop ? 'visible' : ''}`}
-        style={{
-          position: 'fixed',
-          bottom: '20px',
-          zIndex: '60',
-          left: '',
-          right: '1vw',
-          display: 'flex',
-          justifyContent: 'center',
-          width: 'auto',
-          maxWidth: '80vw',
-          margin: '0 auto',
-          gap: '5vw',
-          padding: '0',
-          border: 'none',
-          borderRadius: '',
-          textShadow: '0 1px 1px rgba(0, 0, 0, .7)',
-          fontSize: '',
-          verticalAlign: 'center',
-          transform: showBackToTop ? 'translateY(0)' : 'translateY(200%)',
-        }}
-      >
-        <AnchorLink
-          to="#top"
-          aria-label="Link to Top"
-          onClick={scrollToTop}
-          style={{ cursor: 'pointer', height: '', fontSize: '', border: 'none', outline: 'none' }}
-        >
-          <div className="uparrow" style={{ display: 'flex', flexDirection: 'column', gap: '0', padding: '', alignItems: 'center', textAlign: 'center' }}>
-            <RiArrowUpFill
-              className=""
-              style={{ cursor: 'pointer', color: 'var(--theme-ui-colors-siteColorText)', fill: 'var(--theme-ui-colors-siteColorText)', fontSize: '3rem' }}
-            />
-          </div>
-        </AnchorLink>
-      </div>
+
 
 
 
@@ -253,7 +265,7 @@ const Layout = ({ children }) => {
             <ul className="sidebarMenuInner post-card panel" style={{ maxWidth: '260px', position: 'absolute', right: '0', display: '', justifyContent: '' }}>
 
               <li className="grad logo" style={{ position: 'relative', maxHeight: '100px', width: 'auto', display: 'flex', justifyContent: 'center' }}>
-                <AnchorLink className="sidelogo" to="/" name="homereturn" style={{ position: '', display: 'block', maxWidth: '150px', height: '60px', border: '0px solid' }} aria-label="Link to Top" title="Back to Top">
+                <AnchorLink className="sidelogo" to="/" state={showModals ? { modal: true } : {}} name="homereturn" style={{ position: '', display: 'block', maxWidth: '150px', height: '60px', border: '0px solid' }} aria-label="Link to Top" title="Back to Top">
                   {iconimage ? (
                     <img src={iconimage} alt={companyname} width="120" height="60" style={{ maxHeight: '60px', border: 'none' }} />
                   ) : (
