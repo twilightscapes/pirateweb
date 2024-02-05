@@ -50,7 +50,14 @@ body{font-family:var(--font-body);width:100vw;}
 /* body.blogpost .backimage{z-index:0;} */
 
 
-
+.backimage{
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  z-index:-2;
+  top:0;
+  object-fit:cover;
+}
 
 header.header {height:0;}
 
