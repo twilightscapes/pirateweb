@@ -1,15 +1,15 @@
 {
   "menuItems": [
     {
-      "menutitle": "View by Category",
-      "url": "/category"
+      "menutitle": "What is Pirate?",
+      "url": "/about"
     },
     {
-      "menutitle": "View by Tag",
+      "menutitle": "User Resources",
       "url": "/tags"
     },
     {
-      "menutitle": "View Archives",
+      "menutitle": "View Demo",
       "url": "/archive"
     }
   ]
