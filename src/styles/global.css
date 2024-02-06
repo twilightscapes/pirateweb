@@ -705,7 +705,9 @@ to{opacity:0;z-index:-3}
 .react-player__preview{background-color:transparent;position:relative;}
 
 .flexbutt{display:flex; }
-.flexcheek{position:-webkit-sticky;position:sticky;top:0;width:50%}
+.flexcheek{
+  /* position:-webkit-sticky;position:sticky;top:0; */
+  width:50%}
 .introspace{padding-top:60vh}
 .mobile{border:0 solid #ad04a5;display:none}
 

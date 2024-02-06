@@ -1,7 +1,7 @@
 ---
 profileName: BECOME A PIRATE!
 profileSocial: false
-addressText: The Fleet Launches Soon!
+addressText: The fleet is launching now!
 youtube: 
  youtuber: ""
  youtuber2: ""
@@ -54,11 +54,11 @@ svgImage: /assets/transparent.png
 template: index-page
 title: Social media by the people for the people
 postLimit: "4"
-description: PIRATE - social media for the people by the people
+description: Pirate - social media for the people by the people
 svgzindex: x
 coverletter:
-  coverText: Become a Pirate!
-  coverLink: /contact
+  coverText: Become a PIRATE!
+  coverLink: /install
   showCover: true
 sharethis: false
 profTitle: Hoist Your Flag!
@@ -82,8 +82,8 @@ spotlight: false
 comments: false
 shareable: false
 ---
-PIRATE is a social network with NO central control or ownership. It's based on leading Open-Source platforms and runs on individually owned websites.
+Pirate is a social network with NO central control or ownership. It's based on leading Open-Source platforms and runs on individually owned websites.
 
-PIRATE leverages the power of free services to host your own web app that you can control from any device, all for FREE!
+Pirate leverages the power of free services to host your own web app that you can control from any device, all for FREE!
 
 Easily edit your homepage, update your profile, and publish engaging content on your OWN website/app.
