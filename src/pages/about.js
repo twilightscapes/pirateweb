@@ -4,7 +4,7 @@ import useSiteMetadata from "../hooks/SiteMetadata"
 import Seo from "../components/seo"
 import Layout from "../components/siteLayout"
 import GoBack from "../components/goBack"
-import Footer from "../components/footer"
+// import Footer from "../components/footer"
 import { GatsbyImage } from "gatsby-plugin-image"
 import Social from "../components/social"
 import ReactPlayer from 'react-player/lazy'
@@ -763,7 +763,7 @@ You control your timeline (and everything else), not some billionaire appeasing 
     <h2>Technology Stack</h2>
   </div>
 
-  <div className="nameblock" style={{position:'', top:'0', marginTop: '', width:'100%', padding: '2rem', margin:'2vh 0', maxHeight: '', fontSize: 'clamp(1rem, 2vw, 3.2rem)', textAlign:'left', textShadow: '0 2px 3px #000', color: 'var(--theme-ui-colors-text)', background: 'var(--theme-ui-colors-cardBg)', backdropFilter: 'blur(12px)', borderRadius: '10px', color:'#fff' }}>
+  <div className="nameblock" style={{position:'', top:'0', marginTop: '', width:'100%', padding: '2rem', margin:'2vh 0', maxHeight: '', fontSize: 'clamp(1rem, 2vw, 3.2rem)', textAlign:'left', textShadow: '0 2px 3px #000', background: 'var(--theme-ui-colors-cardBg)', backdropFilter: 'blur(12px)', borderRadius: '10px', color:'#fff' }}>
 
 
     <p>Pirate is built on industry leading technologies, and is designed from the ground up, using the best, most secure and modern development technology available today.</p>
