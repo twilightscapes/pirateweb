@@ -240,7 +240,7 @@ const AboutPage = () => {
           ) : (
             ""
           )}
-<div className="nameblock " style={{margin:'0 auto 0 auto', padding:'0 0 0 0',alignContent:'center', display:'grid', textAlign:'center', justifyContent:'', verticalAlign:'center',
+<div className="nameblock font" style={{margin:'0 auto 0 auto', padding:'0 0 0 0',alignContent:'center', display:'grid', textAlign:'center', justifyContent:'', verticalAlign:'center',
   color:'#fff', 
   fontSize:'clamp(1rem, 1.4vw, 3.2rem)',
   background:'rgba(0,0,0,0.50)',

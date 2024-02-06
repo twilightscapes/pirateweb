@@ -1,12 +1,20 @@
 {
   "menuItems": [
     {
+      "menutitle": "Create",
+      "url": "/pirate"
+    },
+    {
       "menutitle": "Timeline",
       "url": "/timeline"
     },
     {
-      "menutitle": "Create",
-      "url": "/pirate"
+      "menutitle": "Manage Feeds",
+      "url": "/favorites"
+    },
+    {
+      "menutitle": "End Demo?",
+      "url": "/"
     }
   ]
 }
