@@ -23,7 +23,7 @@
       "showDates": true,
       "showTitles": true,
       "showfooter": false,
-      "showSocial": false,
+      "showSocial": true,
       "showVideoPlayer": true,
       "showDefault": false,
       "showSwipe": false

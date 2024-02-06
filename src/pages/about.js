@@ -1,30 +1,180 @@
 import React from "react"
-import { graphql, useStaticQuery } from "gatsby"
-// import useSiteMetadata from "../hooks/SiteMetadata"
+import { graphql, useStaticQuery, Link } from "gatsby"
+import useSiteMetadata from "../hooks/SiteMetadata"
 import Seo from "../components/seo"
 import Layout from "../components/siteLayout"
 import GoBack from "../components/goBack"
 import Footer from "../components/footer"
+import { GatsbyImage } from "gatsby-plugin-image"
+import Social from "../components/social"
+import ReactPlayer from 'react-player/lazy'
+import { AiOutlineAudioMuted } from 'react-icons/ai';
 // import Faqs from "../components/equipment-list"
 // import SignUp from "../components/newssign"
 import { StaticImage } from "gatsby-plugin-image"
 import { Helmet } from "react-helmet"
 
 const AboutPage = () => {
-//   const { showNav } = useSiteMetadata()
+  const { language, featureOptions, proOptions  } = useSiteMetadata();
+  const { showSocial } = featureOptions
+  const { showProfile } = proOptions
+  const { dicProfileAudioText, dicProfileAudioActionText} = language;
+
+
   const data = useStaticQuery(graphql`
     query AboutQuery {
+
+
+
+            site {
+              siteMetadata {
+                title
+                titleDefault
+                siteUrl
+                description
+                image
+                twitterUsername
+                companyname
+              }
+            }
+
+
       markdownRemark(frontmatter: { template: { eq: "index-page" } }) {
         html
         excerpt(pruneLength: 140)
         frontmatter {
           title
+          description
+          profTitle
+          profileName
+          tagline
+          addressText
+          addressText2
+          cta{
+            ctaText
+            ctaLink
+            showCTA
+          }
+          coverletter{
+            coverText
+            coverLink
+            showCover
+          }
+          youtube {
+            youtuber
+            youtuber2
+            youtubeshoworiginal
+            youtubersuggestion1
+            youtubersuggestion2
+            youtubersuggestion3
+            youtubestart
+            youtubeend
+            youtubemute
+            youtubeloop
+            youtubecontrols
+            customcontrols
+            clicktoplay
+            youtubeautostart
+            liarliar
+            contentinvideo
+            audiostart
+            audioend
+            audiotitle
+          }
+        featuredImage {
+            relativePath
+            childImageSharp {
+              gatsbyImageData(layout: FULL_WIDTH)
+            }
+          }
+          secondaryImage {
+            childImageSharp {
+              gatsbyImageData(layout: FULL_WIDTH)
+            }
+          }
         }
       }
     }
   `)
   const { markdownRemark } = data // data.markdownRemark holds your post data
   const { frontmatter, html, excerpt } = markdownRemark
+
+
+  const SecondaryImage = frontmatter.secondaryImage
+  ? frontmatter.secondaryImage.childImageSharp.gatsbyImageData
+  : ""
+
+  const AudioStart = frontmatter.youtube.audiostart
+  const AudioEnd = frontmatter.youtube.audioend
+  const AudioTitle = frontmatter.youtube.audiotitle
+  const coverText = frontmatter.coverletter.coverText
+
+//   const YouTube = frontmatter.youtube.youtuber
+//   const YouTube2 = frontmatter.youtube.youtuber2
+
+  function Iframer3() {
+    if (!frontmatter.youtube.youtuber2) {
+      return null; 
+    }
+    const iframeUrl3 = "https://www.youtube.com/embed/" + frontmatter.youtube.youtuber2
+    return (
+      
+  <div style={{marginTop:'0', position:'relative', zIndex:'1',
+  display:'flex', justifyContent:'center', maxHeight:'80px !important', height:'150px', border:'0px solid yellow', width:'100%'
+  }}>
+  
+  
+  <ReactPlayer
+          allow="web-share"
+          style={{ position: 'absolute', top:'0', margin: '0 auto 0 auto', zIndex: '1', aspectRatio:'16/9', }}
+          url={iframeUrl3}
+          width="200px"
+          height="100%"
+          config={{
+            youtube: {
+              playerVars: { showinfo:0, autoplay:1, controls:0, start:AudioStart, end:AudioEnd, mute:0,  }
+            },
+          }}
+          loop
+          playing
+          playsinline
+          playIcon={
+            <button aria-label="Click To Play" className="clickplays" style={{position:'relative', zIndex:'0', top:'', border:'0px  solid red', width:'', height:'', background:'transparent', color:'#fff', fontSize:'18px', textAlign:'center', display:'flex', flexDirection:'column', verticalAlign:'center', justifyContent:'center', alignItems:'center', paddingTop:'0', borderRadius:'var(--theme-ui-colors-borderRadius)'}}>
+          
+        <div className="" style={{position:'', top:'', zIndex:'0', textAlign:'center', animation:'', display:'flex', justifyContent:'center', width:'auto', marginBottom:''}}>
+          
+    
+  
+          <div className="popped" style={{display:'flex', width:'80%', minWidth:'200px', margin:'0 auto', fontWeight:'bold', padding:'.2rem .4rem', fontSize:'2rem', background:'rgba(0,0,0,0.30)', borderRadius:'var(--theme-ui-colors-borderRadius)', border:'1px solid #333', filter:'drop-shadow(2px 2px 2px #000)', textAlign:'center'}}>
+            
+            <div style={{fontSize:'.8rem', fontWeight:'', width:'100%', padding:'0 0 0 .3rem', filter:'drop-shadow(2px 2px 2px #000)', textAlign:'center'}}>
+          {dicProfileAudioText}<br />
+  
+  
+  
+            <div style={{fontSize:'1rem', fontWeight:'bold', marginTop:'5px' }}>{ AudioTitle }</div>
+      
+            <div style={{display:'flex', justifyContent:'center', marginTop:'5px'}}>
+            <div><AiOutlineAudioMuted style={{margin:'0 auto', fontSize:'20px', filter:'drop-shadow(2px 2px 2px #000),', color:'var(--theme-ui-colors-siteColor)'}} /></div> &nbsp; <div>{dicProfileAudioActionText} </div>
+            
+            </div>
+            </div>
+  
+          </div>
+         
+          </div>
+          </button>}
+   
+            light="/assets/transparent.png"
+          />
+     </div>
+  
+    )
+  }
+
+
+
+ 
 
   return (
     <Layout className="page">
@@ -36,26 +186,143 @@ const AboutPage = () => {
 
         <div className="spacer2" style={{ height: "60px", border: "0px solid yellow" }}></div>
 
-      <div className="container panel" style={{ maxWidth: "80dvw", margin: "0 auto", paddingTop: "0" }}>
-
-
-        {/* <h1 className="headline">{frontmatter.title}</h1>
-        
-
-        <article dangerouslySetInnerHTML={{ __html: html }} /> */}
 
 
 
 
 
 
-<section id="SecondaryInfo" order="6" className="nameblock" style={{margin:'1vh auto 10vh auto', padding:'1% 4%',alignContent:'center', display:'grid', textAlign:'left', justifyContent:'center', verticalAlign:'center',
+
+      <div className="container panel" style={{ maxWidth: "90dvw", margin: "0 auto", paddingTop: "0" }}>
+
+
+
+
+{/* show profile */}
+{showProfile ? (
+  <section className="nameblock panel" id="profileInfo" style={{ display:'grid', height:'100%',textAlign:'left', justifyContent:'center', verticalAlign:'center', margin:'0 auto 0 auto', padding:'0 0 60px 0', background:'var(--theme-ui-colors-background)', color:'var(--theme-ui-colors-text)', width:'100dvw', borderRadius:'var(--theme-ui-colors-borderRadius)', }}>
+  <article style={{ margin:'0 0 0 0'}}>
+
+
+<div id="profiletop" className="flexbutt" style={{display:'', gap:'10px', justifyContent:'center', alignItems:"center", margin:'0 0',
+  padding:'0 2% 0 2%', position:'relative', color: ''}}>
+
+
+
+
+  <div className="nameblock flexcheek" style={{position:'', top:'0', marginTop: '', padding: '1rem 2rem 0 2rem', maxHeight: '', fontSize: 'clamp(1rem, 1.4vw, 3.2rem)',  borderRadius: 'var(--theme-ui-colors-borderRadius)' }}>
+
+
+  <div className=" mob print" style={{ position:'sticky', top:'0', fontSize: 'clamp(1rem, 1.5vw, 3.2rem)' }}>
+      <h1 className="title1" style={{ fontSize: 'clamp(2rem, 4.5vw, 3.2rem)' }}>{frontmatter.profTitle}</h1>
+      <h2 className="tagline1" style={{ fontSize: 'clamp(1.2rem, 1.8vw, 3.2rem)' }}>
+        {frontmatter.tagline}
+      </h2>
+      <div style={{ fontSize: 'clamp(1.2rem, 1.8vw, 3.2rem)' }} className="description" dangerouslySetInnerHTML={{ __html: html }} />
+    </div>
+
+
+  
+  </div>
+
+
+
+
+      <div className="flexcheek mob2 print" style={{position:'', top:'0', minWidth:'500px', overflow:'', marginBottom:'', paddingTop:'2vh', borderRadius:'var(--theme-ui-colors-borderRadius)',
+      }}>
+{SecondaryImage ? (
+            <GatsbyImage
+              image={SecondaryImage}
+              alt={frontmatter.title + " - Profile Image"}
+              className="avatar-frame"
+              style={{ maxWidth:'280px', margin:'0 auto', height:'', maxHeight:'280px', position:'relative', top:'', objectFit:'contain', backgroundSize:'contain', marginBottom:'0', border:'0'}}
+            />
+          ) : (
+            ""
+          )}
+<div className="nameblock " style={{margin:'0 auto 0 auto', padding:'0 0 0 0',alignContent:'center', display:'grid', textAlign:'center', justifyContent:'', verticalAlign:'center',
+  color:'#fff', 
+  fontSize:'clamp(1rem, 1.4vw, 3.2rem)',
+  background:'rgba(0,0,0,0.50)',
+  backdropFilter:'blur(8px)',
+  border:'10px double var(--theme-ui-colors-buttonHoverBg)', borderRadius:'var(--theme-ui-colors-borderRadius)',
+  textShadow:'0 2px 0px #000',
+  maxWidth:'70%',
+}}>
+  <br />
+{frontmatter.profileName ? (
+    <h3 style={{margin:'2vh auto',}}>{frontmatter.profileName}</h3>
+  ) : (
+    ""
+  )}
+
+  {/* <span style={{margin:'10px auto', fontSize:'160%'}}>{companyname}</span> */}
+    {/* <span style={{margin:'10px auto', fontSize:'160%'}}>Become a PIRATE!</span> */}
+  
+  {frontmatter.addressText ? (
+    frontmatter.addressText
+  ) : (
+    ""
+  )}
+  <br /><br />
+  {frontmatter.addressText2 ? (
+    frontmatter.addressText2
+  ) : (
+    ""
+  )}
+  <br />
+
+  {frontmatter.cta.showCTA ? (
+  <Link to={frontmatter.cta.ctaLink} state={{modal: true}} className="button print" style={{ display: 'flex', justifyContent: 'center', padding:'1vh .5vw', maxWidth:'250px', margin:'30px auto' }}>{frontmatter.cta.ctaText}</Link>
+  ) : (
+    ""
+  )}
+
+
+
+
+  {frontmatter.coverletter.showCover ? (
+    <Link to={frontmatter.coverletter.coverLink} state={{modal: true}} className="print" style={{color:'', fontSize:'', margin:'5px auto 10px auto', textAlign:'center', textDecoration:'underline', maxWidth:'600px', padding:'0 2rem'}}>{coverText}</Link>
+  ) : (
+    ""
+  )}
+  
+
+  {showSocial ? (
+    <Social />
+  ) : (
+    ""
+  )}
+
+{frontmatter.youtube.youtuber2 ? (
+    <Iframer3 />
+  ) : (
+    ""
+  )}
+  
+
+
+</div>
+
+
+</div>
+</div> 
+</article>
+</section>
+) : (
+    ""
+  )}
+{/* End profile */}
+
+
+
+<section id="SecondaryInfo8" order="6" className="nameblock" style={{margin:'1vh auto 10vh auto', padding:'2vh',alignContent:'center', display:'grid', textAlign:'left', justifyContent:'center', verticalAlign:'center',
   fontSize:'clamp(1rem, 1.8vw, 3.2rem)',
   // background:'rgba(0,0,0,0.50)',
   backdropFilter:'blur(8px)',
   borderRadius:'10px',
   // textShadow:'0 2px 7px #000',
-  maxWidth:'95%',
+  maxWidth:'100%',
 
   background:'var(--theme-ui-colors-background)', color:'var(--theme-ui-colors-text)',
    }}>
@@ -65,7 +332,7 @@ const AboutPage = () => {
 
 <p>Upon signing up, you'll gain access to the Netlify CMS and Netlify Identity, the wind in your sails that will allow you to customize your profile, post your own content, and chart your course in the vast digital sea. Remember, your voice and content are your own on PIRATE Social. So, get ready to make some waves, captain!</p> */}
 
-<div className="nameblock flexcheek" style={{position:'sticky', top:'0', marginTop: '', width:'100%', padding: '0 2rem 0 2rem', margin:'2vh 0', maxHeight: '', fontSize: 'clamp(1rem, 3.5vw, 3.2rem)', textAlign:'center', textShadow: '0 2px 3px #000', color: '#fff', background: 'rgba(0,0,0,0.50)', backdropFilter: 'blur(12px)', borderRadius: '10px' }}>
+<div className="nameblock flexcheek" style={{position:'sticky', top:'0', marginTop: '', width:'100%', padding: '2vh', margin:'2vh 0', maxHeight: '', fontSize: 'clamp(1rem, 3.5vw, 3.2rem)', textAlign:'center', textShadow: '0 2px 3px #000', color: '#fff', background: 'rgba(0,0,0,0.50)', backdropFilter: 'blur(12px)', borderRadius: '10px' }}>
     <h2>No Compromise - No-Quarter!</h2>
   </div>
   
@@ -107,7 +374,7 @@ const AboutPage = () => {
 <section id="SecondaryInfo" order="6" className="nameblock" style={{margin:'10vh auto 10vh auto', padding:'1% 4%',alignContent:'center', display:'flex', textAlign:'left', justifyContent:'center', verticalAlign:'center', }}>
 
 
-      <div className="container" style={{padding: '0 10%', color:''}}>
+      <div className="container" style={{padding: '0 3%', color:''}}>
 
 {/* <div id="costs" style={{display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center', margin:'0 0 2rem 0', width:'100%'}}>
               
@@ -225,7 +492,7 @@ Get FULL Shopify functionality directly inside your site.
 
 
 
-<section id="features" className="">
+<section id="features" className="nameblock">
 
 
   
@@ -239,11 +506,11 @@ Get FULL Shopify functionality directly inside your site.
 </div> */}
 
 
-<div className="flexbutt featurelisting" style={{display:'flex', padding:'2rem', alignItems:'baseline', position:'relative', gap:'30px', color:'#fff'}}>
+<div className="flexbutt featurelisting" style={{display:'flex', padding:'2vh', alignItems:'baseline', position:'relative', gap:'30px', color:'#fff', width:'95vw'}}>
 
 
 
-  <div className="flexcheek" style={{position:'sticky', top:'0'}} >
+  <div className="flexcheek" style={{position:'', top:'0'}} >
     <div className="frontcontent">
       <div className="content-inside" style={{padding:'8px', textAlign:'left'}}>
         
@@ -284,7 +551,7 @@ Get FULL Shopify functionality directly inside your site.
 
 
 
-  <div className="flexcheek" style={{position:'sticky', top:'0'}} >
+  <div className="flexcheek" style={{position:'', top:'0'}} >
     <div className="frontcontent content-lr">
     
       <div className="content-inside" style={{padding:'8px'}}>
@@ -405,7 +672,7 @@ Get FULL Shopify functionality directly inside your site.
 
 
 
-<section id="SecondaryInfo2" order="7" className="nameblock" style={{margin:'0 auto 10vh auto', padding:'2% 4%',alignContent:'center', display:'grid', textAlign:'left', justifyContent:'center', verticalAlign:'center',
+<section id="SecondaryInfo4" order="7" className="nameblock" style={{margin:'0 auto 10vh auto', padding:'2% 4%',alignContent:'center', display:'grid', textAlign:'left', justifyContent:'center', verticalAlign:'center',
   color:'var(--theme-ui-colors-text)',
   border:'0px solid red', 
   fontSize:'clamp(1rem, 1.8vw, 3.2rem)',
@@ -420,7 +687,7 @@ Get FULL Shopify functionality directly inside your site.
 
 
 
-  <div className="nameblock flexcheek" style={{position:'sticky', top:'0', marginTop: '', width:'100%', padding: '0 2rem 0 2rem', margin:'2vh 0', maxHeight: '', fontSize: 'clamp(1rem, 3.5vw, 3.2rem)', textAlign:'center', textShadow: '0 2px 3px #000', color: '#fff', background: 'rgba(0,0,0,0.50)', backdropFilter: 'blur(12px)', borderRadius: '10px' }}>
+  <div className="nameblock flexcheek" style={{position:'sticky', top:'0', marginTop: '', width:'100%', padding: '1vh 2vh', margin:'2vh 0', maxHeight: '', fontSize: 'clamp(1.3rem, 3.5vw, 3.2rem)', textAlign:'center', textShadow: '0 2px 3px #000', color: '#fff', background: 'rgba(0,0,0,0.50)', backdropFilter: 'blur(12px)', borderRadius: '10px' }}>
     <h2>How It Works</h2>
   </div>
 
@@ -474,7 +741,7 @@ You control your timeline (and everything else), not some billionaire appeasing 
  
 
 
-<section id="SecondaryInfo2" order="7" className="nameblock" style={{margin:'0 auto 0 auto', padding:'2% 4%',alignContent:'center', display:'grid', textAlign:'left', justifyContent:'center', verticalAlign:'center',
+<section id="SecondaryInfo5" order="7" className="nameblock" style={{margin:'0 auto 0 auto', padding:'1vh 2vh',alignContent:'center', display:'grid', textAlign:'left', justifyContent:'center', verticalAlign:'center',
   color:'#fff',
   border:'0px solid red', 
   fontSize:'clamp(1rem, 1.8vw, 3.2rem)',

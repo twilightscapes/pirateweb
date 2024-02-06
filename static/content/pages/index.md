@@ -4,7 +4,7 @@ profileSocial: false
 addressText: The Fleet Launches Soon!
 youtube: 
  youtuber: ""
- youtuber2: ""
+ youtuber2: https://youtu.be/n--SX54AUZU?si=jVhcwAl4N_Bo0JyC
  youtubeshoworiginal: false
  youtubersuggestion1: "null"
  youtubersuggestion2: "null"
@@ -19,7 +19,7 @@ youtube:
  showVidOnly: false
  customcontrols: false
  audioend: "0"
- audiotitle: "null"
+ audiotitle: "Sci-Fi Sounds"
  audiostart: "0"
  contentinvideo: false
  liarliar: false
