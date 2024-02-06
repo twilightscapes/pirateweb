@@ -132,7 +132,7 @@ const VideoPlayer = () => {
               allow="web-share"
               ref={playerRef}
               style={{
-                position: 'relative', top:'0', margin: '0 auto 0 auto', zIndex: '0', aspectRatio:'16/9', overflow:'hidden', width:'100vw', minHeight:'90%', height:'100%', background:'transparent'}}
+                position: 'relative', top:'0', margin: '0 auto 0 auto', zIndex: '1', aspectRatio:'16/9', overflow:'hidden', width:'100vw', minHeight:'90%', height:'100%', background:'transparent'}}
               width="100%"
               height="100%"
               url={finalUrl}
@@ -147,7 +147,7 @@ const VideoPlayer = () => {
             playIcon={
               <div style={{position:'absolute',
               backgroundColor:'rgba(0,0,0,0.6)',
-               width:'100dvw', height:'100%', minHeight:'40dvh', maxHeight:'100dvh', zIndex:'0', top:'0', right:'0', textAlign:'center', display:'grid', placeContent:'center', justifyContent:'center', 
+               width:'100dvw', height:'100%', minHeight:'40dvh', maxHeight:'100dvh', zIndex:'2', top:'0', right:'0', textAlign:'center', display:'grid', placeContent:'center', justifyContent:'center', 
               color:'#ddd',
               fontFamily:'Verdana, Sans-Serif, System' }}>
 <button aria-label="Click To Play" className="clickplays videohide 1042" style={{position:'relative', zIndex:'', top:'0', border:'0px  solid red', width:'100vw', background:'transparent', color:'', fontSize:'18px', textAlign:'center', display:'', flexDirection:'column', verticalAlign:'center', justifyContent:'center', alignItems:'center', aspectRatio:'16/9'}}>

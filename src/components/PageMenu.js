@@ -53,7 +53,7 @@ const MenuComponent = () => {
  // Adjust the borderRadius values as needed
   }}
 >
-  <MenuIcon style={{height:'100%', maxHeight: '60px', zIndex:'', color:'#fff' }} />
+  <MenuIcon style={{height:'100%', maxHeight: '60px', zIndex:'2', color:'#fff' }} />
 </button>
 <div className="menusnapp" style={{position:'absolute', zIndex:'1', bottom:'90px', gap: "0", padding: "2vh 2vw", alignItems: "center", display: isMenuOpen ? "block" : "none", background:'var(--theme-ui-colors-headerBackground)', backgroundColor:'#222', width:'100dvw'  }}>
 
