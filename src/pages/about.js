@@ -193,7 +193,7 @@ const AboutPage = () => {
 
 
 
-      <div className="container panel" style={{ maxWidth: "90dvw", margin: "0 auto", padding: "0" }}>
+      <div className="container panel" style={{ maxWidth: "100%", margin: "0 auto", padding: "0", overFlowX:'hidden' }}>
 
 
 
@@ -321,7 +321,7 @@ const AboutPage = () => {
 
 
 
-<section id="SecondaryInfo8" order="6" className="nameblock" style={{margin:'1vh auto 10vh auto', padding:'2vh',alignContent:'center', display:'grid', textAlign:'left', justifyContent:'center', verticalAlign:'center',
+<section id="SecondaryInfo8" order="6" className="nameblock" style={{margin:'1vh auto 10vh auto', padding:'2vh 4%',alignContent:'center', display:'grid', textAlign:'left', justifyContent:'center', verticalAlign:'center',
   fontSize:'clamp(1rem, 1.8vw, 3.2rem)',
   // background:'rgba(0,0,0,0.50)',
   backdropFilter:'blur(8px)',
@@ -337,7 +337,7 @@ const AboutPage = () => {
 
 <p>Upon signing up, you'll gain access to the Netlify CMS and Netlify Identity, the wind in your sails that will allow you to customize your profile, post your own content, and chart your course in the vast digital sea. Remember, your voice and content are your own on Pirate Social. So, get ready to make some waves, captain!</p> */}
 
-<div className="nameblock flexcheek" style={{position:'', top:'', marginTop: '', width:'100%', padding: '2vh', margin:'2vh 0', maxHeight: '', fontSize: 'clamp(1rem, 3.5vw, 3.2rem)', textAlign:'center', textShadow: '0 2px 3px #000', color: '#fff', background: 'rgba(0,0,0,0.50)', backdropFilter: 'blur(12px)', borderRadius: '10px' }}>
+<div className="nameblock flexcheek" style={{position:'', top:'', marginTop: '', width:'100%', padding: '2vh 3vw', margin:'2vh auto', maxHeight: '', fontSize: 'clamp(1rem, 3.5vw, 3.2rem)', textAlign:'center', textShadow: '0 2px 3px #000', color: '#fff', background: 'rgba(0,0,0,0.50)', backdropFilter: 'blur(12px)', borderRadius: '10px' }}>
     <h2>No Compromise - No-Quarter!</h2>
   </div>
   
