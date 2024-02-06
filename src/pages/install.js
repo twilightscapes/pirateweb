@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+// import React, { useState } from "react";
+import React from "react";
 import useSiteMetadata from "../hooks/SiteMetadata"
 // import { StaticImage } from "gatsby-plugin-image"
 // import {Link} from "gatsby"
@@ -8,7 +9,7 @@ import { Helmet } from "react-helmet"
 // import Intro from "../../static/assets/textual.svg"
 // import Intro2 from "../../static/assets/install-intro.svg"
 // import Intro3 from "../../static/assets/intro-github.svg"
-import ContactForm from "../components/newssign"
+// import ContactForm from "../components/newssign"
 // import useNetlifyIdentity from '../components/useNetlifyIdentity';
 
 
@@ -46,12 +47,11 @@ function Install() {
   {/* </div> */}
 
 
-<section style={{ display:'', height:'', maxHeight:'', margin:'0 auto', padding:'0 0 0 0', position:'relative',
- alignContent:'center', display:'grid', textAlign:'left', placeContent:'center', verticalAlign:'center',
+<section style={{ height:'', maxHeight:'', margin:'0 auto', padding:'0 0 0 0', position:'relative',
+ alignContent:'center', display:'grid', textAlign:'center', placeContent:'center', verticalAlign:'center',
   color:'#fff',
   fontSize:'clamp(1rem, 1.8vw, 3.2rem)',
-  textShadow:'0 2px 7px #000',
-  textAlign:'center'
+  textShadow:'0 2px 7px #000'
 }}>
 
 <h3>STEP ONE (1 of 3)</h3>

@@ -1,17 +1,17 @@
 import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
-import useSiteMetadata from "../hooks/SiteMetadata"
+// import useSiteMetadata from "../hooks/SiteMetadata"
 import Seo from "../components/seo"
 import Layout from "../components/siteLayout"
 import GoBack from "../components/goBack"
 import Footer from "../components/footer"
 // import Faqs from "../components/equipment-list"
-import SignUp from "../components/newssign"
+// import SignUp from "../components/newssign"
 import { StaticImage } from "gatsby-plugin-image"
 import { Helmet } from "react-helmet"
 
 const AboutPage = () => {
-  const { showNav } = useSiteMetadata()
+//   const { showNav } = useSiteMetadata()
   const data = useStaticQuery(graphql`
     query AboutQuery {
       markdownRemark(frontmatter: { template: { eq: "index-page" } }) {

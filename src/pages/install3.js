@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+// import React, { useState } from "react";
+import React from "react";
 import useSiteMetadata from "../hooks/SiteMetadata"
 // import { StaticImage } from "gatsby-plugin-image"
 // import {Link} from "gatsby"
-import { Link } from "gatsby"
+// import { Link } from "gatsby"
 
 import Layout from "../components/siteLayout"
 import { Helmet } from "react-helmet"
@@ -86,8 +87,8 @@ function Install3() {
 
 
 
-<section id="" order="1" name="feature" className="print scroll-area" style={{ display:'', height:'', maxHeight:'', margin:'0 auto 0 auto', padding:'0 4%', position:'relative',
- alignContent:'center', display:'grid', textAlign:'left', placeContent:'center', verticalAlign:'center',
+<section id="" order="1" name="feature" className="print scroll-area" style={{  height:'', maxHeight:'', margin:'0 auto 0 auto', padding:'0 4%', position:'relative',
+ alignContent:'center', display:'grid', placeContent:'center', verticalAlign:'center',
   color:'#fff',
   fontSize:'clamp(1rem, 1.8vw, 3.2rem)',
   textShadow:'0 2px 7px #000',
@@ -107,7 +108,7 @@ Simply follow the prompts and ignore the scary jargon
 <br />
 <strong>Don't worry - we handle all the hard stuff for you!</strong>
 <br />
-<a style={{display:'grid', placeContent:'center', margin:'0 auto 0 auto'}} class="button" href="https://app.netlify.com/start/deploy?repository=https://github.com/piratesocial/pirate&amp;stack=cms&amp;SITE_LOGO=https://https://piratesocial.org/assets/logo.svg" target="_blank" rel="nofollow">
+<a style={{display:'grid', placeContent:'center', margin:'0 auto 0 auto'}} class="button" href="https://app.netlify.com/start/deploy?repository=https://github.com/piratesocial/pirate&amp;stack=cms&amp;SITE_LOGO=https://https://piratesocial.org/assets/logo.svg" target="_blank" rel="noreferrer">
 Setup Account
 </a>
 <br />
