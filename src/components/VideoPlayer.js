@@ -117,11 +117,11 @@ const VideoPlayer = () => {
   /> */}
 
 {/* <PageMenu /> */}
-
+<PageMenu />
       <div className='player-wrapper' style={{marginTop:''}}>
 
       
-  <PageMenu />
+  
 
         {/* <Player /> */}
           <ReactPlayer
@@ -132,7 +132,7 @@ const VideoPlayer = () => {
               width="100%"
               height="100%"
               url={finalUrl}
-              playing={true}
+              playing={"true"}
               controls={"true"}
               playsinline
               config={{

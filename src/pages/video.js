@@ -67,7 +67,7 @@ const Video = () => {
   useEffect(() => {
     inputElement.current.onfocus = () => {
       window.scrollBy(0, 0);
-      // document.body.scrollTop = 0;
+      document.body.scrollTop = 0;
     };
   });
 
@@ -110,10 +110,10 @@ const Video = () => {
 
 
 
-
+<PageMenu />
       <div className='player-wrapper' style={{marginTop:''}}>
 
-<PageMenu />
+
         {/* <Player /> */}
           <ReactPlayer
               allow="web-share"
@@ -123,12 +123,12 @@ const Video = () => {
               width="100%"
               height="100%"
               url={finalUrl}
-              playing={true}
+              playing={"true"}
               controls={"true"}
               playsinline
               config={{
                   youtube: {
-                    playerVars: { showinfo:false, autoplay:YouTubeAutostart, controls:true, start:YouTubeStart, end:YouTubeEnd, mute:YouTubeMute, loop:YoutubeLoop }
+                    playerVars: { showinfo:true, autoplay:YouTubeAutostart, controls:true, start:YouTubeStart, end:YouTubeEnd, mute:YouTubeMute, loop:YoutubeLoop }
                   },
               }}
             playIcon={
