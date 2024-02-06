@@ -66,7 +66,11 @@ const VideoPlayer = () => {
 
   useEffect(() => {
     inputElement.current.onfocus = () => {
-      window.scrollBy(0, 0);
+      // window.scrollBy(0, 0);
+      document.body.scrollTop = 0;
+    };
+    inputElement.current.onblur = () => {
+      // window.scrollBy(0, 0);
       document.body.scrollTop = 0;
     };
   });
