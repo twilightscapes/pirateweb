@@ -122,7 +122,7 @@ const VideoPlayer = () => {
 
 {/* <PageMenu /> */}
 
-      <div className='player-wrapper' style={{marginTop:''}}>
+      <div className='player-wrapper' style={{position:'relative'}}>
 
       
   
@@ -141,35 +141,10 @@ const VideoPlayer = () => {
               playsinline
               config={{
                   youtube: {
-                    playerVars: { showinfo:true, autoplay:YouTubeAutostart, controls:true, start:YouTubeStart, end:YouTubeEnd, mute:YouTubeMute, loop:YoutubeLoop }
+                    playerVars: { showinfo:false, autoplay:YouTubeAutostart, controls:true, start:YouTubeStart, end:YouTubeEnd, mute:YouTubeMute, loop:YoutubeLoop }
                   },
               }}
-            playIcon={
-              <div style={{position:'absolute',
-              backgroundColor:'rgba(0,0,0,0.6)',
-               width:'100dvw', height:'100%', minHeight:'40dvh', maxHeight:'100dvh', zIndex:'2', top:'0', right:'0', textAlign:'center', display:'grid', placeContent:'center', justifyContent:'center', 
-              color:'#ddd',
-              fontFamily:'Verdana, Sans-Serif, System' }}>
-<button aria-label="Click To Play" className="clickplays videohide 1042" style={{position:'relative', zIndex:'', top:'0', border:'0px  solid red', width:'100vw', background:'transparent', color:'', fontSize:'18px', textAlign:'center', display:'', flexDirection:'column', verticalAlign:'center', justifyContent:'center', alignItems:'center', aspectRatio:'16/9'}}>
-</button>
 
-<button
-aria-label="Video Play/Pause Button"
-className="" 
-style={{
-color:'#ddd',
-width:'100vw', 
-height:'',
-display:'grid',
-placeContent:'center',
-position:'fixed',
-top:'0',left:'0',right:'0',bottom:'0',
-zindex:'1'
-}}
-></button>
-
-          </div>
-          }
           
           />
       

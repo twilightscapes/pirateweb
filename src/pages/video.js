@@ -6,7 +6,7 @@ import { FaTwitch, FaFacebookSquare  } from "react-icons/fa";
 // import {Link} from "gatsby"
 // import { RiQuestionLine, RiCloseCircleFill } from "react-icons/ri"
 // import PirateLogo from "../img/logo.svg"
-import PageMenu from "../components/PageMenu"
+// import PageMenu from "../components/PageMenu"
 import Layout from "../components/siteLayout"
 import Seo from "../components/seo";
 import { Helmet } from "react-helmet";
@@ -132,40 +132,15 @@ const Video = () => {
               playsinline
               config={{
                   youtube: {
-                    playerVars: { showinfo:true, autoplay:YouTubeAutostart, controls:true, start:YouTubeStart, end:YouTubeEnd, mute:YouTubeMute, loop:YoutubeLoop }
+                    playerVars: { showinfo:false, autoplay:YouTubeAutostart, controls:true, start:YouTubeStart, end:YouTubeEnd, mute:YouTubeMute, loop:YoutubeLoop }
                   },
               }}
-            playIcon={
-              <div style={{position:'absolute',
-              backgroundColor:'rgba(0,0,0,0.6)',
-               width:'100dvw', height:'100%', minHeight:'100%', maxHeight:'100dvh', zIndex:'2', top:'0', right:'0', textAlign:'center', display:'grid', placeContent:'center', justifyContent:'center', 
-              color:'#ddd',
-              fontFamily:'Verdana, Sans-Serif, System' }}>
-<button aria-label="Click To Play" className="clickplays videohide 1042" style={{position:'relative', zIndex:'2', top:'0', border:'0px  solid red', width:'100vw', background:'transparent', color:'', fontSize:'18px', textAlign:'center', display:'', flexDirection:'column', verticalAlign:'center', justifyContent:'center', alignItems:'center', aspectRatio:'16/9'}}>
-</button>
-
-<button
-aria-label="Video Play/Pause Button"
-className="" 
-style={{
-color:'#ddd',
-width:'100vw', 
-height:'',
-display:'grid',
-placeContent:'center',
-position:'fixed',
-top:'0',left:'0',right:'0',bottom:'0',
-zindex:'1'
-}}
-></button>
-
-          </div>
-          }
+            
           
           />
       
 
-      <PageMenu />
+      {/* <PageMenu /> */}
       <div className="form-container controller" style={{position:'relative', zindex:'10', top:'0', marginTop:'0', height:'', padding:'2vh 2%', width:'100vw', background:'var(--theme-ui-colors-headerColor)'}}>
           <div style={{ maxWidth:'800px', margin:'0 auto'}}>
           <form className="youtubeform frontdrop" onSubmit={handleSubmit} id="youtubeform" name="youtubeform">
