@@ -184,7 +184,7 @@ const AboutPage = () => {
       <Seo title={frontmatter.title} description={excerpt} />
 
 
-        <div className="spacer2" style={{ height: "60px", border: "0px solid yellow" }}></div>
+        {/* <div className="spacer2" style={{ height: "60px", border: "0px solid yellow" }}></div> */}
 
 
 
@@ -193,7 +193,7 @@ const AboutPage = () => {
 
 
 
-      <div className="container panel" style={{ maxWidth: "90dvw", margin: "0 auto", paddingTop: "0" }}>
+      <div className="container panel" style={{ maxWidth: "90dvw", margin: "0 auto", padding: "0" }}>
 
 
 
@@ -228,7 +228,7 @@ const AboutPage = () => {
 
 
 
-      <div className="flexcheek mob2 print" style={{position:'', top:'0', minWidth:'500px', overflow:'', marginBottom:'', paddingTop:'2vh', borderRadius:'var(--theme-ui-colors-borderRadius)',
+      <div className="flexcheek mob2 print" style={{position:'', top:'0', minWidth:'500px', overflow:'', marginBottom:'', paddingTop:'1vh', borderRadius:'var(--theme-ui-colors-borderRadius)',
       }}>
 {SecondaryImage ? (
             <GatsbyImage
@@ -250,8 +250,8 @@ const AboutPage = () => {
   maxWidth:'70%',
 }}>
   <br />
-{frontmatter.profileName ? (
-    <h3 style={{margin:'2vh auto',}}>{frontmatter.profileName}</h3>
+  {frontmatter.profileName ? (
+    <span style={{margin:'2vh auto', fontSize:'160%'}}>{frontmatter.profileName}</span>
   ) : (
     ""
   )}
@@ -274,15 +274,20 @@ const AboutPage = () => {
 
   {frontmatter.cta.showCTA ? (
   <Link to={frontmatter.cta.ctaLink} state={{modal: true}} className="button print" style={{ display: 'flex', justifyContent: 'center', padding:'1vh .5vw', maxWidth:'250px', margin:'30px auto' }}>{frontmatter.cta.ctaText}</Link>
+
+
+
+
+
   ) : (
     ""
   )}
-
+{/* <AnchorLink to='/install' className="button actionJackson print" style={{ display: 'flex', justifyContent: 'center', padding:'1vh .5vw', maxWidth:'250px', color:'#fff' }}>Install Now</AnchorLink> */}
 
 
 
   {frontmatter.coverletter.showCover ? (
-    <Link to={frontmatter.coverletter.coverLink} state={{modal: true}} className="print" style={{color:'', fontSize:'', margin:'5px auto 10px auto', textAlign:'center', textDecoration:'underline', maxWidth:'600px', padding:'0 2rem'}}>{coverText}</Link>
+    <Link to={frontmatter.coverletter.coverLink} state={{modal: true}} className="button print" style={{ display: 'flex', justifyContent: 'center', padding:'1vh 1vw', maxWidth:'250px', margin:'30px auto' }}>{coverText}</Link>
   ) : (
     ""
   )}
@@ -492,7 +497,7 @@ Get FULL Shopify functionality directly inside your site.
 
 
 
-<section id="features" className="nameblock">
+<section id="features" className="nameblock" style={{margin:'0 auto 10vh auto', padding:'1% 2%',alignContent:'center', display:'flex', textAlign:'left', justifyContent:'center', verticalAlign:'center', }}>
 
 
   
