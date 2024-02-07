@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import ReactPlayer from 'react-player/lazy';
 import { ImYoutube2 } from "react-icons/im";
 import { FaTwitch, FaFacebookSquare } from "react-icons/fa";
-import PageMenu from "../components/PageMenu"
+// import PageMenu from "../components/PageMenu"
 
 const VideoPlayer = () => {
   const inputElement = useRef(null);
@@ -54,7 +54,7 @@ const VideoPlayer = () => {
           ref={playerRef}
           allow="web-share"
           style={{
-            position: 'relative', top: '0', margin: '0 auto 0 auto', zIndex: '1', aspectRatio: '16/9', overflow: 'hidden', width: '100vw', minHeight: '90%', height: '100%', background: 'transparent'
+            position: 'relative', top: '0', margin: '0 auto 0 auto', zIndex: '1',  overflow: 'hidden', width: '100vw', minHeight: '', height: '100%', background: 'transparent'
           }}
           width="100%"
           height="100%"
@@ -68,7 +68,7 @@ const VideoPlayer = () => {
             },
           }}
         />
-        <PageMenu />
+        {/* <PageMenu /> */}
         <div className="form-container controller font" style={{position:'relative', zIndex:'2', top:'0', marginTop:'0', height:'', padding:'2vh 2%', width:'100vw', background:'var(--theme-ui-colors-headerColor)'}}>
           <div style={{ maxWidth: '800px', margin: '0 auto' }}>
             <form className="youtubeform frontdrop" onSubmit={handleSubmit}id="youtubeform" name="youtubeform">
