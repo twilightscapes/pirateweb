@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import ReactPlayer from 'react-player/lazy';
 import { ImYoutube2 } from "react-icons/im";
 import { FaTwitch, FaFacebookSquare } from "react-icons/fa";
-import PageMenu from "./PageMenu"
+import PageMenu from "../components/PageMenu"
 
 const VideoPlayer = () => {
   const inputElement = useRef(null);
