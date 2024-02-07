@@ -46,16 +46,16 @@ const MenuComponent = () => {
     position:'absolute', top:'42%',
     width: '60px',
     height:'60px',
-    zIndex: '3',
+    zIndex: '2',
     opacity: '.5',
     color:'',
     display:'flex'
  // Adjust the borderRadius values as needed
   }}
 >
-  <MenuIcon style={{height:'100%', maxHeight: '60px', zIndex:'3', color:'#fff' }} />
+  <MenuIcon style={{height:'100%', maxHeight: '60px', zIndex:'2', color:'#fff' }} />
 </button>
-<div className="menusnapp" style={{position:'absolute', zIndex:'2', top:'42%', gap: "0", padding: "2vh 2vw", alignItems: "center", display: isMenuOpen ? "block" : "none", background:'var(--theme-ui-colors-headerBackground)', backgroundColor:'#222', width:'100dvw'  }}>
+<div className="menusnapp" style={{position:'absolute', zIndex:'1', top:'42%', gap: "0", padding: "2vh 2vw", alignItems: "center", display: isMenuOpen ? "block" : "none", background:'var(--theme-ui-colors-headerBackground)', backgroundColor:'#222', width:'100dvw'  }}>
 
 
   
