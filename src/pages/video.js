@@ -40,7 +40,6 @@ const Video = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Add any additional logic you need on form submission
   };
 
   useEffect(() => {
