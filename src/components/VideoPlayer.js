@@ -62,10 +62,10 @@ const VideoPlayer = () => {
     fillFormFromClipboard();
   }, []); // Empty dependency array to run the effect only once
 
-  const handleInputChange = (event) => {
-    const { value } = event.target;
-    setYoutubelink(value);
-  };
+  // const handleInputChange = (event) => {
+  //   const { value } = event.target;
+  //   setYoutubelink(value);
+  // };
 
   const handleInputClick = () => {
     fillFormFromClipboard(); // Trigger clipboard check manually
@@ -174,7 +174,7 @@ const VideoPlayer = () => {
               type="text"
               name="youtubelink"
               value={youtubelink}
-              onInput={handleInputChange}
+              // onInput={handleInputChange}
               onClick={handleInputClick}
               // onChange={handleInputChange}
               style={{ padding: '.5vh 1vw', width:'100%', minWidth: '', outline: '1px solid #333', borderRadius: 'var(--theme-ui-colors-borderRadius)', color: 'var(--theme-ui-colors-siteColor)', fontSize:'clamp(.8rem,1.5vw,2rem)' }}
