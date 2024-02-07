@@ -6,7 +6,7 @@ import { FaTwitch, FaFacebookSquare  } from "react-icons/fa";
 // import {Link} from "gatsby"
 // import { RiQuestionLine, RiCloseCircleFill } from "react-icons/ri"
 // import PirateLogo from "../img/logo.svg"
-import PageMenu from "./PageMenu"
+// import PageMenu from "./PageMenu"
 // import Layout from "../components/siteLayout"
 // import Seo from "../components/seo";
 // import { Helmet } from "react-helmet";
@@ -148,7 +148,7 @@ const VideoPlayer = () => {
           
           />
       
-      <PageMenu />
+      {/* <PageMenu /> */}
       <div className="form-container controller font" style={{position:'relative', zIndex:'2', top:'0', marginTop:'0', height:'', padding:'2vh 2%', width:'100vw', background:'var(--theme-ui-colors-headerColor)'}}>
           <div style={{ maxWidth:'800px', margin:'0 auto'}}>
           <form className="youtubeform frontdrop" onSubmit={handleSubmit} id="youtubeform" name="youtubeform">
@@ -178,7 +178,7 @@ const VideoPlayer = () => {
               placeholder="Paste Video Link"
               className="youtubelinker"
             />
-            <button type="reset" onClick={() => setYoutubelink("")} style={{ fontSize: '90%', color: '', fontSize:'clamp(.8rem,1.5vw,2rem)', fontWeight: 'bold', textAlign: 'left', width: '', margin: '5px 15px 0 0' }}>
+            <button type="reset" onClick={() => setYoutubelink("")} style={{ color: '', fontSize:'clamp(.8rem,1.5vw,2rem)', fontWeight: 'bold', textAlign: 'left', width: '', margin: '5px 15px 0 0' }}>
               Reset
             </button>
           </form>

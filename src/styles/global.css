@@ -934,7 +934,7 @@ ul li{display:inline-block}
     /* height: 100% !important; */
   }
 
-
+  .player-wrapper .menusnapp{top:72% !important;}
 
   body.blogpost {padding-top:8vh !important;}
   /* .grid-container .post-card1 iframe{margin-left:-5%;} */
