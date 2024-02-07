@@ -566,7 +566,7 @@ style={{height:'auto', width:'100dvw', maxHeight:'100dvh', position:'absolute', 
   )}
 
   {/* <span style={{margin:'10px auto', fontSize:'160%'}}>{companyname}</span> */}
-    {/* <span style={{margin:'10px auto', fontSize:'160%'}}>Become a PIRATE!</span> */}
+    {/* <span style={{margin:'10px auto', fontSize:'160%'}}>Become a Pirate!</span> */}
   
   {frontmatter.addressText ? (
     frontmatter.addressText

@@ -193,7 +193,7 @@ const AboutPage = () => {
 
 
 
-      <div className="container panel" style={{ maxWidth: "100%", margin: "0 auto", padding: "0", overFlowX:'hidden' }}>
+      <div className="container panel" style={{ maxWidth: "100dvw", margin: "0 auto", padding: "0", overFlowX:'hidden' }}>
 
 
 
