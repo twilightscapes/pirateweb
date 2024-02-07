@@ -3,7 +3,9 @@ import ReactPlayer from 'react-player/lazy';
 import { ImYoutube2 } from "react-icons/im";
 import { FaTwitch, FaFacebookSquare } from "react-icons/fa";
 import PageMenu from "../components/PageMenu"
-
+import Layout from "../components/siteLayout"
+import Seo from "../components/seo";
+import { Helmet } from "react-helmet";
 const Video = () => {
   const inputElement = useRef(null);
   const playerRef = useRef(null);
@@ -48,6 +50,14 @@ const Video = () => {
 
   return (
     <>
+    <Layout>
+<Helmet>
+    <body id="body" className="youtube"/>
+  </Helmet>
+<Seo
+    title="AdFree Video Player"
+    description="Adfree Video Player"
+  />
       <div className='player-wrapper' style={{}}>
         <ReactPlayer
           ref={playerRef}
@@ -98,6 +108,12 @@ const Video = () => {
           </div>
         </div>
       </div>
+      
+
+
+
+
+</Layout>
     </>
   );
 };
