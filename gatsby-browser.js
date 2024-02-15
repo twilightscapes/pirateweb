@@ -5,6 +5,13 @@
 //   <ViewProvider>{element}</ViewProvider>
 // );
 
+// import React from "react";
+// import { GlobalStateProvider } from "./src/components/GlobalStateContext";
+
+// export const wrapRootElement = ({ element }) => {
+//   return <GlobalStateProvider>{element}</GlobalStateProvider>;
+// };
+
 export const onServiceWorkerUpdateReady = () => {
   // Check if window is defined before using it
   if (typeof window !== "undefined") {
