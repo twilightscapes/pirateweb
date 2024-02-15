@@ -50,7 +50,7 @@ const VideoPlayer = () => {
     if (navigator.share) { 
       navigator.share({
         title: 'PIRATE',
-        url: 'https://pirateyoutube.com'
+        url: 'https://piratevideo.org'
       }).then(() => {
         console.log('Thanks for being a PIRATE!');
       })
@@ -97,7 +97,7 @@ const VideoPlayer = () => {
                       </a>
                     </div>
                     <div className="link">
-                      <div className="pen-url">https://pirateyoutube.com</div>
+                      <div className="pen-url">https://piratevideo.org</div>
                       <button className="copy-link">Copy Link</button>
                     </div>
                   </div>
