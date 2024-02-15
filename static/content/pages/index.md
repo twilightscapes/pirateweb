@@ -43,7 +43,7 @@ skillsText:
 underlayImage: /assets/transparent.png
 bumpertext: x
 cta:
-  ctaText: Install the FULL version of PIRATE
+  ctaText: Get the FULL version of PIRATE
   ctaLink: /install
   showCTA: true
 homecount: 5
@@ -82,8 +82,8 @@ spotlight: false
 comments: false
 shareable: false
 ---
-Pirate is a social network with NO central control or ownership. It's based on leading Open-Source platforms and runs on individually owned websites.
-
-Pirate leverages the power of free services to host your own web app that you can control from any device, all for FREE!
+Pirate leverages the power of free services to host your own Personal Web App(PWA), that you can control from any device, all for FREE!
 
 Easily edit your homepage, update your profile, and publish engaging content on your OWN website/app.
+
+Pirate is also a new social network that has NO central control or ownership! It's based on leading Open-Source platforms and runs on individually owned Pirate websites.

@@ -1374,12 +1374,12 @@ margin: 0 auto;
 }
 
 .youtubelinker {
-  background: rgba(0, 0, 0, 0.50);
+  background: var(--theme-ui-colors-headerColor);
   padding: 1vh 0.5vw;
   min-width: 200px;
-  /* outline: 1px solid #333333; */
-  /* border-radius: var(--theme-ui-colors-borderRadius); */
-  color: var(--theme-ui-colors-siteColor);
+  outline: 1px solid #999;
+  border-radius: var(--theme-ui-colors-borderRadius);
+  color: var(--theme-ui-colors-headerColorText);
 }
 
 /* Additional styling for the Reset button */

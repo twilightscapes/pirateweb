@@ -181,7 +181,7 @@ const VideoPlayer = () => {
                 name="youtubelink"
                 value={youtubelink}
                 onChange={handleInputChange}
-                style={{ padding: '.5vh 1vw', width:'100%', maxWidth: '800px', outline: '1px solid #333', borderRadius: 'var(--theme-ui-colors-borderRadius)', color: 'var(--theme-ui-colors-siteColor)', fontSize:'clamp(.8rem,1.5vw,2rem)' }}
+                style={{ padding: '.5vh 1vw', width:'100%', maxWidth: '800px', fontSize:'clamp(.8rem,1.5vw,2rem)' }}
                 placeholder="Paste Video Link"
                 className="youtubelinker"
               />
