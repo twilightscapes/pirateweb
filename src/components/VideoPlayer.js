@@ -72,7 +72,9 @@ const VideoPlayer = () => {
 
   return (
     <>
-    <div id="piratevideo" className='player-wrapper' style={{ display:'grid', placeContent:'', width:'100dvw'}}>
+    <div id="piratevideo" className='player-wrapper' style={{ display:'grid', placeContent:'', width:'100dvw', transition: 'all 1s ease-in-out'}}>
+
+
     <div className="share-dialog" style={{ display: showShareDialog ? 'block' : 'none' }}>
                     <h3 className="dialog-title">Install PIRATE</h3>
                     <button className="close-button" onClick={closeShareDialog}>Close</button>
@@ -106,12 +108,14 @@ const VideoPlayer = () => {
                       <div className="pen-url">https://piratevideo.org</div>
                       <button className="copy-link">Copy Link</button>
                     </div>
-                  </div>
+    </div>
+
         <ReactPlayer
           ref={playerRef}
           allow="web-share"
           style={{
-            position: 'relative', top: '0', margin: '0 auto 0 auto', zIndex: '1',  overflow: 'hidden', width: '100vw', minHeight: '', height: '100%', background: 'transparent'
+            position: 'relative', top: '0', margin: '0 auto 0 auto', zIndex: '1',  overflow: 'hidden', width: '100vw', minHeight: '', height: '100%', background: 'transparent',
+            transition: 'all 1s ease-in-out'
           }}
           width="100%"
           height="100%"
@@ -125,7 +129,7 @@ const VideoPlayer = () => {
             },
           }}
         />
-        <div className="form-container controller font" style={{position:'relative', zIndex:'4', top:'0', marginTop:'0', height:'auto', padding:'2vh 2%', width:'100vw', nargin:'0 auto', background:'var(--theme-ui-colors-headerColor)'}}>
+        <div className="form-container controller font" style={{position:'relative', zIndex:'4', top:'0', marginTop:'0', height:'auto', padding:'2vh 2%', width:'100vw', nargin:'0 auto', transition: 'all 1s ease-in-out', background:'var(--theme-ui-colors-headerColor)'}}>
           <div style={{ maxWidth: '800px', margin: '0 auto' }}>
             <form className="youtubeform frontdrop" onSubmit={handleSubmit}id="youtubeform" name="youtubeform">
 
@@ -181,7 +185,7 @@ const VideoPlayer = () => {
                 name="youtubelink"
                 value={youtubelink}
                 onChange={handleInputChange}
-                style={{ padding: '.5vh 1vw', width:'100%', maxWidth: '800px', fontSize:'clamp(.8rem,1.5vw,2rem)' }}
+                style={{ padding: '.5vh 1vw', width:'100%', maxWidth: '800px', fontSize:'clamp(.8rem,1.5vw,2rem)',transition: 'all 1s ease-in-out' }}
                 placeholder="Paste Video Link"
                 className="youtubelinker"
               />
