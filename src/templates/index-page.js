@@ -25,7 +25,7 @@ import { AiOutlineAudioMuted } from 'react-icons/ai';
 // import { StaticImage } from "gatsby-plugin-image"
 const HomePage = ({ data }) => {
 
-  const { language, proOptions, featureOptions  } = useSiteMetadata();
+  const { language, proOptions,featureOptions  } = useSiteMetadata();
 
   const { showProfile, showFeature, showHomePosts } = proOptions
   const { showDefault, showVideoPlayer } = featureOptions
@@ -507,7 +507,7 @@ style={{height:'auto', width:'100dvw', maxHeight:'100dvh', position:'absolute', 
 
 
 {/* show profile */}
-{!showProfile ? (
+{showProfile ? (
   <section className="scroll-area panel" id="profile" name="profile" style={{ display:'', height:'100%', minHeight:'100dvh', position:'relative', overflow:'hidden', margin:'0 auto 0 auto', padding:'0 0 60px 0', background:'var(--theme-ui-colors-background)', color:'var(--theme-ui-colors-text)', width:'100vw', borderRadius:'var(--theme-ui-colors-borderRadius)', }}>
   <article style={{ margin:'0 0 0 0'}}>
 
@@ -566,7 +566,7 @@ style={{height:'auto', width:'100dvw', maxHeight:'100dvh', position:'absolute', 
   )}
 
   {/* <span style={{margin:'10px auto', fontSize:'160%'}}>{companyname}</span> */}
-    {/* <span style={{margin:'10px auto', fontSize:'160%'}}>Become a Pirate!</span> */}
+    {/* <span style={{margin:'10px auto', fontSize:'160%'}}>Become a PIRATE!</span> */}
   
   {frontmatter.addressText ? (
     frontmatter.addressText
@@ -633,7 +633,7 @@ style={{height:'auto', width:'100dvw', maxHeight:'100dvh', position:'absolute', 
 
 
 {showVideoPlayer ? (
-  <section id="VideoPlayer" name="VideoPlayer" className="print scroll-area" style={{  width:'100vw', height:'100dvh', maxHeight:'calc(75dvh + 300px)', margin:'0 auto 0 auto', padding:'0 0 0 0', position:'relative',
+  <section id="VideoPlayer" name="VideoPlayer" className="print scroll-area" style={{  width:'100vw', height:'auto', maxHeight:'calc(75dvh + 300px)', margin:'0 auto 0 auto', padding:'0 0 0 0', position:'relative',
  alignContent:'center', maxWidth:'100vw', display:'flex', textAlign:'left', justifyContent:'start', verticalAlign:'center',
   color:'',
   fontSize:'clamp(1rem, 1.8vw, 3.2rem)',

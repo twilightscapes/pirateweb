@@ -1721,3 +1721,93 @@ body:has(.ReactModal__Content) .upbar{ transform:translateY(0);}
   }
 
   body.category .contentpanel a:first-of-type{display:none !important}
+
+
+
+
+
+
+
+
+
+
+  
+  .hidden {
+    display: none;
+  }
+  
+.share-dialog svg {
+    width: 20px;
+    height: 20px;
+    margin-right: 7px;
+  }
+  
+
+  
+  .share-dialog {
+    position: absolute;
+    top:0;
+    left:0;
+    /* transform: translate(30vw, 0); */
+    display: none;
+    width: 100%;
+    min-width: 350px;
+    min-height:88px;
+    z-index: 3;
+    padding: 1vh 2vw;
+    margin:0 auto;
+    border-radius: var(--theme-ui-colors-borderRadius);
+    background-color: #111;
+    color: #fff;
+  
+
+}
+
+.share-dialog.is-open {
+    display: block;
+    z-index: 2;
+}
+  
+  .share-dialog.is-open {
+    display: block;
+    z-index: 2;
+  }
+  
+
+  
+  .targets {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .close-button {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    position:absolute;
+    top:.5vh; 
+    right:1vw;
+    z-index: 4;
+  }
+  
+  .close-button svg {
+    margin-right: 0;
+  }
+  
+  .link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border-radius: 4px;
+  }
+  
+  .pen-url {
+    margin-right: 15px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
