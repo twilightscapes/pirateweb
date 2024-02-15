@@ -142,7 +142,7 @@ const VideoPlayer = () => {
 
                     <svg style={{maxWidth:'30px', maxHeight:'30px'}}>
                       <use href="#share-icon"></use>
-                    </svg> Add To Home Screen To Install PIRATE</div>
+                    </svg> Add To Home Screen To Install PIRATE Lite</div>
                   </button>
 
                   
