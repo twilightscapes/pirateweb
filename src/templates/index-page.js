@@ -435,16 +435,15 @@ display:'flex', justifyContent:'center', maxHeight:'80px !important', height:'15
 
 
 
-<div className="post-container" style={{maxWidth:'100vw', overFlowY:'hidden', paddingTop: showNav ? '0' : '0'}}>
+<div className="post-container" style={{maxWidth:'100vw', overFlowY:'hidden', paddingTop: showNav ? '60px' : '',}}>
 
 {showVideoPlayer ? (
-  <section id="VideoPlayer" name="VideoPlayer" className="print scroll-area" style={{  width:'100vw', height:'auto', margin:'0 auto 0 auto', padding:'0 0 0 0', position:'relative',
+  <section id="VideoPlayer" name="VideoPlayer" className="print scroll-area" style={{  width:'100vw', height:'', margin:'0 auto 0 auto', position:'relative',
  alignContent:'center', maxWidth:'100vw', display:'flex', textAlign:'left', justifyContent:'start', verticalAlign:'center',
   color:'',
   fontSize:'clamp(1rem, 1.8vw, 3.2rem)',
   textShadow:'0 2px 7px #000',
-  paddingTop: showNav ? '0' : '0'
-  // backgroundColor:'var(--theme-ui-colors-headerColor)'
+  backgroundColor:'var(--theme-ui-colors-headerColor)'
 }}>
 <YouTubePlayer />
 </section>
@@ -456,7 +455,7 @@ display:'flex', justifyContent:'center', maxHeight:'80px !important', height:'15
 {showFeature ? (   
 <section id="feature" name="feature" className="print scroll-area" style={{  
   // backgroundColor:'var(--theme-ui-colors-headerColor)'
-  height:'100% !important'
+  height:'100%'
 }}>
   <article style={{}}>
 
@@ -464,7 +463,7 @@ display:'flex', justifyContent:'center', maxHeight:'80px !important', height:'15
 
 
   {YouTube ? (
-            <Iframer style={{height:'auto', width:'100dvw', maxHeight:'100dvh', position:'absolute', zIndex:'1', top:'0', left:'0', right:'0', border:'0px solid #888 !important', objectFit:'contain', margin:'0'}} />
+            <Iframer style={{height:'auto', width:'100dvw', maxHeight:'100dvh', position:'relative', zIndex:'1', top:'', left:'', right:'', border:'0px solid #888 !important', objectFit:'contain', margin:'0'}} />
        
           ) : (
             <>
@@ -473,7 +472,7 @@ display:'flex', justifyContent:'center', maxHeight:'80px !important', height:'15
                 image={UnderlayImage}
                 alt={frontmatter.title + " - image"}
                 className="mcboaty1"
-                style={{height:'auto', width:'100%', maxHeight:'100dvh', overflow:'hidden', margin:'0 auto', position:'absolute', left:'0', right:'0', bottom:'', top:'0', zIndex:'',
+                style={{height:'auto', width:'100%', maxHeight:'100dvh', overflow:'hidden', margin:'0 auto', position:'relative', left:'0', right:'0', bottom:'', top:'0', zIndex:'',
                objectFit:'cover', border:'0px solid red !important', background:'transparent',}}
               />
               
@@ -487,7 +486,7 @@ alt={frontmatter.title + " - Featured image"}
 className="featuredimage"
 placeholder="blurred"
 loading="eager"
-style={{height:'auto', width:'100dvw', maxHeight:'100dvh', position:'absolute', zIndex:'1', top:'0', left:'0', right:'0', border:'0px solid #888 !important', objectFit:'contain', margin:'0'}}
+style={{height:'auto', width:'100dvw', maxHeight:'100dvh', position:'relative', zIndex:'1', top:'0', left:'0', right:'0', border:'0px solid #888 !important', objectFit:'contain', margin:'0'}}
 />
         ) : (
 ""
@@ -521,8 +520,8 @@ style={{height:'auto', width:'100dvw', maxHeight:'100dvh', position:'absolute', 
 
 
 {/* show profile */}
-{!showProfile ? (
-  <section className="scroll-area panel" id="profile" name="profile" style={{ display:'', height:'', minHeight:'', position:'relative', overflow:'hidden', margin:'0 auto 0 auto', padding:'0 0 0 0', background:'var(--theme-ui-colors-background)', color:'var(--theme-ui-colors-text)', width:'100vw', borderRadius:'var(--theme-ui-colors-borderRadius)', }}>
+{showProfile ? (
+  <section className="scroll-area panel" id="profile" name="profile" style={{ display:'', height:'', minHeight:'', position:'relative', overflow:'hidden', margin:'0 auto 0 auto', padding:'0 0 60px 0', background:'var(--theme-ui-colors-background)', color:'var(--theme-ui-colors-text)', width:'100vw', borderRadius:'var(--theme-ui-colors-borderRadius)', }}>
   <article style={{ margin:'0 0 0 0'}}>
 
 

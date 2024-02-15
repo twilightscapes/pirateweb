@@ -36,7 +36,7 @@
       "showLegal": false,
       "showConsent": false,
       "startUrl": "/video",
-      "showProfile": false,
+      "showProfile": true,
       "showFeature": false,
       "showHomePosts": false,
       "showPopup": false
