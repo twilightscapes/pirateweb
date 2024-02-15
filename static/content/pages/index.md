@@ -1,7 +1,7 @@
 ---
 profileName: BECOME A PIRATE!
 profileSocial: false
-addressText: The fleet is launching now!
+addressText: The fleet is launching now
 youtube: 
  youtuber: ""
  youtuber2: ""
@@ -43,11 +43,11 @@ skillsText:
 underlayImage: /assets/transparent.png
 bumpertext: x
 cta:
-  ctaText: Reserve Your Galleon
-  ctaLink: /contact
-  showCTA: false
+  ctaText: Install the FULL version of PIRATE
+  ctaLink: /install
+  showCTA: true
 homecount: 5
-addressText2: It's Completely FREE
+addressText2: It's Completely FREE!
 pagePW: ""
 skillsTitle: ""
 svgImage: /assets/transparent.png
@@ -59,7 +59,7 @@ svgzindex: x
 coverletter:
   coverText: Become a PIRATE!
   coverLink: /install
-  showCover: true
+  showCover: false
 sharethis: false
 profTitle: Hoist Your Flag!
 tags: 
