@@ -1,6 +1,6 @@
 backend:
-  name: test-repo
-  # name: git-gateway
+  # name: test-repo
+  name: git-gateway
   branch: main
   commit_messages:
     create: "Create {{collection}} “{{slug}}”"
@@ -22,6 +22,26 @@ show_preview_links: false
 
 collections:
 
+
+  # - name: "team"
+  #   editor:
+  #     preview: false
+  #   label: "Pirate Posts"
+  #   label_singular: "Pirate Post"
+  #   description: >
+  #     Pirate Posts - your content on Pirate
+  #   folder: "static/content/team"
+  #   create: true
+  #   slug: "{{slug}}"
+  #   fields:
+  #     - {label: "Template Key", name: "templateKey", widget: "hidden", default: "team"}
+  #     - {label: "Slug", name: "slug", widget: "string"}
+  #     - {label: "Team Member Name", name: "name", widget: "string"}
+  #     - {label: "Job Title", name: "jobTitle", widget: "string"}
+  #     - {label: "Credentials", name: "credentials", widget: "string"}
+  #     - {label: "Page Order", name: "order", widget: "number"}
+  #     - {label: "Team Image", name: "profilePicture", widget: "image", required: false,}
+  #     - {label: "Body", name: "body", widget: "markdown"}
 
       
   - name: "posts" # Used in routes, ie.: /admin/collections/:slug/edit
@@ -109,7 +129,7 @@ collections:
               collapsed: true, # Set to true to collapse panel by default
             fields: [
               { label: "Video Url", name: "youtuber", widget: "string",required: false },
-              { label: "Show Video Only (PIRATE Plus ONLY)", name: "xshowVidOnly", widget: "boolean", default: false, required: false },
+              { label: "Show Video Only (PIRATE Plus ONLY)", name: "showVidOnly", widget: "boolean", default: false, required: false },
               { label: "Primary Video Start Time", name: "youtubestart", widget: "string", default: "0", required: false },
               { label: "Primary Video End Time", name: "youtubeend", widget: "string", default: "0", required: false },
               { label: "Video Mute", name: "youtubemute", widget: "boolean", default: false, required: false },
@@ -123,7 +143,7 @@ collections:
               { label: "Secondary Video End", name: "audioend", widget: "string", default: "0", required: false },
               { label: "Secondary Video Title", name: "audiotitle", widget: "string", default: "0", required: false },
 
-              { label: "Place content inside Video Frame", name: "xcontentinvideo", widget: "boolean", default: false, hint: "(PIRATE Plus ONLY) For Devs to place the content of the post directly into video frame area, allowing for custom layout and features - By doing so, this replaces the normally visible content on your page - BEWARE", required: false },
+              { label: "Place content inside Video Frame", name: "contentinvideo", widget: "boolean", default: false, hint: "(PIRATE Plus ONLY) For Devs to place the content of the post directly into video frame area, allowing for custom layout and features - By doing so, this replaces the normally visible content on your page - BEWARE", required: false },
               
               { label: "Fact Checked NO Mark", name: "liarliar", widget: "boolean", default: false, hint: "Shows Red X mark next to 2nd Video", required: false }
             ]
@@ -135,7 +155,7 @@ collections:
               widget: "object",
               collapsed: true, # Set to true to collapse panel by default
             fields: [
-              { label: "Viewer Warning", name: "xviewerwarning", widget: "string", default: "MA", required: false },
+              { label: "Viewer Warning", name: "viewerwarning", widget: "string", default: "MA", required: false },
               { label: "Content Rating", name: "marate", widget: "string", required: false },
               { label: "Content Sub Rating 1", name: "marating1", widget: "string", required: false },
               { label: "Content Sub Rating 1 Text", name: "maratingtx1", widget: "string", required: false },
@@ -148,7 +168,7 @@ collections:
             ]
           }
 
-      - { label: "Post is Hidden (PIRATE Plus ONLY)", name: "xdraft", widget: "boolean", required: false, hint: "This hides the post from search, and filtering across the site. The post is still visible to google and anyone who know the location", }
+      - { label: "Post is Hidden (PIRATE Plus ONLY)", name: "draft", widget: "boolean", required: false, hint: "This hides the post from search, and filtering across the site. The post is still visible to google and anyone who know the location", }
 
       - { label: "Share Buttons", name: "shareable", widget: "boolean", default: false, required: false }
       - { label: "Header Image Zoom", name: "showZoom", widget: "boolean", default: false, required: false }
@@ -195,13 +215,33 @@ collections:
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Tagline", name: "tagline", widget: "string" }
           - { label: "Featured Image", name: "featuredImage", widget: "image", required: false }
-          
-
           - { label: "Secondary Image", name: "secondaryImage", widget: "image", hint: "this image is used for the profile photo in the info section", required: false }
           - { label: "Underlay Image", name: "underlayImage", widget: "image", required: false }
 
-          - label: "Call To Action Button (PIRATE Plus only)"
-            name: "xcta"
+          - {
+              label: "YouTube",
+              name: "youtube",
+              widget: "object",
+              collapsed: true, # Set to true to collapse panel by default
+            fields: [
+              { label: "YouTube Url", name: "youtuber", widget: "string",required: false },
+              { label: "YouTube Start", name: "youtubestart", widget: "string", required: false },
+              { label: "YouTube End", name: "youtubeend", widget: "string", required: false },
+              { label: "YouTube Audio", name: "youtuber2", widget: "string", required: false },
+              { label: "YouTube Audio Start", name: "audiostart", widget: "string", required: false },
+              { label: "YouTube Audio End", name: "audioend", widget: "string", required: false },
+              { label: "YouTube Audio Title", name: "audiotitle", widget: "string", required: false },
+              { label: "YouTube Mute", name: "youtubemute", widget: "boolean", default: false, required: false },
+              { label: "YouTube AutoPlay", name: "youtubeautostart", widget: "boolean", default: false, required: false },
+              { label: "YouTube Loop", name: "youtubeloop", widget: "boolean", default: true, required: false },
+              { label: "YouTube Controls", name: "youtubecontrols", widget: "boolean", default: false, required: false },
+              { label: "YouTube Use Custom Controls", name: "customcontrols", widget: "boolean", default: true, required: false },
+              { label: "YouTube Click To Play", name: "clicktoplay", widget: "boolean", default: false, required: false }
+            ]
+          }
+
+          - label: "CTA"
+            name: "cta"
             widget: "object"
             fields:
               - name: "showCTA"
@@ -214,8 +254,8 @@ collections:
                 label: "CTA (call to action button) - Link"
                 widget: "string"
 
-          - label: "Cover Letter (PIRATE Plus only)"
-            name: "xcoverletter"
+          - label: "Cover Letter"
+            name: "coverletter"
             widget: "object"
             fields:
               - name: "showCover"
@@ -228,10 +268,110 @@ collections:
                 label: "Custom Cover Link"
                 widget: "string"
 
-
           - { label: "Body", name: "body", widget: "markdown" }
 
-      
+
+
+
+      - label: "Privacy Policy Page"
+        name: "privacy"
+        file: "static/content/pages/privacy.md"
+        fields:
+          - {
+              label: "Template",
+              name: "template",
+              widget: "hidden",
+              default: "privacy-page",
+            }
+          - { label: "Slug", name: "slug", widget: "hidden", default: "/privacy" }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Body", name: "body", widget: "markdown" }
+
+      - label: "Disclaimer Page"
+        name: "disclaimer"
+        file: "static/content/pages/disclaimer.md"
+        fields:
+          - {
+              label: "Template",
+              name: "template",
+              widget: "hidden",
+              default: "discaimer-page",
+            }
+          - { label: "Slug", name: "slug", widget: "hidden", default: "/disclaimer" }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Body", name: "body", widget: "markdown" }
+
+      - label: "Terms of Use/Conditions Page"
+        name: "terms"
+        file: "static/content/pages/terms.md"
+        fields:
+          - {
+              label: "Template",
+              name: "template",
+              widget: "hidden",
+              default: "terms-page",
+            }
+          - { label: "Slug", name: "slug", widget: "hidden", default: "/terms" }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Body", name: "body", widget: "markdown" }
+                
+      - label: "Contact Page/Form"
+        name: "contact"
+        file: "static/content/pages/contact.md"
+        fields:
+          - {
+              label: "Template",
+              name: "template",
+              widget: "hidden",
+              default: "contact-page",
+            }
+          - {
+              label: "Slug",
+              name: "slug",
+              widget: "hidden",
+              default: "/contact/",
+            }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Redirect to another page",
+              name: "redirect",
+              widget: "boolean",
+              default: false,
+              required: false
+            }
+
+          - {
+              label: "Redirect Url",
+              name: "redirectUrl",
+              widget: "string",
+              default: "/",
+            }
+
+          - { label: "Show Name Field",
+              name: "contactname",
+              widget: "boolean",
+              default: false,
+              required: false
+            }
+          - { label: "Show Phone Field",
+              name: "contactphone",
+              widget: "boolean",
+              default: false,
+              required: false
+            }
+          - { label: "Show File Upload Field",
+              name: "contactupload",
+              widget: "boolean",
+              default: false,
+              required: false
+            }
+          - { label: "Upload Text",
+              name: "uploadtext",
+              widget: "string",
+              default: false,
+              required: false
+            }
+
+          - { label: "Body", name: "body", widget: "markdown", required: false }
       
 
   
@@ -457,14 +597,15 @@ collections:
                     label: "Message Received"
                     widget: "string"
                     required: false
-                  - name: "xdicProfileAudioText"
+                  - name: "dicProfileAudioText"
                     label: "I just listened to:"
                     widget: "string"
                     required: false
-                  - name: "xdicProfileAudioActionText"
+                  - name: "dicProfileAudioActionText"
                     label: "Click to listen"
                     widget: "string"
-                    required: false  
+                    required: false                  
+
 
               - name: "magicOptions"
                 label: "Sort/Search Island options"
@@ -506,7 +647,16 @@ collections:
                   - widget: boolean
                     name: showVideoPlayer
                     label: Show Pirate Video on home page
+                    required: false 
+                  - widget: boolean
+                    name: showProfile
+                    label: Show Profile section on homepage
                     required: false
+                  - widget: boolean
+                    name: showHomePosts
+                    label: Show posts section on homepage
+                    required: false
+                    default: true
                   - widget: boolean
                     name: showfooter
                     label: Show the Footer
@@ -528,6 +678,11 @@ collections:
                     label: Show Swipe Icon
                     required: false
                   - widget: boolean
+                    name: showDefault
+                    label: Show Swipe(horizontal scroll) by default
+                    required: false
+                    default: false
+                  - widget: boolean
                     name: showSocial 
                     label: Show Social Links
                     required: false
@@ -542,49 +697,36 @@ collections:
                 collapsed: true
                 fields:
                   - widget: boolean
-                    name: xshowFeature
-                    label: Show Feature Image Video section on homepage
+                    name: showFeature
+                    label: Show Feature Image/Video section on homepage
                     required: false
                   - widget: boolean
-                    name: xshowProfile
-                    label: Show Profile section on homepage
-                    required: false
-                  - widget: boolean
-                    name: showPosts
-                    label: Show posts section on homepage
+                    name: showModals
+                    label: Show Posts in Modal Window
                     required: false
                     default: true
                   - widget: boolean
-                    name: xshowModals
-                    label: Show Posts in Modal Window
-                    required: false
-                  - widget: boolean
-                    name: xshowBranding
+                    name: showBranding
                     label: Hide Pirate Branding
                     required: false
                   - widget: boolean
-                    name: xshowPopup 
+                    name: showPopup 
                     label: Show Sign Up Form In Posts
                     required: false
                   - widget: boolean
-                    name: xshowLegal
+                    name: showLegal
                     label: Show Legal Pages (note the pages are still there just not visible)
                     required: false
                   - widget: boolean
-                    name: xshowContact
+                    name: showContact
                     label: Show Contact in Footer
                     required: false
                   - widget: boolean
-                    name: xshowConsent
+                    name: showConsent
                     label: Show Cookie Consent Banner
                     required: false
-                  - widget: boolean
-                    name: xshowDefault
-                    label: Show Swipe(horizontal scroll) by default
-                    required: false
-                    default: false
                   - widget: string
-                    name: xstartUrl
+                    name: startUrl
                     label: the url of the page you want when your app is installed
                     hint: "to make your contact page or resume just type contact or     resume"
                     required: false
@@ -631,7 +773,7 @@ collections:
                 options:
                   [
                     "facebook",
-                    "x-twitter",
+                    "twitter-x",
                     "linkedin",
                     "youtube",
                     "instagram",
