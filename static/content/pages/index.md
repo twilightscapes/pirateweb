@@ -19,7 +19,7 @@ youtube:
  showVidOnly: false
  customcontrols: false
  audioend: "0"
- audiotitle: "Sci-Fi Sounds"
+ audiotitle: "Jimi Hendrix"
  audiostart: "0"
  contentinvideo: false
  liarliar: false
@@ -28,7 +28,7 @@ showPageNav: false
 showZoom: false
 showPostContact: false
 profText: 
-tagline: You're the Captain of your content!
+tagline: YOU... ARE THE CAPTAIN NOW!
 featuredImage: /assets/losser.webp
 secondaryImage: /assets/default-user.webp
 scrollable: false
@@ -43,7 +43,7 @@ skillsText:
 underlayImage: /assets/transparent.png
 bumpertext: x
 cta:
-  ctaText: Get the FULL version of PIRATE
+  ctaText: Get Your FREE Ship!
   ctaLink: /install
   showCTA: true
 homecount: 5
@@ -57,7 +57,7 @@ postLimit: "4"
 description: Pirate - social media for the people by the people
 svgzindex: x
 coverletter:
-  coverText: Become a PIRATE!
+  coverText: Get Your FREE Ship!
   coverLink: /install
   showCover: false
 sharethis: false
