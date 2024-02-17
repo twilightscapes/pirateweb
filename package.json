@@ -27,7 +27,7 @@
     "@theme-ui/color": "^0.16.1",
     "@theme-ui/mdx": "^0.16.1",
     "decap-cms-app": "^3.1.1",
-    "gatsby": "5.13.3",
+    "gatsby": "5.10.0",
     "gatsby-image": "^3.11.0",
     "gatsby-plugin-anchor-links": "^1.2.1",
     "gatsby-plugin-decap-cms": "^4.0.4",
