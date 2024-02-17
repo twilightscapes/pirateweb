@@ -82,8 +82,8 @@ spotlight: false
 comments: false
 shareable: false
 ---
-Pirate leverages the power of free services to host your own Personal Web App(PWA), that you can control from any device, all for FREE!
+Pirate is your <em>own</em> FREE <strong>Personal Web App (PWA)</strong>, that you can use from any of your devices.
 
-Easily edit your homepage, update your profile, and publish engaging content on your OWN website/app.
+Watch videos without annoying ads, easily edit your homepage, update your profile, and publish engaging content on your <em>OWN</em> website/app that you have complete ownership and copyright control.
 
-Pirate is also a new social network that has NO central control or ownership! It's based on leading Open-Source platforms and runs on individually owned Pirate websites.
+Pirate is also a new social media that is a decentralized network of individually owned Pirate websites all based on leading open-source platforms and operates all with no contracts, commitments or costs. <strong>Try it out today!</strong>
