@@ -26,6 +26,8 @@
       "showSocial": false,
       "showVideoPlayer": true,
       "showDefault": false,
+      "showProfile": true,
+      "showHomePosts": false,
       "showSwipe": true
     },
     "proOptions": {
@@ -36,9 +38,9 @@
       "showLegal": false,
       "showConsent": false,
       "startUrl": "/video",
-      "showProfile": true,
       "showFeature": false,
-      "showHomePosts": false,
+      "showResume": true,
+      "showLocation": true,
       "showPopup": false
     },
     "magicOptions": {
