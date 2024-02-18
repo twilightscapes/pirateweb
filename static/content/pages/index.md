@@ -82,8 +82,10 @@ spotlight: false
 comments: false
 shareable: false
 ---
-Pirate is your <em>own</em> FREE <strong>Personal Web App (PWA)</strong>, that you can use from any of your devices.
+Pirate is your FREE <strong>Personal Web App (PWA)</strong>, that you can use from any of your devices.
 
 Watch videos without annoying ads, easily edit your homepage, update your profile, and publish engaging content on your <em>OWN</em> website/app that you have complete ownership and copyright control.
 
-Pirate is also a new social media that is a decentralized network of individually owned Pirate websites all based on leading open-source platforms and operates all with no contracts, commitments or costs. <strong>Try it out today!</strong>
+Pirate is also a new social media that is a decentralized network of other Pirate users and their individually owned Pirate websites. YOU control the algorithm, not some corporation.
+
+It's all based on leading open-source platforms and operates all with no contracts, commitments or costs of any kind - POWER TO THE PEOPLE!
