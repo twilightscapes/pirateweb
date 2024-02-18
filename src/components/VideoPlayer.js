@@ -3,23 +3,23 @@ import ReactPlayer from 'react-player/lazy';
 import { ImYoutube2 } from "react-icons/im";
 import { FaTwitch, FaFacebookSquare } from "react-icons/fa";
 import useSiteMetadata from "../hooks/SiteMetadata";
-import { RiCloseCircleFill } from "react-icons/ri";
-import { Link } from "gatsby"
+// import { RiCloseCircleFill } from "react-icons/ri";
+// import { Link } from "gatsby"
 const VideoPlayer = ({ location }) => {
   const queryParams = new URLSearchParams(location.search);
   const videoUrlParam = queryParams.get('video');
 
-  const { featureOptions, proOptions } = useSiteMetadata();
+  const { featureOptions } = useSiteMetadata();
 
 
-  const { showBranding } = proOptions;
+  // const { showBranding } = proOptions;
 
   const { showNav } = featureOptions
 
   const inputElement = useRef(null);
   const playerRef = useRef(null);
   const [youtubelink, setYoutubelink] = useState(videoUrlParam || "");
-  const [showShareDialog, setShowShareDialog] = useState(false);
+  // const [showShareDialog, setShowShareDialog] = useState(false);
 
   useEffect(() => {
     const fillFormFromClipboard = async () => {
@@ -60,32 +60,32 @@ const VideoPlayer = ({ location }) => {
     window.history.pushState({}, '', newUrl);
   };
 
-  function isRunningStandalone() {
-    if (typeof window !== 'undefined') {
-      return window.matchMedia('(display-mode: standalone)').matches;
-    }
-    return false;
-  }
+  // function isRunningStandalone() {
+  //   if (typeof window !== 'undefined') {
+  //     return window.matchMedia('(display-mode: standalone)').matches;
+  //   }
+  //   return false;
+  // }
 
-  const handleShareButtonClick = () => {
-    if (typeof window !== 'undefined') {
-      if (navigator.share) { 
-        navigator.share({
-          title: 'PIRATE',
-          url: window.location.href // Use the current URL with the query string
-        }).then(() => {
-          console.log('Thanks for being a Pirate!');
-        })
-        .catch(console.error);
-      } else {
-        setShowShareDialog(true);
-      }
-    }
-  };
+  // const handleShareButtonClick = () => {
+  //   if (typeof window !== 'undefined') {
+  //     if (navigator.share) { 
+  //       navigator.share({
+  //         title: 'PIRATE',
+  //         url: window.location.href // Use the current URL with the query string
+  //       }).then(() => {
+  //         console.log('Thanks for being a Pirate!');
+  //       })
+  //       .catch(console.error);
+  //     } else {
+  //       setShowShareDialog(true);
+  //     }
+  //   }
+  // };
 
-  const closeShareDialog = () => {
-    setShowShareDialog(false);
-  };
+  // const closeShareDialog = () => {
+  //   setShowShareDialog(false);
+  // };
 
   const copyToClipboard = () => {
     if (typeof window !== 'undefined') {
