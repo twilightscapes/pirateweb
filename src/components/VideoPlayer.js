@@ -23,9 +23,10 @@ const VideoPlayer = ({ location }) => {
         if (!document.hasFocus()) {
           // throw new Error("Document is not focused. Please interact with the page.");
         }
-    
+  
         const clipboardText = await navigator.clipboard.readText();
         if (isValidURL(clipboardText)) {
+          // Only update the input value if the clipboard text is a valid URL
           setYoutubelink(clipboardText);
           updateQueryString(clipboardText);
         } else {
@@ -40,6 +41,7 @@ const VideoPlayer = ({ location }) => {
     
     fillFormFromClipboard();
   }, []);
+  
 
   const handleInputChange = (event) => {
     const { value } = event.target;
