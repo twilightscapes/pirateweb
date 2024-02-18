@@ -52,8 +52,8 @@ const SeoWrapper = ({ location }) => {
 
   return (
     <Seo
-      title="Pirate Video Player"
-      description="Pirate Video Player"
+      title="Pirate Life For Me"
+      description="Pirate: revolutionizing the web"
       image={videoId ? `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg` : null}
     />
   );
