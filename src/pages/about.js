@@ -337,7 +337,7 @@ const AboutPage = () => {
 
 <p>Upon signing up, you'll gain access to the Netlify CMS and Netlify Identity, the wind in your sails that will allow you to customize your profile, post your own content, and chart your course in the vast digital sea. Remember, your voice and content are your own on Pirate Social. So, get ready to make some waves, captain!</p> */}
 
-<div className="nameblock flexcheek" style={{position:'', top:'', marginTop: '', width:'100%', padding: '2vh 3vw', margin:'2vh auto', maxHeight: '', fontSize: 'clamp(1rem, 3.5vw, 3.2rem)', textAlign:'center', textShadow: '0 2px 3px #000', color: '#fff', background: 'rgba(0,0,0,0.50)', backdropFilter: 'blur(12px)', borderRadius: '10px' }}>
+<div className="nameblock flexcheek" style={{position:'', top:'', marginTop: '', width:'100%', padding: '2vh 3vw', margin:'2vh auto', maxHeight: '', fontSize: 'clamp(1rem, 3.5vw, 3.2rem)', textAlign:'center', textShadow: '0 2px 3px #000', color: 'var(--theme-ui-colors-headerColorText)', background:'var(--theme-ui-colors-headerColor)', backdropFilter: 'blur(12px)', borderRadius: '10px' }}>
     <h2>No Compromise - No-Quarter!</h2>
   </div>
   
@@ -692,7 +692,7 @@ Get FULL Shopify functionality directly inside your site.
 
 
 
-  <div className="nameblock flexcheek" style={{position:'', top:'', marginTop: '', width:'100%', padding: '1vh 2vh', margin:'2vh 0', maxHeight: '', fontSize: 'clamp(1.3rem, 3.5vw, 3.2rem)', textAlign:'center', textShadow: '0 2px 3px #000', color: '#fff', background: 'rgba(0,0,0,0.50)', backdropFilter: 'blur(12px)', borderRadius: '10px' }}>
+  <div className="nameblock flexcheek" style={{position:'', top:'', marginTop: '', width:'100%', padding: '1vh 2vh', margin:'2vh 0', maxHeight: '', fontSize: 'clamp(1.3rem, 3.5vw, 3.2rem)', textAlign:'center', textShadow: '0 2px 3px #000', color: 'var(--theme-ui-colors-headerColorText)', background: 'var(--theme-ui-colors-headerColor)', backdropFilter: 'blur(12px)', borderRadius: '10px' }}>
     <h2>How It Works</h2>
   </div>
 
