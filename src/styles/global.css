@@ -509,11 +509,15 @@ body.social .grid-container {
 #contentvideo .contentbody {
 	color: red;
 	display: none !important;
+  border:1px solid red
 }
 
+#contentvideo{visibility: hidden;}
+
 .bodycontent .contentinside {
-	border: 0 solid blue;
+
 	display: none !important;
+  border:1px solid red
 }
 
 .contentbody {
