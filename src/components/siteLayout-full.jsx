@@ -22,7 +22,32 @@ import BlueCheck from './bluecheck';
 import Footer from "../components/footer"
 
 const Layout = ({ children }) => {
-  
+  const [showBackToTop, setShowBackToTop] = useState(false);
+
+  const handleScroll = () => {
+    const currentScrollPos = document.documentElement.scrollTop || document.body.scrollTop;
+
+    if (currentScrollPos === 0) {
+      setShowBackToTop(false);
+    } else {
+      setShowBackToTop(true);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('scroll', handleScroll);
+
+    return () => {
+      document.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth', 
+    });
+  };
 
   const { language, navOptions, featureOptions, proOptions } = useSiteMetadata();
   const { dicSearch, dicPirate, dicGoBack } = language;
@@ -30,18 +55,57 @@ const Layout = ({ children }) => {
   const { showfooter, showSwipe, showSearch } = featureOptions
   const { showModals, showBranding, showConsent } = proOptions
 
-  
   const { companyname } = useSiteMetadata()
   const { iconimage } = useSiteMetadata()
   const { image } = useSiteMetadata()
+
+  const fontUrl = `https://fonts.googleapis.com/css?family=${defaultColors?.siteFont}&display=swap`;
+
   
   return (
     <>
-
+      <Helmet>
+      <meta
+    http-equiv="Content-Security-Policy"
+    content="font-src 'self' https://fonts.gstatic.com"
+  />
+        <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link id="yyy" rel="stylesheet" href={fontUrl} crossOrigin="anonymous" referrerPolicy="no-referrer-when-downgrade" />
+        
+        {/* .ReactModal__Content{opacity:.99} */}
+        <style>{`
+    
+          ${userStyles.userStyles}
+        `}</style>
+      </Helmet>
 
       <Seo />
 
-      
+      <ModalRoutingContext.Consumer>
+      {({ modal, closeTo }) => (
+<>
+  {modal ? (
+
+
+<div style={{display:'flex', justifyContent: 'center', color: '#ccc',  position:'fixed', top:'60px', right:'1vw', padding:'0px', fontSize:'', opacity:'1 !important', zIndex:'10',}}>
+<Link state={{noScroll: true }} to={closeTo} style={{fontSize:'',  textDecoration:'none', lineHeight:'', display:'flex', flexDirection:'column', color:'#fff', cursor:'pointer'}}>
+<button className="button" style={{ display: 'flex', justifyContent: 'center', padding:'0 .5vw' }}><span className="icon -left" style={{ paddingRight: '' }}><BiLeftArrow /></span> {" "}{dicGoBack}</button>
+</Link>
+</div>
+
+
+
+
+
+
+
+  ) : (
+''
+  )}
+</>
+)}
+</ModalRoutingContext.Consumer>
 
 
 
@@ -103,7 +167,44 @@ const Layout = ({ children }) => {
 
       <main id="top" name="top">
         {children}
-      
+      <div className={`upbar button ${showBackToTop ? 'visible' : ''}`}
+        style={{
+          position: 'fixed',
+          bottom: '20px',
+          zIndex: '60',
+          left: '',
+          right: '1vw',
+          display: 'flex',
+          justifyContent: 'center',
+          width: 'auto',
+          maxWidth: '80vw',
+          margin: '0 auto',
+          gap: '5vw',
+          padding: '0',
+          border: 'none',
+          borderRadius: '',
+          textShadow: '0 1px 1px rgba(0, 0, 0, .7)',
+          fontSize: '',
+          verticalAlign: 'center',
+          transform: showBackToTop ? 'translateY(0)' : 'translateY(200%)',
+        }}
+      >
+        <AnchorLink
+          to="#top"
+          aria-label="Link to Top"
+          onClick={scrollToTop}
+          style={{ cursor: 'pointer', height: '', fontSize: '', border: 'none', outline: 'none' }}
+          state={showModals ? { modal: true } : {}}
+        >
+          <div className="uparrow" style={{ display: 'flex', flexDirection: 'column', gap: '0', padding: '', alignItems: 'center', textAlign: 'center' }}>
+            <RiArrowUpFill
+            aria-label="Link to Top"
+              className=""
+              style={{ cursor: 'pointer', color: 'var(--theme-ui-colors-siteColorText)', fill: 'var(--theme-ui-colors-siteColorText)', fontSize: '3rem' }}
+            />
+          </div>
+        </AnchorLink>
+      </div>
       </main>
 
       {showfooter ? (
@@ -132,12 +233,12 @@ const Layout = ({ children }) => {
 
 
 
-{/* 
+
       {image ? (
         <img type="image/svg+xml" className="backimage" src={image} alt="Default Background" style={{}} width="10" height="10" />
       ) : (
         ""
-      )} */}
+      )}
 
       {showConsent ? (
         <Consent />
