@@ -934,7 +934,7 @@ ul li{display:inline-block}
     /* height: 100% !important; */
   }
 
-  .player-wrapper .menusnapp{top:72% !important;}
+  /* .player-wrapper .menusnapp{top:72% !important;} */
 
   body.blogpost {padding-top:8vh !important;}
   /* .grid-container .post-card1 iframe{margin-left:-5%;} */
@@ -1313,6 +1313,18 @@ html:has body.youtube{position:fixed !important; overflow: hidden !important;}
   {display: none !important;}
 
 
+  html, body.youtube {
+    touch-action: manipulation;
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+  
+  @media (min-width: 1024px) {
+    html, body.youtube {
+      overflow-x: auto;
+      max-width: none;
+    }
+  }
 
 
 
