@@ -1376,7 +1376,7 @@ margin: 0 auto;
 .youtubelinker {
   background: var(--theme-ui-colors-headerColor);
   padding: 1vh 0.5vw;
-  min-width: 200px;
+  /* min-width: 200px; */
   outline: 1px solid #999;
   border-radius: var(--theme-ui-colors-borderRadius);
   color: var(--theme-ui-colors-headerColorText);
