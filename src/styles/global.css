@@ -257,7 +257,7 @@ body.blogpost .gatsby-image-wrapper {
   padding:1rem;
   margin:4px 0;
   border-radius:var(--theme-ui-colors-borderRadius);
-  color:var(--theme-ui-colors-headerColorText);
+
   border:1px #000 !important;
   background: rgba(0, 0, 0, 0.1);
 }
