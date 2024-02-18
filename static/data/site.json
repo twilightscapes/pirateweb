@@ -27,7 +27,7 @@
       "showVideoPlayer": true,
       "showDefault": false,
       "showProfile": true,
-      "showHomePosts": false,
+      "showHomePosts": true,
       "showSwipe": true
     },
     "proOptions": {

@@ -118,13 +118,13 @@ module.exports = {
       }
     },
 
-    // {
-    //   resolve: `gatsby-plugin-modal-routing-4`,
-    //   options: {
-    //     appElement: '#___gatsby',
-    //     modalProps: { },
-    //   }
-    // },
+    {
+      resolve: `gatsby-plugin-modal-routing-4`,
+      options: {
+        appElement: '#___gatsby',
+        modalProps: { },
+      }
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -173,7 +173,7 @@ module.exports = {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 1024,
-              showCaptions: false,
+              showCaptions: true,
               linkImagesToOriginal: false,
               // tracedSVG: true,
               loading: "lazy",
@@ -200,107 +200,92 @@ module.exports = {
           },
 
 
-          // {
-          //   resolve: 'gatsby-plugin-feed',
-          //   options: {
-          //     query: `
-          //       {
-          //         site {
-          //           siteMetadata {
-          //             title
-          //             description
-          //             siteUrl
-          //             site_url: siteUrl
-          //           }
-          //         }
-          //       }
-          //     `,
-          //     feeds: [
-          //       {
-          //         serialize: ({ query: { site, allMarkdownRemark } }) => {
-          //           return allMarkdownRemark.nodes.map(node => {
-          //             const imageUrl = node.frontmatter.featuredImage
-          //               ? site.siteMetadata.siteUrl + node.frontmatter.featuredImage.childImageSharp.fixed.src
-          //               : null;
-          
-          //             const mediaContent = imageUrl
-          //               ? {
-          //                   "media:content": {
-          //                     _attr: {
-          //                       url: imageUrl,
-          //                       medium: "image",
-          //                     },
-          //                   },
-          //                 }
-          //               : null;
-          
-          //             return Object.assign({}, node.frontmatter, {
-          //               description: node.excerpt,
-          //               date: node.frontmatter.date,
-          //               url: site.siteMetadata.siteUrl + node.fields.slug,
-          //               guid: site.siteMetadata.siteUrl + node.fields.slug,
-          //               custom_elements: [
-          //                 { "content:encoded": node.html },
-          //                 mediaContent,
-          //                 {
-          //                   _attr: {
-          //                     "xmlns:media": "http://search.yahoo.com/mrss/",
-          //                   },
-          //                 },
-          //               ].filter(Boolean),
-          //             });
-          //           });
-          //         },
-          //         query: `
-          //         {
-          //           allMarkdownRemark(
-          //             sort: {frontmatter: {date: DESC}}
-          //             filter: {frontmatter: {excludeFromRSS: {ne: true}}}
-          //           ) {
-          //             nodes {
-          //               excerpt
-          //               html
-          //               fields {
-          //                 slug
-          //               }
-          //               frontmatter {
-          //                 title
-          //                 date
-          //                 featuredImage {
-          //                   childImageSharp {
-          //                     fixed(width: 800) {
-          //                       src
-          //                     }
-          //                   }
-          //                 }
-          //               }
-          //             }
-          //           }
-          //         }
-          //         `,
-          //         output: '/rss.xml',
-          //         title: 'Feed Title',
-          //       },
-          //     ],
-          //   },
-          // },
-          
-          
           {
-            resolve: `gatsby-plugin-purgecss`,
+            resolve: 'gatsby-plugin-feed',
             options: {
-              printRejected: true, // Print removed selectors and processed file names
-              develop: true, // Enable while using `gatsby develop`
-              // tailwind: true, // Enable tailwindcss support
-              // ignore: ['/ignored.css', 'prismjs/', 'docsearch.js/'], // Ignore files/folders
-              // purgeOnly : ['components/', '/main.css', 'bootstrap/'], // Purge only these files/folders
-              purgeCSSOptions: {
-                // https://purgecss.com/configuration.html#options
-                // safelist: ['safelist'], // Don't remove this selector
-              },
-              // More options defined here https://purgecss.com/configuration.html#options
+              query: `
+                {
+                  site {
+                    siteMetadata {
+                      title
+                      description
+                      siteUrl
+                      site_url: siteUrl
+                    }
+                  }
+                }
+              `,
+              feeds: [
+                {
+                  serialize: ({ query: { site, allMarkdownRemark } }) => {
+                    return allMarkdownRemark.nodes.map(node => {
+                      const imageUrl = node.frontmatter.featuredImage
+                        ? site.siteMetadata.siteUrl + node.frontmatter.featuredImage.childImageSharp.fixed.src
+                        : null;
+          
+                      const mediaContent = imageUrl
+                        ? {
+                            "media:content": {
+                              _attr: {
+                                url: imageUrl,
+                                medium: "image",
+                              },
+                            },
+                          }
+                        : null;
+          
+                      return Object.assign({}, node.frontmatter, {
+                        description: node.excerpt,
+                        date: node.frontmatter.date,
+                        url: site.siteMetadata.siteUrl + node.fields.slug,
+                        guid: site.siteMetadata.siteUrl + node.fields.slug,
+                        custom_elements: [
+                          { "content:encoded": node.html },
+                          mediaContent,
+                          {
+                            _attr: {
+                              "xmlns:media": "http://search.yahoo.com/mrss/",
+                            },
+                          },
+                        ].filter(Boolean),
+                      });
+                    });
+                  },
+                  query: `
+                  {
+                    allMarkdownRemark(
+                      sort: {frontmatter: {date: DESC}}
+                      filter: {frontmatter: {excludeFromRSS: {ne: true}}}
+                    ) {
+                      nodes {
+                        excerpt
+                        html
+                        fields {
+                          slug
+                        }
+                        frontmatter {
+                          title
+                          date
+                          featuredImage {
+                            childImageSharp {
+                              fixed(width: 800) {
+                                src
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                  `,
+                  output: '/rss.xml',
+                  title: 'Feed Title',
+                },
+              ],
             },
           },
+          
+          
           
           
 
@@ -314,18 +299,18 @@ module.exports = {
     `gatsby-plugin-theme-ui`,
 
 
-    // {
-    //   resolve: `gatsby-plugin-decap-cms`,
-    //   options: {
-    //     modulePath: `${__dirname}/src/cms/cms.js`,
-    //     enableIdentityWidget: false,
-    //     publicPath: `admin`,
-    //     htmlTitle: `PIRATE CMS`,
-    //     htmlFavicon: `static/assets/logo.svg`,
-    //     includeRobots: false,
-    //     logo_url: 'https://piratesocial.org/assets/logo.svg'
-    //   },
-    // },
+    {
+      resolve: `gatsby-plugin-decap-cms`,
+      options: {
+        modulePath: `${__dirname}/src/cms/cms.js`,
+        enableIdentityWidget: false,
+        publicPath: `admin`,
+        htmlTitle: `PIRATE CMS`,
+        htmlFavicon: `static/assets/logo.svg`,
+        includeRobots: false,
+        logo_url: 'https://piratesocial.org/assets/logo.svg'
+      },
+    },
 
     `gatsby-plugin-sitemap`,
     {

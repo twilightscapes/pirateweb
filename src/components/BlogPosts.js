@@ -435,8 +435,7 @@ const [playingIndex, setPlayingIndex] = useState(null);
 
         style={{
           overflowX: "auto",
-          overflowY: "hidden",
-          padding:'1.5vh 1vw 0 1vw'
+          overflowY: "hidden"
         }}
       >
 

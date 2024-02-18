@@ -86,20 +86,11 @@ const Layout = ({ children }) => {
       {({ modal, closeTo }) => (
 <>
   {modal ? (
-
-
 <div style={{display:'flex', justifyContent: 'center', color: '#ccc',  position:'fixed', top:'60px', right:'1vw', padding:'0px', fontSize:'', opacity:'1 !important', zIndex:'10',}}>
 <Link state={{noScroll: true }} to={closeTo} style={{fontSize:'',  textDecoration:'none', lineHeight:'', display:'flex', flexDirection:'column', color:'#fff', cursor:'pointer'}}>
 <button className="button" style={{ display: 'flex', justifyContent: 'center', padding:'0 .5vw' }}><span className="icon -left" style={{ paddingRight: '' }}><BiLeftArrow /></span> {" "}{dicGoBack}</button>
 </Link>
 </div>
-
-
-
-
-
-
-
   ) : (
 ''
   )}
