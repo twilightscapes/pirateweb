@@ -173,7 +173,7 @@ module.exports = {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 1024,
-              showCaptions: true,
+              showCaptions: false,
               linkImagesToOriginal: false,
               // tracedSVG: true,
               loading: "lazy",
