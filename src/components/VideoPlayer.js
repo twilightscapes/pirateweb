@@ -14,10 +14,16 @@ const VideoPlayer = ({ location }) => {
   const inputElement = useRef(null);
   const playerRef = useRef(null);
   const [youtubelink, setYoutubelink] = useState(videoUrlParam || "");
+  const [copied, setCopied] = useState(false); // State to track if link is copied
 
   useEffect(() => {
     const fillFormFromClipboard = async () => {
       try {
+        // Check if the document has focus
+        if (!document.hasFocus()) {
+          throw new Error("Document is not focused. Please interact with the page.");
+        }
+    
         const clipboardText = await navigator.clipboard.readText();
         if (isValidURL(clipboardText)) {
           setYoutubelink(clipboardText);
@@ -26,9 +32,11 @@ const VideoPlayer = ({ location }) => {
           console.error("Invalid URL copied from clipboard:", clipboardText);
         }
       } catch (error) {
-        console.error("Error reading clipboard:", error);
+        console.error("Error reading clipboard:", error.message);
+        // You can handle the error here, e.g., display a message to the user
       }
     };
+    
 
     fillFormFromClipboard();
   }, []);
@@ -65,6 +73,8 @@ const VideoPlayer = ({ location }) => {
   const copyToClipboard = () => {
     if (typeof window !== 'undefined') {
       navigator.clipboard.writeText(window.location.href);
+      setCopied(true); // Set copied state to true when link is copied
+      setTimeout(() => setCopied(false), 2000); // Reset copied state after 2 seconds
     }
   };
 
@@ -102,7 +112,7 @@ const VideoPlayer = ({ location }) => {
               <button aria-label="Copy Link" onClick={copyToClipboard} disabled={!youtubelink} style={{ display: "flex", gap: '.5vw', justifyContent: "center", padding: ".5vh .8vw", maxHeight: "", margin: "0 auto", textAlign: 'center', fontSize: '14px', fontWeight: 'light', textShadow: '0 1px 0 #000' }} className="button font print">
                 <svg style={{ maxWidth: '30px', maxHeight: '30px' }}>
                   <use href="#share-icon"></use>
-                </svg>   Copy Link
+                </svg>   {copied ? 'Copied Link' : 'Copy Link'}
               </button>
             </form>
           </div>
