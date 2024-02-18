@@ -200,90 +200,90 @@ module.exports = {
           },
 
 
-          {
-            resolve: 'gatsby-plugin-feed',
-            options: {
-              query: `
-                {
-                  site {
-                    siteMetadata {
-                      title
-                      description
-                      siteUrl
-                      site_url: siteUrl
-                    }
-                  }
-                }
-              `,
-              feeds: [
-                {
-                  serialize: ({ query: { site, allMarkdownRemark } }) => {
-                    return allMarkdownRemark.nodes.map(node => {
-                      const imageUrl = node.frontmatter.featuredImage
-                        ? site.siteMetadata.siteUrl + node.frontmatter.featuredImage.childImageSharp.fixed.src
-                        : null;
+          // {
+          //   resolve: 'gatsby-plugin-feed',
+          //   options: {
+          //     query: `
+          //       {
+          //         site {
+          //           siteMetadata {
+          //             title
+          //             description
+          //             siteUrl
+          //             site_url: siteUrl
+          //           }
+          //         }
+          //       }
+          //     `,
+          //     feeds: [
+          //       {
+          //         serialize: ({ query: { site, allMarkdownRemark } }) => {
+          //           return allMarkdownRemark.nodes.map(node => {
+          //             const imageUrl = node.frontmatter.featuredImage
+          //               ? site.siteMetadata.siteUrl + node.frontmatter.featuredImage.childImageSharp.fixed.src
+          //               : null;
           
-                      const mediaContent = imageUrl
-                        ? {
-                            "media:content": {
-                              _attr: {
-                                url: imageUrl,
-                                medium: "image",
-                              },
-                            },
-                          }
-                        : null;
+          //             const mediaContent = imageUrl
+          //               ? {
+          //                   "media:content": {
+          //                     _attr: {
+          //                       url: imageUrl,
+          //                       medium: "image",
+          //                     },
+          //                   },
+          //                 }
+          //               : null;
           
-                      return Object.assign({}, node.frontmatter, {
-                        description: node.excerpt,
-                        date: node.frontmatter.date,
-                        url: site.siteMetadata.siteUrl + node.fields.slug,
-                        guid: site.siteMetadata.siteUrl + node.fields.slug,
-                        custom_elements: [
-                          { "content:encoded": node.html },
-                          mediaContent,
-                          {
-                            _attr: {
-                              "xmlns:media": "http://search.yahoo.com/mrss/",
-                            },
-                          },
-                        ].filter(Boolean),
-                      });
-                    });
-                  },
-                  query: `
-                  {
-                    allMarkdownRemark(
-                      sort: {frontmatter: {date: DESC}}
-                      filter: {frontmatter: {excludeFromRSS: {ne: true}}}
-                    ) {
-                      nodes {
-                        excerpt
-                        html
-                        fields {
-                          slug
-                        }
-                        frontmatter {
-                          title
-                          date
-                          featuredImage {
-                            childImageSharp {
-                              fixed(width: 800) {
-                                src
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                  `,
-                  output: '/rss.xml',
-                  title: 'Feed Title',
-                },
-              ],
-            },
-          },
+          //             return Object.assign({}, node.frontmatter, {
+          //               description: node.excerpt,
+          //               date: node.frontmatter.date,
+          //               url: site.siteMetadata.siteUrl + node.fields.slug,
+          //               guid: site.siteMetadata.siteUrl + node.fields.slug,
+          //               custom_elements: [
+          //                 { "content:encoded": node.html },
+          //                 mediaContent,
+          //                 {
+          //                   _attr: {
+          //                     "xmlns:media": "http://search.yahoo.com/mrss/",
+          //                   },
+          //                 },
+          //               ].filter(Boolean),
+          //             });
+          //           });
+          //         },
+          //         query: `
+          //         {
+          //           allMarkdownRemark(
+          //             sort: {frontmatter: {date: DESC}}
+          //             filter: {frontmatter: {excludeFromRSS: {ne: true}}}
+          //           ) {
+          //             nodes {
+          //               excerpt
+          //               html
+          //               fields {
+          //                 slug
+          //               }
+          //               frontmatter {
+          //                 title
+          //                 date
+          //                 featuredImage {
+          //                   childImageSharp {
+          //                     fixed(width: 800) {
+          //                       src
+          //                     }
+          //                   }
+          //                 }
+          //               }
+          //             }
+          //           }
+          //         }
+          //         `,
+          //         output: '/rss.xml',
+          //         title: 'Feed Title',
+          //       },
+          //     ],
+          //   },
+          // },
           
           
           {

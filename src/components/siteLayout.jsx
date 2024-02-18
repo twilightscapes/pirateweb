@@ -17,7 +17,7 @@ import { BiLeftArrow } from "react-icons/bi"
 import Consent from "../components/Consent"
 import defaultColors from "../../static/data/default-colors.json";
 import userStyles from "../../static/data/userStyles.json"
-// import Switch from "../components/Switch"
+import Switch from "../components/Switch"
 import BlueCheck from './bluecheck';
 import Footer from "../components/footer"
 
@@ -148,11 +148,11 @@ const Layout = ({ children }) => {
                 <Theme style={{}} />
               </div>
 
-              {/* {showSwipe ? (
+              {showSwipe ? (
                 <Switch />
               ) : (
                 ""
-              )} */}
+              )}
 
             </div>
 
@@ -303,13 +303,13 @@ const Layout = ({ children }) => {
                     <Theme style={{}} />
                   </li>
 
-                  {/* {showSwipe ? (
+                  {showSwipe ? (
                     <li>
                       <Switch />
                     </li>
                   ) : (
                     ""
-                  )} */}
+                  )}
 
                 </ul>
               </li>
