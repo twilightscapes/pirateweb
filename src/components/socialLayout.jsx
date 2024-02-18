@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import Seo from "./seo"
 // import { Link } from 'gatsby-plugin-modal-routing-4'
+import { Link } from "gatsby"
 import "../styles/reset.css"
 import "../styles/global.css"
-import { AnchorLink, Link } from "gatsby-plugin-anchor-links"
+import { AnchorLink } from "gatsby-plugin-anchor-links"
 // import { navigate } from "gatsby"
 import { Helmet } from "react-helmet"
 import Theme from "./theme"
