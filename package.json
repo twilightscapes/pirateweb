@@ -21,6 +21,8 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.3",
+    "@emotion/styled": "^11.11.0",
     "@gatsby-contrib/gatsby-plugin-elasticlunr-search": "^3.0.2",
     "@mdx-js/runtime": "^1.6.22",
     "@sindresorhus/slugify": "^2.2.1",
