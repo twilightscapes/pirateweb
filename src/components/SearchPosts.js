@@ -457,7 +457,7 @@ const [playingIndex, setPlayingIndex] = useState(null);
       >
 
 
-          <div className="magicisland">
+          <div className="magicisland" style={{padding:'1.5vh 1vw 0 1vw',}}>
             <div className="cattags font panel" >
               {showMagicCat ? (
                 <>
