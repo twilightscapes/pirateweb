@@ -21,7 +21,7 @@ const VideoPlayer = ({ location }) => {
       try {
         // Check if the document has focus
         if (!document.hasFocus()) {
-          throw new Error("Document is not focused. Please interact with the page.");
+          // throw new Error("Document is not focused. Please interact with the page.");
         }
     
         const clipboardText = await navigator.clipboard.readText();
@@ -29,11 +29,11 @@ const VideoPlayer = ({ location }) => {
           setYoutubelink(clipboardText);
           updateQueryString(clipboardText);
         } else {
-          console.error("Invalid URL copied from clipboard:", clipboardText);
+          // console.error("Invalid URL copied from clipboard:", clipboardText);
           // You can handle this case accordingly, such as displaying a message to the user
         }
       } catch (error) {
-        console.error("Error reading clipboard:", error.message);
+        // console.error("Error reading clipboard:", error.message);
         // You can handle the error here, e.g., display a message to the user
       }
     };
