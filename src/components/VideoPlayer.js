@@ -92,9 +92,9 @@ const VideoPlayer = ({ location }) => {
                 value={youtubelink}
                 onChange={handleInputChange}
                 style={{ padding: '.5vh 1vw', width: '100%', maxWidth: '800px', fontSize: 'clamp(.8rem,1.5vw,2rem)', transition: 'all 1s ease-in-out' }}
-                placeholder="Paste Video Link"
+                placeholder="Paste Link To Video"
                 className="youtubelinker"
-                aria-label="Paste Video Link"
+                aria-label="Paste Link To Video"
               />
               <button aria-label="Reset" type="reset" onClick={handleReset} disabled={!youtubelink} style={{ color: '', fontSize: 'clamp(.8rem,1.5vw,2rem)', fontWeight: 'bold', textAlign: 'left', width: '', margin: '5px 15px 0 0' }}>
                 Reset
