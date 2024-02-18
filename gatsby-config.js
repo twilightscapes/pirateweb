@@ -118,13 +118,13 @@ module.exports = {
       }
     },
 
-    {
-      resolve: `gatsby-plugin-modal-routing-4`,
-      options: {
-        appElement: '#___gatsby',
-        modalProps: { },
-      }
-    },
+    // {
+    //   resolve: `gatsby-plugin-modal-routing-4`,
+    //   options: {
+    //     appElement: '#___gatsby',
+    //     modalProps: { },
+    //   }
+    // },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
