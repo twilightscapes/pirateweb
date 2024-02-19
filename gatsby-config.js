@@ -299,18 +299,18 @@ module.exports = {
     `gatsby-plugin-theme-ui`,
 
 
-    // {
-    //   resolve: `gatsby-plugin-decap-cms`,
-    //   options: {
-    //     modulePath: `${__dirname}/src/cms/cms.js`,
-    //     enableIdentityWidget: false,
-    //     publicPath: `admin`,
-    //     htmlTitle: `PIRATE CMS`,
-    //     htmlFavicon: `static/assets/logo.svg`,
-    //     includeRobots: false,
-    //     logo_url: 'https://piratesocial.org/assets/logo.svg'
-    //   },
-    // },
+    {
+      resolve: `gatsby-plugin-decap-cms`,
+      options: {
+        modulePath: `${__dirname}/src/cms/cms.js`,
+        enableIdentityWidget: false,
+        publicPath: `admin`,
+        htmlTitle: `PIRATE CMS`,
+        htmlFavicon: `static/assets/logo.svg`,
+        includeRobots: false,
+        logo_url: 'https://piratesocial.org/assets/logo.svg'
+      },
+    },
 
     `gatsby-plugin-sitemap`,
     {
