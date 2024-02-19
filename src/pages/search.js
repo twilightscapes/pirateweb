@@ -1,15 +1,31 @@
 import React, { useState, useEffect } from "react";
-import Seo from "../../components/seo";
-import Layout from "../../components/siteLayout";
-import SearchPosts from "../../components/SearchPosts";
+import Seo from "../components/seo";
+import Layout from "../components/siteLayout";
+import SearchPosts from "../components/SearchPosts";
+import useSiteMetadata from "../hooks/SiteMetadata";
+
+
+
 
 const Search = () => {
+
+
+  const {  featureOptions  } = useSiteMetadata();
+
+
+  const { showDefault } = featureOptions
+
+
+
+
+
+
   // Check if localStorage is available
   const isLocalStorageAvailable = typeof window !== "undefined" && window.localStorage;
 
   // Set the initial state directly from localStorage if available, otherwise set to true
   const storedValue = isLocalStorageAvailable ? localStorage.getItem("isSliderVisible") : null;
-  const initialSliderVisible = storedValue ? JSON.parse(storedValue) : true;
+  const initialSliderVisible = storedValue ? JSON.parse(storedValue) : showDefault;
 
   const [isSliderVisible, setIsSliderVisible] = useState(initialSliderVisible);
 

@@ -19,7 +19,7 @@
     },
     "featureOptions": {
       "showArchive": true,
-      "showSearch": false,
+      "showSearch": true,
       "showDates": true,
       "showTitles": true,
       "showfooter": false,
