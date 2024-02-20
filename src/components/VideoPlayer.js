@@ -120,7 +120,7 @@ const VideoPlayer = ({ location }) => {
             <form className="youtubeform frontdrop" onSubmit={handleSubmit} id="youtubeform" name="youtubeform">
 
         {/* Installed Viewers */}
-        {!isRunningStandalone() && (
+        {isRunningStandalone() && (
     <>
 
               <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
@@ -191,7 +191,7 @@ const VideoPlayer = ({ location }) => {
 </div>
 
         {/* Installed Viewers */}
-        {!isRunningStandalone() && (
+        {isRunningStandalone() && (
     <>
             <a title="Open YouTube" aria-label="Open YouTube" href="https://youtube.com">
               <ImYoutube2 style={{ fontSize: '50px', opacity:'.5' }} />
