@@ -116,7 +116,7 @@ const VideoPlayer = ({ location }) => {
       <div id="piratevideo" className='player-wrapper' style={{ display: 'grid', placeContent: '', width: '100vw', transition: 'all 1s ease-in-out' }}>
         {/* Form Container */}
         <div className="form-container controller font" style={{ position: 'relative', zIndex: '3', top: '0', height: 'auto', width: '100vw', margin: '0 auto', marginTop: showNav ? '0' : '0', transition: 'all 1s ease-in-out', background: 'var(--theme-ui-colors-headerColor)' }}>
-          <div style={{ maxWidth: '1200px', margin: '0 auto', padding:'2vh 1vw 0 1vw', }}>
+          <div style={{ maxWidth: '1000px', margin: '0 auto', padding:'2vh 1vw 0 1vw', }}>
             <form className="youtubeform frontdrop" onSubmit={handleSubmit} id="youtubeform" name="youtubeform">
 
         {/* Installed Viewers */}
@@ -134,7 +134,7 @@ const VideoPlayer = ({ location }) => {
                   onChange={handleInputChange}
                   placeholder="Start"
                   disabled={!isVideoActive}
-                  style={{maxWidth:'60px'}}
+                  style={{maxWidth:'60px', fontSize:'clamp(1rem,.8vw,1.3rem)', textAlign:'center'}}
                 />
                 <input
                   aria-label="Stop Time"
@@ -146,7 +146,7 @@ const VideoPlayer = ({ location }) => {
                   onChange={handleInputChange}
                   placeholder="Stop"
                   disabled={!isVideoActive}
-                  style={{maxWidth:'60px'}}
+                  style={{maxWidth:'60px', fontSize:'clamp(1rem,.8vw,1.4rem)', textAlign:'center'}}
                 />
                 <label htmlFor="loop-checkbox" style={{textAlign:'center', fontSize:'60%'}}>Loop:
                   <input
@@ -165,7 +165,7 @@ const VideoPlayer = ({ location }) => {
               </>
         )}
               
-  <div style={{ display: 'flex', gap: '2vw', alignItems: 'center', width:'100%', margin:'0 auto', maxWidth:'1000px' }}>
+  <div style={{ display: 'flex', gap: '2vw', alignItems: 'center', width:'100%', margin:'0 auto', maxWidth:'700px' }}>
               <input
                 ref={inputElement}
                 id="youtubelink-input"
