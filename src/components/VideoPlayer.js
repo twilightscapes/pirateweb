@@ -16,7 +16,19 @@ const VideoPlayer = ({ location }) => {
     const muteParam = queryParams.get('mute') === 'true';
     const controlsParam = queryParams.get('controls') === 'true';
 
-    const [showPro, setShowPro] = useState(proParam || JSON.parse(localStorage.getItem('showPro')) || false);
+    // const [showPro, setShowPro] = useState(proParam || JSON.parse(localStorage.getItem('showPro')) || false);
+
+
+    const [showPro, setShowPro] = useState(false);
+
+useEffect(() => {
+    if (typeof window !== 'undefined') {
+        const storedShowPro = JSON.parse(localStorage.getItem('showPro'));
+        setShowPro(storedShowPro !== null ? storedShowPro : proParam);
+    }
+}, []);
+
+
 
     useEffect(() => {
         if (typeof window !== 'undefined') {
@@ -161,7 +173,7 @@ const VideoPlayer = ({ location }) => {
 
             {showPro ? (
                 <div className="form-container1 controller1 font" style={{ position: 'relative', zIndex: '3', top: showPro ? '0' : '-1000px', height: showPro ? 'auto' : '0', width: '100vw', margin: '0 auto', marginTop: showNav ? '0' : '0', transition: 'all 1s ease-in-out', background: 'var(--theme-ui-colors-headerColor)' }}>
-                    <div style={{ maxWidth: '1000px', margin: '0 auto', padding:'2vh 1vw 0 1vw', }}>
+        <div style={{ maxWidth: '1000px', margin: '0 auto', padding:'1vh 1vw 1vh 1vw', }}>
                         <form className="youtubeform frontdrop" onSubmit={handleSubmit} id="youtubeform" name="youtubeform">
                             <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
                                 <input
