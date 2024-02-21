@@ -32,7 +32,7 @@
       "showResume": true,
       "startUrl": "/video",
       "showPopup": false,
-      "showLocation": true,
+      "showLocation": false,
       "ShowDisclaimer": false,
       "showBranding": false,
       "showFeature": false,
