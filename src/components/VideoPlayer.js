@@ -18,7 +18,6 @@ const VideoPlayer = ({ location }) => {
 
     const [showPro, setShowPro] = useState(proParam || JSON.parse(localStorage.getItem('showPro')) || false);
 
-
     useEffect(() => {
         if (typeof window !== 'undefined') {
             localStorage.setItem('showPro', JSON.stringify(showPro));
@@ -154,6 +153,7 @@ const VideoPlayer = ({ location }) => {
     }, [loop, shouldPause, stopTime]);
 
     return (
+
         <>
             <div id="piratevide1o" className='player-wrapper1' style={{ display: 'grid', placeContent: '', width: '100vw', transition: 'all 1s ease-in-out' }}>
 
