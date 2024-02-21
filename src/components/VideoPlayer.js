@@ -16,7 +16,7 @@ const VideoPlayer = ({ location }) => {
     const muteParam = queryParams.get('mute') === 'true';
     const controlsParam = queryParams.get('controls') === 'true';
 
-    const [showPro, setShowPro] = useState(proParam || JSON.parse(localStorage.getItem('showPro')) || false);
+    const [showPro, setShowPro] = useState(proParam || (typeof window !== 'undefined' && JSON.parse(localStorage.getItem('showPro'))) || false);
 
 
     useEffect(() => {
@@ -25,12 +25,13 @@ const VideoPlayer = ({ location }) => {
         }
     }, [showPro]);
 
-    useEffect(() => {
-        if (typeof window !== 'undefined') {
-            const storedShowPro = JSON.parse(localStorage.getItem('showPro'));
-            setShowPro(storedShowPro !== null ? storedShowPro : proParam);
-        }
-    }, []);
+
+useEffect(() => {
+    if (typeof window !== 'undefined') {
+        const storedShowPro = JSON.parse(localStorage.getItem('showPro'));
+        setShowPro(storedShowPro !== null ? storedShowPro : proParam);
+    }
+}, []);
 
     const [shouldPause, setShouldPause] = useState(false);
     const [isPlaying, setIsPlaying] = useState(true);
