@@ -9,11 +9,11 @@
       "showSearch": true,
       "showDates": true,
       "showSocial": false,
-      "showProfile": true,
+      "showProfile": false,
       "showHomePosts": false,
       "showTitles": true,
       "showfooter": false,
-      "showSwipe": true,
+      "showSwipe": false,
       "showVideoPlayer": true
     },
     "twitterUsername": "toddlambert",
@@ -29,7 +29,7 @@
     "proOptions": {
       "showModals": true,
       "showContact": false,
-      "showResume": true,
+      "showResume": false,
       "startUrl": "/video",
       "showPopup": false,
       "showLocation": false,
@@ -79,7 +79,7 @@
     },
     "image": "/assets/pirate-logo.svg",
     "navOptions": {
-      "showNav": true,
+      "showNav": false,
       "showNav2": false,
       "showFooterMenu": false
     },
