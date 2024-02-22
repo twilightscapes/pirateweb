@@ -7,6 +7,11 @@ import PageMenu from "../components/PageMenu";
 
 const VideoPlayer = ({ location }) => {
 
+
+    
+
+
+
     const queryParams = useMemo(() => new URLSearchParams(location.search), [location.search]);
 
     const proParam = queryParams.get('pro') === 'true';
@@ -254,13 +259,13 @@ const VideoPlayer = ({ location }) => {
 
     return (
         <>
-            <div id="piratevide1o" className='player-wrapper1' style={{ display: 'grid', placeContent: 'center', width: '99vw', transition: 'all 1s ease-in-out' }}>
+              <div id="piratevideo" className='player-wrapper' style={{ display: 'grid', placeContent: '', width: '100vw', transition: 'all 1s ease-in-out' }}>
 
 
 
             {showPro ? (
 
-                <div className="form-container1 controller1 font" style={{ position: 'relative', zIndex: '3', top: showPro ? '0' : '-1000px', height: showPro ? 'auto' : '0', width: '100vw', margin: '0 auto', marginTop: showNav ? '0' : '0', transition: 'all 1s ease-in-out', background: 'var(--theme-ui-colors-headerColor)', padding:'' }}>
+<div className="form-container controller font" style={{ position: 'relative', zIndex: '3', top: '0', height: 'auto', width: '100vw', margin: '0 auto', marginTop: showNav ? '0' : '0', transition: 'all 1s ease-in-out', background: 'var(--theme-ui-colors-headerColor)' }}>
 
         
 
@@ -270,7 +275,7 @@ const VideoPlayer = ({ location }) => {
 
 <div id="bigbox" style={{ display: 'flex', flexDirection:'column', gap: '4px', alignItems: 'center', width:'100%', border:'0px solid red' }}>
 
-<div id="pastebox" style={{ display: 'flex', flexDirection:'row', gap: '10px', alignItems: 'center', width:'70%', margin:'0 auto', border:'0px solid red' }}>
+<div id="pastebox" style={{ display: 'flex', flexDirection:'row', gap: '10px', alignItems: 'center', width:'', margin:'0 auto', border:'0px solid red' }}>
                             <input
                                 ref={inputElement}
                                 id="youtubelink-input"
@@ -296,7 +301,7 @@ const VideoPlayer = ({ location }) => {
 </div>
 
 
-<div id="controls" style={{ display: 'flex', flexDirection:'row', gap: '2vw', alignItems: 'center', width:'70%' }}>
+<div id="controls" style={{ display: 'flex', flexDirection:'row', gap: '2vw', alignItems: 'center', width:'' }}>
 
 <div id="checkboxes" style={{ display: 'flex', flexDirection:'row', gap: '1.5vw', alignItems: 'center' }}>
                                 <label htmlFor="loop-checkbox" style={{textAlign:'center', fontSize:'60%', display:'flex', flexDirection:'column'}}>Loop:
@@ -406,10 +411,10 @@ const VideoPlayer = ({ location }) => {
 
                             
 
-                            {!isRunningStandalone() && (
-                                <>
+                            {isRunningStandalone() && (
+                            <div style={{position:'absolute', left:'20px', top:'40vh', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', gap:'2vh', width:'35px'}}>
                                     <a title="Open YouTube" aria-label="Open YouTube" href="https://youtube.com">
-                                        <ImYoutube2 style={{ fontSize: '50px', opacity:'.5' }} />
+                                        <ImYoutube2 style={{ fontSize: '40px', opacity:'.5' }} />
                                     </a>
                                     <a title="Open Facebook" aria-label="Open Facebook" href="https://www.facebook.com/watch/">
                                         <FaFacebookSquare style={{ fontSize: '30px', opacity:'.5' }} />
@@ -417,8 +422,8 @@ const VideoPlayer = ({ location }) => {
                                     <a title="Open Twitch" aria-label="Open Twitch" href="https://www.twitch.tv/directory">
                                         <FaTwitch style={{ fontSize: '30px', opacity:'.5' }} />
                                     </a>
-                                </>
-                            )}
+                                </div>
+                             )}
                         
                     
                     </form>
@@ -574,10 +579,10 @@ const VideoPlayer = ({ location }) => {
 
                             
 
-                            {!isRunningStandalone() && (
-                                <>
+                            {isRunningStandalone() && (
+                            <div style={{position:'absolute', left:'20px', top:'40vh', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', gap:'2vh', width:'35px'}}>
                                     <a title="Open YouTube" aria-label="Open YouTube" href="https://youtube.com">
-                                        <ImYoutube2 style={{ fontSize: '50px', opacity:'.5' }} />
+                                        <ImYoutube2 style={{ fontSize: '40px', opacity:'.5' }} />
                                     </a>
                                     <a title="Open Facebook" aria-label="Open Facebook" href="https://www.facebook.com/watch/">
                                         <FaFacebookSquare style={{ fontSize: '30px', opacity:'.5' }} />
@@ -585,8 +590,8 @@ const VideoPlayer = ({ location }) => {
                                     <a title="Open Twitch" aria-label="Open Twitch" href="https://www.twitch.tv/directory">
                                         <FaTwitch style={{ fontSize: '30px', opacity:'.5' }} />
                                     </a>
-                                </>
-                            )}
+                                </div>
+                              )}
                         
                     
                     </form>
