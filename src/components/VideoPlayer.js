@@ -55,8 +55,17 @@ const VideoPlayer = ({ location }) => {
     const inputElement = useRef(null);
     const playerRef = useRef(null);
     const [youtubelink, setYoutubelink] = useState(videoUrlParam || "");
-    const [startTime, setStartTime] = useState(startTimeParam !== null && startTimeParam !== undefined ? startTimeParam : "");
-    const [stopTime, setStopTime] = useState(stopTimeParam !== null && stopTimeParam !== undefined ? stopTimeParam : "");
+    const [startTime, setStartTime] = useState(() => {
+        const parsedStartTime = parseFloat(startTimeParam);
+        return isNaN(parsedStartTime) ? "" : parsedStartTime.toFixed(2);
+    });
+    
+    const [stopTime, setStopTime] = useState(() => {
+        const parsedStopTime = parseFloat(stopTimeParam);
+        return isNaN(parsedStopTime) ? "" : parsedStopTime.toFixed(2);
+    });
+    
+    
     
     
     const [loop, setLoop] = useState(loopParam);
@@ -73,21 +82,25 @@ const VideoPlayer = ({ location }) => {
 
     const handleInputChange = (event) => {
         const { name, value, type, checked } = event.target;
-    
+        console.log("Input changed:", name, value); // Add this line to log the changed input and its value
+
         // Ensure start and stop values are correctly formatted to two decimal places
         let formattedValue = value.trim() !== '' && !isNaN(parseFloat(value)) ? parseFloat(value).toFixed(2) : '';
+        console.log("Formatted value:", formattedValue); // Add this line to log the formatted value
     
         if (type === 'checkbox') {
+            // Handle checkbox inputs
             if (name === 'mute') {
                 setMute(checked);
             } else if (name === 'controls') {
                 setControls(checked);
-            } else if (name === 'autoplay') { // Handle the autoplay checkbox
+            } else if (name === 'autoplay') {
                 setAutoplay(checked);
             } else {
                 setLoop(checked);
             }
         } else {
+            // Handle other inputs
             if (name === 'video') {
                 setYoutubelink(value);
             } else if (name === 'start') {
@@ -97,6 +110,8 @@ const VideoPlayer = ({ location }) => {
             }
         }
     };
+    
+
     
     
     
@@ -252,6 +267,17 @@ const VideoPlayer = ({ location }) => {
     };
 
     const isVideoActive = youtubelink !== "";
+
+
+    useEffect(() => {
+        // Initialize start and stop time to empty string if they're NaN
+        if (isNaN(parseFloat(startTime))) {
+            setStartTime("");
+        }
+        if (isNaN(parseFloat(stopTime))) {
+            setStopTime("");
+        }
+    }, [startTime, stopTime]);
 
     useEffect(() => {
         setIsPlaying(!shouldPause && (loop || !stopTime || playerRef.current.getCurrentTime() < parseFloat(stopTime)));
