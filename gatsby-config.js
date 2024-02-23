@@ -357,7 +357,7 @@ module.exports = {
       options: {
 name: settings.meta.companyname,
 short_name: settings.meta.companyname,
-start_url: `${settings.meta.proOptions.startUrl}/?user_mode=app`,
+start_url: `${settings.meta.proOptions.startUrl}`,
 description: settings.meta.description,
 background_color: `transparent`,
 lang: `en`,

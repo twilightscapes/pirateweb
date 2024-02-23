@@ -5,6 +5,7 @@ import "../styles/reset.css"
 import "../styles/global.css"
 import { AnchorLink } from "gatsby-plugin-anchor-links"
 // import { navigate } from "gatsby"
+import { RiCloseCircleFill } from "react-icons/ri";
 import { Helmet } from "react-helmet"
 import Theme from "./theme"
 import SearchIcon from "../../src/img/search"
@@ -81,6 +82,21 @@ const Layout = ({ children }) => {
       </Helmet>
 
       <Seo />
+
+
+
+<div style={{position:'relative', width:'100vw', height:'50px', background:'#111', display:'flex', alignItems:'center', padding:'.2vh 1vw' }}>
+<RiCloseCircleFill />
+{iconimage ? (
+                <img className="cornerlogo" style={{ position: 'relative', top: '', left: '4%', border: '0px solid white', padding: '0', maxHeight: '60px' }} src={iconimage} alt={companyname} width="111" height="60" />
+              ) : (
+                <div style={{ fontWeight: '', display: 'grid', justifyContent: 'center', alignItems: 'center', height: '', fontSize: 'clamp(.9rem,2vw,1rem)', color: 'var(--theme-ui-colors-headerColorText)', maxWidth: '50vw' }}>
+                  {companyname}
+                </div>
+              )}
+
+</div>
+
 
       <ModalRoutingContext.Consumer>
       {({ modal, closeTo }) => (
