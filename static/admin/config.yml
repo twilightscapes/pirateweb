@@ -686,10 +686,10 @@ collections:
                     name: showSocial 
                     label: Show Social Links
                     required: false
-                  - widget: boolean
-                    name: showArchive 
-                    label: Show Archive link under "Load More" button
-                    required: false
+                  # - widget: boolean
+                  #   name: showArchive 
+                  #   label: Show Archive link under "Load More" button
+                  #   required: false
                     # PRO BELOW
               - name: "proOptions"
                 label: "Plus Features (PIRATE Plus users only)"
@@ -724,6 +724,10 @@ collections:
                   - widget: boolean
                     name: showConsent
                     label: Show Cookie Consent Banner
+                    required: false
+                  - widget: boolean
+                    name: showPWA
+                    label: Show Web App Install Banner
                     required: false
                   - widget: string
                     name: startUrl
