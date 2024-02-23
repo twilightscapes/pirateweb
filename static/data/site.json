@@ -37,7 +37,8 @@
       "showBranding": true,
       "showFeature": false,
       "showLegal": false,
-      "showConsent": false
+      "showConsent": false,
+      "showPWA": true
     },
     "titleTemplate": "%s",
     "title": "Pirate YouTube",
