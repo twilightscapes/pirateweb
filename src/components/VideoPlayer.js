@@ -6,24 +6,18 @@ import useSiteMetadata from "../hooks/SiteMetadata";
 import PageMenu from "../components/PageMenu";
 
 const VideoPlayer = ({ location }) => {
-
-
+    const queryParams = useMemo(() => new URLSearchParams(location.search), [location.search]);
+    
     
 
-
-
-    const queryParams = useMemo(() => new URLSearchParams(location.search), [location.search]);
-
     const proParam = queryParams.get('pro') === 'true';
-
     const videoUrlParam = queryParams.get('video');
     const startTimeParam = queryParams.get('start');
     const stopTimeParam = queryParams.get('stop');
     const loopParam = queryParams.get('loop') === 'true';
     const muteParam = queryParams.get('mute') === 'true';
     const controlsParam = queryParams.get('controls') === 'true';
-    const autoplayParam = queryParams.get('autoplay') === 'true'; // Retrieve autoplay parameter
-
+    const autoplayParam = queryParams.get('autoplay') === 'true'; 
     const [showPro, setShowPro] = useState(proParam || (typeof window !== 'undefined' && JSON.parse(localStorage.getItem('showPro'))) || false);
 
 
@@ -47,11 +41,9 @@ const VideoPlayer = ({ location }) => {
 
     const [shouldPause, setShouldPause] = useState(false);
     const [isPlaying, setIsPlaying] = useState(true);
-
     const { featureOptions, proOptions } = useSiteMetadata();
     const { showNav } = featureOptions;
     const { showBranding } = proOptions
-
     const inputElement = useRef(null);
     const playerRef = useRef(null);
     const [youtubelink, setYoutubelink] = useState(videoUrlParam || "");
@@ -64,29 +56,29 @@ const VideoPlayer = ({ location }) => {
         const parsedStopTime = parseFloat(stopTimeParam);
         return isNaN(parsedStopTime) ? "" : parsedStopTime.toFixed(2);
     });
-    
-    
-    
-    
     const [loop, setLoop] = useState(loopParam);
-    
-    
-
     const [mute, setMute] = useState(muteParam);
     const [autoplay, setAutoplay] = useState(autoplayParam);
-
     const [controls, setControls] = useState(controlsParam !== undefined ? controlsParam : false || startTimeParam !== undefined || stopTimeParam !== undefined);
     const [copied, setCopied] = useState(false);
-
     const [showBlocker, setShowBlocker] = useState(queryParams.get('showBlocker') === 'true');
 
+
+    const [seoTitle, setSeoTitle] = useState('');
+
+    // Function to handle changes in the SEO title input field
+    const handleSeoTitleChange = (event) => {
+        setSeoTitle(event.target.value);
+    };
+
+    
     const handleInputChange = (event) => {
-        const { name, value, type, checked } = event.target;
-        console.log("Input changed:", name, value); // Add this line to log the changed input and its value
+    const { name, value, type, checked } = event.target;
+        // console.log("Input changed:", name, value); 
 
         // Ensure start and stop values are correctly formatted to two decimal places
         let formattedValue = value.trim() !== '' && !isNaN(parseFloat(value)) ? parseFloat(value).toFixed(2) : '';
-        console.log("Formatted value:", formattedValue); // Add this line to log the formatted value
+        // console.log("Formatted value:", formattedValue); 
     
         if (type === 'checkbox') {
             // Handle checkbox inputs
@@ -130,7 +122,7 @@ const VideoPlayer = ({ location }) => {
         if (isValidURL(youtubelink)) {
             // Validate start and stop times only if they are provided
             if ((startTime === "" || !isNaN(parseFloat(startTime))) && (stopTime === "" || !isNaN(parseFloat(stopTime)))) {
-                updateQueryString({ video: youtubelink, start: startTime, stop: stopTime, loop, mute, controls });
+                updateQueryString({ video: youtubelink, start: startTime, stop: stopTime, loop, mute, controls, seoTitle }); // Include seoTitle in the query string
             } else {
                 alert('Please enter valid values for start and stop times.');
             }
@@ -156,10 +148,10 @@ const VideoPlayer = ({ location }) => {
             newUrl.searchParams.set('start', startTime || '');
             newUrl.searchParams.set('stop', stopTime || '');
             newUrl.searchParams.set('loop', loop || '');
-            newUrl.searchParams.set('mute', mute ? 'true' : 'false'); // Correctly set mute parameter
+            newUrl.searchParams.set('mute', mute ? 'true' : 'false'); 
             newUrl.searchParams.set('controls', controls ? 'true' : 'false');
             newUrl.searchParams.set('showBlocker', showBlocker ? 'true' : 'false');
-            newUrl.searchParams.set('autoplay', autoplay ? 'true' : 'false'); // Correctly set autoplay parameter
+            newUrl.searchParams.set('autoplay', autoplay ? 'true' : 'false'); 
             navigator.clipboard.writeText(newUrl.toString())
                 .then(() => {
                     setCopied(true);
@@ -190,7 +182,7 @@ const VideoPlayer = ({ location }) => {
         queryParams.set('loop', loop);
         queryParams.set('mute', mute);
         queryParams.set('controls', controls);
-        queryParams.set('showBlocker', queryParams.get('showBlocker') || showBlocker); // Include showBlocker parameter
+        queryParams.set('showBlocker', queryParams.get('showBlocker') || showBlocker);
     
         // Add start and stop times only if they are provided
         if (startTime) {
@@ -200,39 +192,77 @@ const VideoPlayer = ({ location }) => {
             queryParams.set('stop', stopTime);
         }
 
-        
-    
         const url = `${window.location.pathname}?${queryParams.toString()}`;
         copyToClipboard(url);
         handleShareButtonClick();
-
-        
     };
 
 
 
+// Define state variables to keep track of playhead values
+/* eslint-disable-next-line no-unused-vars */
+const [startPlaceholder, setStartPlaceholder] = useState('Start Time');
+/* eslint-disable-next-line no-unused-vars */
+const [stopPlaceholder, setStopPlaceholder] = useState('Stop Time');
 
-    const handleStartFromPlayhead = () => {
-        const currentTime = playerRef.current.getCurrentTime();
-        setStartTime(currentTime.toString());
-    };
+// Function to handle updating start time from playhead
+const handleStartFromPlayhead = () => {
+    const currentTime = playerRef.current.getCurrentTime();
+    setStartTime(currentTime.toString());
+};
 
-    const handleEndFromPlayhead = () => {
-        const currentTime = playerRef.current.getCurrentTime();
-        setStopTime(currentTime.toString());
-    };
+// Function to handle updating stop time from playhead
+const handleEndFromPlayhead = () => {
+    const currentTime = playerRef.current.getCurrentTime();
+    setStopTime(currentTime.toString());
+};
+
+
+
+
+// useEffect to update placeholders based on video playback status
+useEffect(() => {
+    if (isPlaying) {
+        setStartPlaceholder(parseFloat(startTime).toFixed(2));
+        setStopPlaceholder(parseFloat(stopTime).toFixed(2));
+    } else {
+        setStartPlaceholder('Start Time');
+        setStopPlaceholder('Stop Time');
+    }
+}, [isPlaying, startTime, stopTime]);
+
+
+
+    // const handleStartFromPlayhead = () => {
+    //     const currentTime = playerRef.current.getCurrentTime();
+    //     setStartTime(currentTime.toString());
+    // };
+
+    // const handleEndFromPlayhead = () => {
+    //     const currentTime = playerRef.current.getCurrentTime();
+    //     setStopTime(currentTime.toString());
+    // };
+
+
+
+
 
     const updateQueryString = (values) => {
-        const { video, start, stop, loop, mute, controls, showBlocker } = values;
+        const { video, start, stop, loop, mute, controls, showBlocker, autoplay, seoTitle } = values;
     
         // Round start and stop values to two decimal places
         const formattedStart = parseFloat(start).toFixed(2);
         const formattedStop = parseFloat(stop).toFixed(2);
     
         // Construct the base URL with mandatory parameters
-        let newUrl = `${window.location.pathname}?video=${encodeURIComponent(video)}&start=${encodeURIComponent(formattedStart)}&stop=${encodeURIComponent(formattedStop)}&loop=${loop}&mute=${mute}&controls=${controls}&autoplay=${autoplay}`; // Include autoplay parameter
+        let newUrl = `${window.location.pathname}?video=${encodeURIComponent(video)}&start=${encodeURIComponent(formattedStart)}&stop=${encodeURIComponent(formattedStop)}&loop=${loop}&mute=${mute}&controls=${controls}&autoplay=${autoplay}`;
     
-        // Append showBlocker parameter if it's defined
+        // Add SEO title parameter if provided
+        if (seoTitle !== undefined) {
+            newUrl += `&seoTitle=${encodeURIComponent(seoTitle)}`;
+        }
+    
+        // Add showBlocker parameter if provided
         if (showBlocker !== undefined) {
             newUrl += `&showBlocker=${showBlocker}`;
         }
@@ -240,6 +270,8 @@ const VideoPlayer = ({ location }) => {
         // Update the query string
         window.history.pushState({}, '', newUrl);
     };
+    
+    
     
     
 
@@ -275,7 +307,6 @@ const VideoPlayer = ({ location }) => {
 
 
     useEffect(() => {
-        // Initialize start and stop time to empty string if they're NaN
         if (isNaN(parseFloat(startTime))) {
             setStartTime("");
         }
@@ -310,6 +341,20 @@ const VideoPlayer = ({ location }) => {
 <div id="controls" style={{ display: 'flex', flexDirection:'row', gap: '2vw', alignItems: 'center', width:'' }}>
 
 <div id="checkboxes" style={{ display: 'flex', flexDirection:'row', gap: '1.5vw', alignItems: 'center' }}>
+
+
+<label  title="AutoPlay - Set video to automatically begin playing. NOTE: videos must be muted for autoplay to work" htmlFor="autoplayCheckbox" style={{textAlign:'center', fontSize:'50%', display:'flex', flexDirection:'column', alignItems:'center'}}>Autoplay:
+    <input
+        type="checkbox"
+        id="autoplayCheckbox"
+        className="youtubelinker"
+        checked={autoplay}
+        onChange={(e) => setAutoplay(e.target.checked)}
+        disabled={!isVideoActive}
+    />
+</label>
+
+
                                 <label htmlFor="loop-checkbox" style={{textAlign:'center', fontSize:'60%', display:'flex', flexDirection:'column', alignItems:'center'}}>Loop:
                                     <input
                                         aria-label="Set to loop"
@@ -353,7 +398,7 @@ const VideoPlayer = ({ location }) => {
                                 </label>
 
                             
-                                <label htmlFor="blocker-checkbox" style={{textAlign:'center', fontSize:'60%', display:'flex', flexDirection:'column', alignItems:'center'}}>Block:
+                                <label  title="User Interaction Blocker - Keep people from clicking on anything on the page. Note, view will not be able to play videos that are NOT set to mute and autoplay - USE WITH CAUTION" htmlFor="blocker-checkbox"  style={{textAlign:'center', fontSize:'60%', display:'flex', flexDirection:'column', alignItems:'center'}}>Block:
     <input
         aria-label="Block user interactions"
         id="blocker-checkbox"
@@ -367,16 +412,7 @@ const VideoPlayer = ({ location }) => {
     />
 </label>
 
-<label htmlFor="autoplayCheckbox" style={{textAlign:'center', fontSize:'50%', display:'flex', flexDirection:'column', alignItems:'center'}}>Autoplay:
-    <input
-        type="checkbox"
-        id="autoplayCheckbox"
-        className="youtubelinker"
-        checked={autoplay}
-        onChange={(e) => setAutoplay(e.target.checked)}
-        disabled={!isVideoActive}
-    />
-</label>
+
 
 
                             </div>
@@ -388,10 +424,11 @@ const VideoPlayer = ({ location }) => {
     className="youtubelinker"
     type="text"
     name="start"
+    title="Start Time - Set video start time"
     value={isNaN(parseFloat(startTime)) ? '' : parseFloat(startTime).toFixed(2)}
     onChange={handleInputChange}
-    onClick={handleStartFromPlayhead}
-    placeholder={!startTime && 'Start'} // Set placeholder to 'Start' if startTime is falsy
+    onClick={handleStartFromPlayhead} // Call handleStartFromPlayhead on click
+    placeholder={!startTime && 'Start Time'} // Set placeholder to 'Start' if startTime is falsy
     disabled={!isVideoActive}
     style={{ maxWidth: '100px', fontSize: 'clamp(1rem,.8vw,1.3rem)', textAlign: 'center' }}
 />
@@ -401,10 +438,11 @@ const VideoPlayer = ({ location }) => {
     className="youtubelinker"
     type="text"
     name="stop"
+    title="Stop Time - Set video stop time"
     value={isNaN(parseFloat(stopTime)) ? '' : parseFloat(stopTime).toFixed(2)}
     onChange={handleInputChange}
-    onClick={handleEndFromPlayhead}
-    placeholder={!stopTime && 'Stop'} // Set placeholder to 'Stop' if stopTime is falsy
+    onClick={handleEndFromPlayhead} // Call handleEndFromPlayhead on click
+    placeholder={!stopTime && 'Stop Time'} // Set placeholder to 'Stop' if stopTime is falsy
     disabled={!isVideoActive}
     style={{ maxWidth: '100px', fontSize: 'clamp(1rem,.8vw,1.4rem)', textAlign: 'center' }}
 />
@@ -417,11 +455,24 @@ const VideoPlayer = ({ location }) => {
 
 
 <div id="pastebox" style={{ display: 'flex', flexDirection:'row', gap: '10px', alignItems: 'center', width:'', margin:'', border:'0px solid red' }}>
+
+                    <input
+                        type="text"
+                        name="seoTitle" 
+                        value={seoTitle}
+                        onChange={handleSeoTitleChange} 
+                        placeholder="Video Title" 
+                        style={{ padding: '.5vh 1vw', minWidth:'100px', width: '100%', maxWidth: '800px', fontSize: 'clamp(.8rem,1.4vw,1rem)', transition: 'all 1s ease-in-out' }}
+                        aria-label="Video Title"
+                        className="youtubelinker"
+                    />
+                    
                             <input
                                 ref={inputElement}
                                 id="youtubelink-input"
                                 type="text"
                                 name="video"
+                                title="Paste Video Link"
                                 value={youtubelink}
                                 onChange={handleInputChange}
                                 style={{ padding: '.5vh 1vw', minWidth:'100px', width: '100%', maxWidth: '800px', fontSize: 'clamp(.8rem,1.4vw,1rem)', transition: 'all 1s ease-in-out' }}
@@ -430,7 +481,7 @@ const VideoPlayer = ({ location }) => {
                                 aria-label="Paste Link To Video"
                             />
 
-                            <button aria-label="Reset" type="reset" onClick={handleReset} disabled={!isVideoActive} style={{ color: '', fontSize: 'clamp(.8rem,1vw,1rem)', fontWeight: 'bold', textAlign: 'left', width: '20px', margin: '', opacity: isVideoActive ? 1 : 0.5 }}>
+                            <button title="Reset to start over" aria-label="Reset" type="reset" onClick={handleReset} disabled={!isVideoActive} style={{ color: '', fontSize: 'clamp(.8rem,1vw,1rem)', fontWeight: 'bold', textAlign: 'left', width: '20px', margin: '', opacity: isVideoActive ? 1 : 0.5 }}>
                                 Reset
                             </button>
 
@@ -484,7 +535,7 @@ const VideoPlayer = ({ location }) => {
 
 <div id="bigbox" style={{ display: 'flex', flexDirection:'column', gap: '4px', alignItems: 'center', width:'100%', border:'0px solid red' }}>
 
-<div id="pastebox" style={{ display: 'flex', flexDirection:'row', gap: '10px', alignItems: 'center', width:'70%', margin:'0 auto', border:'0px solid red' }}>
+<div id="pastebox" style={{ display: 'flex', flexDirection:'row', gap: '10px', alignItems: 'center', width:'60vw', margin:'0 auto', border:'0px solid red' }}>
                             <input
                                 ref={inputElement}
                                 id="youtubelink-input"
@@ -502,11 +553,6 @@ const VideoPlayer = ({ location }) => {
                                 Reset
                             </button>
 
-                            {/* <div id="copybutton" style={{ display: 'flex', flexDirection:'row', gap: '10px', alignItems: 'center' }}>
-<button aria-label="Create Link" onClick={handleCopyAndShareButtonClick} disabled={!isVideoActive} style={{ display: "flex", gap: '.5vw', justifyContent: "center", padding: ".5vh .8vw", width:'80px', maxHeight: "", margin: "0 auto", textAlign: 'center', fontSize: '14px', fontWeight: 'light', textShadow: '0 1px 0 #000', marginLeft:'', opacity: isVideoActive ? 1 : 0.5 }} className="button font print">
-{copied ? 'Link Copied' : 'Copy Link'}
-</button>
-</div> */}
 
 
 </div>
@@ -515,7 +561,7 @@ const VideoPlayer = ({ location }) => {
 <div id="controls" style={{ visibility:'hidden', height:'0', display: 'flex', flexDirection:'row', gap: '2vw', alignItems: 'center', width:'70%' }}>
 
 <div id="checkboxes" style={{visibility:'hidden', height:'0', display: 'flex', flexDirection:'row', gap: '1.5vw', alignItems: 'center' }}>
-                                <label htmlFor="loop-checkbox" style={{textAlign:'center', fontSize:'60%', display:'flex', flexDirection:'column'}}>Loop:
+                                <label title="Looping - Set video to loop" htmlFor="loop-checkbox" style={{textAlign:'center', fontSize:'60%', display:'flex', flexDirection:'column'}}>Loop:
                                     <input
                                         aria-label="Set to loop"
                                         id="loop-checkbox"
@@ -527,7 +573,7 @@ const VideoPlayer = ({ location }) => {
                                         style={{maxWidth:'50px'}}
                                     />
                                 </label>
-                                <label htmlFor="mute-checkbox" style={{textAlign:'center', fontSize:'60%', display:'flex', flexDirection:'column'}}>Mute:
+                                <label title="Mute - Set video to mute - required for autoplay" htmlFor="mute-checkbox" style={{textAlign:'center', fontSize:'60%', display:'flex', flexDirection:'column'}}>Mute:
                                     <input
                                         aria-label="Set to mute"
                                         id="mute-checkbox"
@@ -541,13 +587,13 @@ const VideoPlayer = ({ location }) => {
                                 </label>
 
                                 
-                                <label htmlFor="controls-checkbox" style={{textAlign:'center', fontSize:'50%', display:'flex', flexDirection:'column'}}>Controls:
+                                <label title="Show Player Controls - needs a refresh to see the change"
+                                        checked={controls} htmlFor="controls-checkbox" style={{textAlign:'center', fontSize:'50%', display:'flex', flexDirection:'column'}}>Controls:
                                     <input
                                         aria-label="Set to show controls"
                                         id="controls-checkbox"
                                         type="checkbox"
                                         name="controls"
-                                        checked={controls}
                                         onChange={handleInputChange}
                                         disabled={!isVideoActive}
                                         style={{maxWidth:'50px'}}
@@ -555,7 +601,7 @@ const VideoPlayer = ({ location }) => {
                                 </label>
 
                             
-<label htmlFor="blocker-checkbox" style={{textAlign:'center', fontSize:'60%', display:'flex', flexDirection:'column'}}>Block
+<label title="User Interaction Blocker - Keep people from clicking on anything on the page. Note, view will not be able to play videos that are NOT set to mute and autoplay - USE WITH CAUTION" htmlFor="blocker-checkbox" style={{textAlign:'center', fontSize:'60%', display:'flex', flexDirection:'column'}}>Block
     <input
         aria-label="Block user interactions"
         id="blocker-checkbox"
@@ -567,7 +613,7 @@ const VideoPlayer = ({ location }) => {
     />
 </label>
 
-<label htmlFor="autoplayCheckbox" style={{textAlign:'center', fontSize:'50%', display:'flex', flexDirection:'column'}}>Autoplay
+<label title="AutoPlay - Set video automatically begin playing. Note, videos must be muted for autoplay to work" htmlFor="autoplayCheckbox" style={{textAlign:'center', fontSize:'50%', display:'flex', flexDirection:'column'}}>Autoplay
     <input
         type="checkbox"
         id="autoplayCheckbox"
@@ -586,6 +632,7 @@ const VideoPlayer = ({ location }) => {
     className="youtubelinker"
     type="text"
     name="start"
+    title="Start Time - Set video start time"
     value={startTime !== null ? parseFloat(startTime).toFixed(2) : ''}
     onChange={handleInputChange}
     onClick={handleStartFromPlayhead}
@@ -599,6 +646,7 @@ const VideoPlayer = ({ location }) => {
     className="youtubelinker"
     type="text"
     name="stop"
+    title="Stop Time - Set video stop time"
     value={stopTime !== null ? parseFloat(stopTime).toFixed(2) : ''}
     onChange={handleInputChange}
     onClick={handleEndFromPlayhead}
@@ -649,9 +697,10 @@ const VideoPlayer = ({ location }) => {
 ""
 )}
 
-{showBlocker && <div className="video-blocker"></div>}
+
 
 <ReactPlayer
+className={showBlocker ? "blocked-video" : ""}
     ref={playerRef}
     allow="web-share"
     style={{
@@ -699,8 +748,9 @@ const VideoPlayer = ({ location }) => {
             }
         }
     }}
-/>
+>
 
+</ReactPlayer>
 
 
 
