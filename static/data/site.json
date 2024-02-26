@@ -9,7 +9,7 @@
       "showSearch": true,
       "showDates": true,
       "showSocial": false,
-      "showProfile": false,
+      "showProfile": true,
       "showHomePosts": false,
       "showTitles": true,
       "showfooter": false,
@@ -80,7 +80,7 @@
     },
     "image": "/assets/pirate-logo.svg",
     "navOptions": {
-      "showNav": false,
+      "showNav": true,
       "showNav2": false,
       "showFooterMenu": false
     },
