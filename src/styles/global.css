@@ -1315,17 +1315,23 @@ html:has body.youtube{position:fixed !important; overflow: hidden !important;}
   body.youtube .upbar 
   {display: none !important;}
 
-.blocked-video::before{
+  /* body.youtube #gobacker{top:14% !important; right:5px !important;} */
+
+  @media(max-width:48rem) {
+    body.youtube #PiratePlayer {top:60px !important;}
+  }
+
+#PiratePlayer .blocked-video::before{
   content:"Pirate Video Pro";
     position: fixed;
-    top: 60px;
+    /* top: 60px; */
     left: 0;
     width: 100vw;
     height: 99%;
-    z-index: 5;
+    z-index: 100000;
     display:grid;
     place-content: center;
-    border:0px solid yellow !important;
+    border:20px solid yellow !important;
     background:transparent;
     background-size: cover;
     font-size: clamp(2rem,3vw,3rem);
@@ -1351,11 +1357,9 @@ html:has body.youtube{position:fixed !important; overflow: hidden !important;}
     background-size: cover;  
 } */
 
-
-input {
-    font-size: 16px !important;
-}
-
+/* SAFARI INPUT ZOOM FIX */
+input {font-size: 16px !important;}
+/* SAFARI INPUT ZOOM FIX */
 
   /* html, body.youtube {
     touch-action: manipulation;
@@ -1369,6 +1373,7 @@ input {
       max-width: none;
     }
   } */
+
 
 
 

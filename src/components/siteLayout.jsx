@@ -15,7 +15,7 @@ import GoBack from "../components/goBack"
 import { ModalRoutingContext } from 'gatsby-plugin-modal-routing-4'
 import Menu from "../components/menu"
 import { BiLeftArrow } from "react-icons/bi"
-import Consent from "../components/Consent"
+// import Consent from "../components/Consent"
 import defaultColors from "../../static/data/default-colors.json";
 import userStyles from "../../static/data/userStyles.json"
 import Switch from "../components/Switch"
@@ -64,7 +64,9 @@ const Layout = ({ children }) => {
   const { dicSearch, dicPirate, dicGoBack } = language;
   const { showNav, showNav2 } = navOptions
   const { showfooter, showSwipe, showSearch } = featureOptions
-  const { showModals, showBranding, showConsent, showPWA } = proOptions
+  const { showModals, showBranding,
+    //  showConsent, 
+     showPWA } = proOptions
 
   const { companyname } = useSiteMetadata()
   const { iconimage } = useSiteMetadata()
@@ -141,7 +143,7 @@ const Layout = ({ children }) => {
 
             <ul className="topmenu" style={{ fontSize: 'clamp(.6rem, 1.6vw, 1.8rem)', textAlign: 'center', maxHeight: '', display: 'flex', justifyContent: 'space-between', gap: '4vw', alignItems: 'center', margin: '0 auto 0 auto', padding: '1.5vh 2% 0 2%', border: '0px solid white' }}>
               <Menu />
-              <li key="demo"><Link to="/pirate">View Demo</Link></li>
+              {/* <li key="demo"><Link to="/pirate">View Demo</Link></li> */}
             </ul>
 
             <div id="missioncontrol" className="missioncontrol sitecontrols" style={{ display: 'flex', justifyContent: 'space-around', fontSize: 'clamp(.8rem, 2.3vw, 2.5rem)', gap: '3vw', textAlign: 'center', maxHeight: '', alignItems: 'center', paddingTop: '5px' }}>
@@ -253,11 +255,15 @@ const Layout = ({ children }) => {
         ""
       )}
 
-      {showConsent ? (
-        <Consent />
+
+
+      {/* {showConsent ? (
+        <div style={{display:'flex', placeContent:'', position:'absolute', width:'100vw', margin:'0 auto', height:'100%', top:'50%', left:'', right:'', zIndex:'2', border:'0px solid blue'}}>
+          <Consent />
+          </div>
       ) : (
         ""
-      )}
+      )} */}
 
 
 

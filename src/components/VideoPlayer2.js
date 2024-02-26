@@ -14,7 +14,7 @@ const VideoHomePlayer = ({ location }) => {
   const inputElement = useRef(null);
   const playerRef = useRef(null);
   const [youtubelink, setYoutubelink] = useState(videoUrlParam || "");
-  // const [copied, setCopied] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     const fillFormFromClipboard = async () => {
@@ -73,16 +73,16 @@ const VideoHomePlayer = ({ location }) => {
     window.history.pushState({}, '', newUrl);
   };
 
-  // const copyToClipboard = () => {
-  //   if (typeof window !== 'undefined') {
-  //     navigator.clipboard.writeText(window.location.href)
-  //       .then(() => {
-  //         setCopied(true);
-  //         setTimeout(() => setCopied(false), 2000); // Reset 'copied' state after 2 seconds
-  //       })
-  //       .catch((error) => console.error("Error copying to clipboard:", error));
-  //   }
-  // };
+  const copyToClipboard = () => {
+    if (typeof window !== 'undefined') {
+      navigator.clipboard.writeText(window.location.href)
+        .then(() => {
+          setCopied(true);
+          setTimeout(() => setCopied(false), 2000); // Reset 'copied' state after 2 seconds
+        })
+        .catch((error) => console.error("Error copying to clipboard:", error));
+    }
+  };
 
 
   function isRunningStandalone() {

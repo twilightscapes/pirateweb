@@ -1,4 +1,9 @@
-
+// require("dotenv").config()
+/**
+ * Configure your Gatsby site with this file.
+ *
+ * See: https://www.gatsbyjs.org/docs/gatsby-config/
+ */
 const netlifyCmsPaths = {
   resolve: `gatsby-plugin-netlify-cms-paths`,
   options: {
@@ -16,7 +21,16 @@ module.exports = {
     ...settings.meta,
   },
   plugins: [
-
+    // {
+    //   resolve: "gatsby-source-shopify",
+    //   options: {
+    //     // apiKey: process.env.SHOPIFY_API_KEY,
+    //     password: process.env.SHOPIFY_SHOP_PASSWORD,
+    //     storeUrl: process.env.GATSBY_SHOPIFY_STORE_URL,
+    //     shopifyConnections: ["collections"],
+    //     salesChannel:"Secure3",
+    //   },
+    // },
 
     netlifyCmsPaths,
 
@@ -34,6 +48,18 @@ module.exports = {
     },
   },
 
+  
+
+
+  // {
+  //   resolve: "gatsby-plugin-web-font-loader",
+  //   options: {
+  //     custom: {
+  //       families: ['compacta'],
+  //       urls: ['/assets/fonts/fonts.css'],
+  //     },
+  //   },
+  // },
 
   {
     resolve: "gatsby-plugin-anchor-links",
@@ -48,6 +74,9 @@ module.exports = {
   {
     resolve: `@gatsby-contrib/gatsby-plugin-elasticlunr-search`,
     options: {
+      // Fields to index
+      // fields: [`title`, `template`, `slug`, `featuredImage`, `gatsbyImageData`, `tags`, `rawBody` ],
+      // How to resolve each field's value for a supported node type
       resolvers: {
         // For any node of type MarkdownRemark, list how to resolve the fields' values
         MarkdownRemark: {
@@ -98,6 +127,8 @@ module.exports = {
           resolver: 'rawMarkdownBody',
         },
       ],
+      // Optional filter to limit indexed nodes
+      // filter: (node, getNode) => node.frontmatter.tags !== "exempt",
     },
   },
   
@@ -113,6 +144,7 @@ module.exports = {
       resolve: "gatsby-plugin-react-svg",
       options: {
         rule: {
+          // include: /assets/ 
           include: /\.svg$/
         }
       }
@@ -121,7 +153,12 @@ module.exports = {
     {
       resolve: `gatsby-plugin-modal-routing-4`,
       options: {
+        // A selector to set react-modal's app root to, default is `#___gatsby`
+        // See http://reactcommunity.org/react-modal/accessibility/#app-element
         appElement: '#___gatsby',
+
+        // Object of props that will be passed to the react-modal container
+        // See http://reactcommunity.org/react-modal/#usage
         modalProps: { },
       }
     },
@@ -140,6 +177,13 @@ module.exports = {
       },
     },
 
+    // {
+    //   resolve: `gatsby-source-filesystem`,
+    //   options: {
+    //     name: `team`,
+    //     path: `${__dirname}/static/content/team/`,
+    //   },
+    // },
 
     {
       resolve: `gatsby-source-filesystem`,
@@ -290,14 +334,28 @@ module.exports = {
           
 
           `gatsby-remark-responsive-iframe`,
-
+          // {
+          //   resolve: `gatsby-remark-prismjs`,
+          //   options: {
+          //     classPrefix: "language-",
+          //     inlineCodeMarker: null,
+          //     aliases: {},
+          //     showLineNumbers: false,
+          //     noInlineHighlight: false,
+          //     // By default the HTML entities <>&'" are escaped.
+          //     // Add additional HTML escapes by providing a mapping
+          //     // of HTML entities and their escape value IE: { '}': '&#123;' }
+          //     escapeEntities: {},
+          //   },
+          // },
         ],
       },
     },
-
+    // 'gatsby-plugin-sharp-exif',
+    // `gatsby-plugin-sass`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-theme-ui`,
-
+    // `gatsby-plugin-static-cms`,
 
     {
       resolve: `gatsby-plugin-decap-cms`,
@@ -311,27 +369,64 @@ module.exports = {
         logo_url: 'https://piratesocial.org/assets/logo.svg'
       },
     },
+    // 'gatsby-plugin-netlify-identity-widget',
+
+    
+    // {
+    //   resolve: "gatsby-plugin-netlify",
+    //   options: {
+    //   mergeSecurityHeaders: false,
+    //   headers: {
+    //       "/*": [
+    //         "X-XSS-Protection: 1; mode=block",
+    //         "X-Content-Type-Options: nosniff",
+    //         "Referrer-Policy: same-origin",
+    //       ],
+    //     },
+    //   },
+    // },
+    
+
+    // {
+    //   resolve: `gatsby-source-filesystem`,
+    //   options: {
+    //     name: `backgrounds`,
+    //     path: `${__dirname}/src/img/front/`, 
+    //   },
+    // },
 
 
+    // { 
+    //   resolve: `gatsby-plugin-purgecss`,
+    //   options: {
+    //     printRejected: true, // Print removed selectors and processed file names
+    //     develop: true, // Enable while using `gatsby develop`
+    //     // tailwind: true, // Enable tailwindcss support
+    //     // whitelist: ['headroom', 'headroom--unfixed'], // Don't remove this selector
+    //      ignore: ['/user.scss', '/global.scss', '/styles.css'], // Ignore files/folders
+    //      purgeOnly : ['/animate.css'] // Purge only these files/folders
+    //   }
+    // },
 
-    {
-      resolve: `gatsby-plugin-purgecss`,
-      options: {
-        printRejected: true, // Print removed selectors and processed file names
-        develop: true, // Enable while using `gatsby develop`
-        // tailwind: true, // Enable tailwindcss support
-        // ignore: ['/ignored.css', 'prismjs/', 'docsearch.js/'], // Ignore files/folders
-        // purgeOnly : ['components/', '/main.css', 'bootstrap/'], // Purge only these files/folders
-        purgeCSSOptions: {
-          // https://purgecss.com/configuration.html#options
-          // safelist: ['safelist'], // Don't remove this selector
-        },
-        // More options defined here https://purgecss.com/configuration.html#options
-      },
-    },
+ 
+    // {
+    //   resolve: `gatsby-plugin-google-gtag`,
+    //   options: {
+    //     trackingIds: [
+    //       settings.ga, // Google Analytics / GA
+    //     ],
+    //   },
+    // },
 
+    
+    // {
+    //   resolve: `gatsby-plugin-google-analytics`,
+    //   options: {
+    //     trackingId: settings.ga,
+    //   },
+    // },
 
-
+    
     `gatsby-plugin-sitemap`,
     {
       resolve: 'gatsby-plugin-robots-txt',
@@ -350,14 +445,12 @@ module.exports = {
       }
     },
 
-
-
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
 name: settings.meta.companyname,
 short_name: settings.meta.companyname,
-start_url: `${settings.meta.proOptions.startUrl}`,
+start_url: `${settings.meta.proOptions.startUrl}/?pro=true`,
 description: settings.meta.description,
 background_color: `transparent`,
 lang: `en`,
