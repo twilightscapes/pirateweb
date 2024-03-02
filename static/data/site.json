@@ -30,7 +30,7 @@
       "showModals": true,
       "showContact": false,
       "showResume": false,
-      "startUrl": "?pro=true",
+      "startUrl": "/?pro=true",
       "showPopup": false,
       "showLocation": false,
       "ShowDisclaimer": false,
