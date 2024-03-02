@@ -258,7 +258,10 @@ const handleCopyAndShareButtonClick = async () => {
     const newParams = new URLSearchParams(queryParamsObject);
 
     // Construct the URL
-    const newUrl = `${window.location.origin}${window.location.pathname}?${newParams.toString()}`;
+    const newUrl = `${window.location.origin}/video?${newParams.toString()}`;
+
+
+
 
     // Copy the URL to clipboard
     navigator.clipboard.writeText(newUrl)
