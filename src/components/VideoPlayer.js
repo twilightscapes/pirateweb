@@ -215,7 +215,6 @@ const handleCustomImageChange = (event) => {
 
 // Function to copy URL to clipboard
 const handleCopyAndShareButtonClick = async () => {
-    // Construct the query parameters
     const queryParamsObject = {
         video: youtubelink,
         start: startTime,
@@ -223,44 +222,39 @@ const handleCopyAndShareButtonClick = async () => {
         loop,
         mute,
         controls,
-        autoplay: autoplayParam, // Use the initial autoplay value
+        autoplay,
         seoTitle,
         hideEditor,
         showBlocker,
-        customImage, // Include customImage parameter without checking for undefined or empty
+        customImage,
     };
 
-    // Remove any undefined or empty parameters
-    Object.keys(queryParamsObject).forEach(key => {
-        if (queryParamsObject[key] === undefined || queryParamsObject[key] === '') {
-            delete queryParamsObject[key];
-        }
-    });
+    // Construct the full URL with all query parameters
+    const queryString = Object.keys(queryParamsObject)
+        .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(queryParamsObject[key])}`)
+        .join('&');
 
-    // Update the query string
-    const newParams = new URLSearchParams(queryParamsObject);
+    const fullUrl = `${window.location.origin}${window.location.pathname}?${queryString}`;
 
-    // Construct the URL
-    const newUrl = `${window.location.origin}${window.location.pathname}video?${newParams.toString()}`;
-
-    // Copy the URL to clipboard
-    navigator.clipboard.writeText(newUrl)
+    // Copy the full URL to clipboard
+    navigator.clipboard.writeText(fullUrl)
         .then(() => {
             setCopied(true);
             setTimeout(() => setCopied(false), 2000);
         })
-        .catch((error) => console.error("Error copying to clipboard:", error));
+        .catch(error => console.error("Error copying to clipboard:", error));
 
     // Share the URL if supported by the browser
     if (typeof window !== 'undefined' && navigator.share) {
         navigator.share({
             title: 'PIRATE',
-            url: newUrl
+            url: fullUrl
         }).then(() => {
             console.log('Thanks for being a Pirate!');
         }).catch(console.error);
     }
 };
+
 
 
 
