@@ -215,6 +215,7 @@ const handleCustomImageChange = (event) => {
 
 // Function to copy URL to clipboard
 const handleCopyAndShareButtonClick = async () => {
+    // Construct the query parameters
     const queryParamsObject = {
         video: youtubelink,
         start: startTime,
@@ -222,22 +223,28 @@ const handleCopyAndShareButtonClick = async () => {
         loop,
         mute,
         controls,
-        autoplay,
+        autoplay: autoplayParam, // Use the initial autoplay value
         seoTitle,
         hideEditor,
         showBlocker,
-        customImage,
+        customImage, // Include customImage parameter without checking for undefined or empty
     };
 
-    // Construct the full URL with all query parameters
-    const queryString = Object.keys(queryParamsObject)
-        .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(queryParamsObject[key])}`)
-        .join('&');
+    // Remove any undefined or empty parameters
+    Object.keys(queryParamsObject).forEach(key => {
+        if (queryParamsObject[key] === undefined || queryParamsObject[key] === '') {
+            delete queryParamsObject[key];
+        }
+    });
 
-    const fullUrl = `${window.location.origin}${window.location.pathname}?${queryString}`;
+    // Update the query string
+    const newParams = new URLSearchParams(queryParamsObject);
 
-    // Copy the full URL to clipboard
-    navigator.clipboard.writeText(fullUrl)
+    // Construct the URL
+    const newUrl = `${window.location.origin}${window.location.pathname}video?${newParams.toString()}`;
+
+    // Copy the URL to clipboard
+    navigator.clipboard.writeText(newUrl)
         .then(() => {
             setCopied(true);
             setTimeout(() => setCopied(false), 2000);
@@ -248,13 +255,12 @@ const handleCopyAndShareButtonClick = async () => {
     if (typeof window !== 'undefined' && navigator.share) {
         navigator.share({
             title: 'PIRATE',
-            url: fullUrl
+            url: newUrl
         }).then(() => {
             console.log('Thanks for being a Pirate!');
         }).catch(console.error);
     }
 };
-
 
 
 
