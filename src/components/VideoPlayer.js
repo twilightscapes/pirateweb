@@ -238,13 +238,19 @@ const handleCopyAndShareButtonClick = async () => {
     });
 
     // Update the query string
-    const newParams = new URLSearchParams(queryParamsObject);
+    // const newParams = new URLSearchParams(queryParamsObject);
+
+    const queryString = Object.keys(queryParamsObject)
+        .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(queryParamsObject[key])}`)
+        .join('&');
 
     // Construct the URL
-    const newUrl = `${window.location.origin}${window.location.pathname}video?${newParams.toString()}`;
+    // const newUrl = `${window.location.origin}${window.location.pathname}video?${newParams.toString()}`;
+
+    const fullUrl = `${window.location.origin}${window.location.pathname}video?${queryString}`;
 
     // Copy the URL to clipboard
-    navigator.clipboard.writeText(newUrl)
+    navigator.clipboard.writeText(fullUrl)
         .then(() => {
             setCopied(true);
             setTimeout(() => setCopied(false), 2000);
@@ -255,7 +261,7 @@ const handleCopyAndShareButtonClick = async () => {
     if (typeof window !== 'undefined' && navigator.share) {
         navigator.share({
             title: 'PIRATE',
-            url: newUrl
+            url: fullUrl
         }).then(() => {
             console.log('Thanks for being a Pirate!');
         }).catch(console.error);
