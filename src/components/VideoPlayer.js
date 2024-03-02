@@ -215,23 +215,6 @@ const handleCustomImageChange = (event) => {
 
 // Function to copy URL to clipboard
 const handleCopyAndShareButtonClick = async () => {
-    // Retrieve autoplay value from query parameters
-    const autoplayQueryParam = queryParams.get('autoplay') === 'true';
-
-    if (typeof window !== 'undefined') {
-        if (navigator.share) { 
-          navigator.share({
-            title: 'PIRATE',
-            url: window.location.href
-          }).then(() => {
-            console.log('Thanks for being a Pirate!');
-          })
-          .catch(console.error);
-        }
-      }
-
-
-
     // Construct the query parameters
     const queryParamsObject = {
         video: youtubelink,
@@ -240,11 +223,11 @@ const handleCopyAndShareButtonClick = async () => {
         loop,
         mute,
         controls,
-        autoplay: autoplayQueryParam, // Use the retrieved autoplay value
+        autoplay: autoplayParam, // Use the initial autoplay value
         seoTitle,
         hideEditor,
         showBlocker,
-        customImage: customImage, // Include customImage parameter
+        customImage, // Include customImage parameter without checking for undefined or empty
     };
 
     // Remove any undefined or empty parameters
@@ -260,9 +243,6 @@ const handleCopyAndShareButtonClick = async () => {
     // Construct the URL
     const newUrl = `${window.location.origin}${window.location.pathname}video?${newParams.toString()}`;
 
-
-
-
     // Copy the URL to clipboard
     navigator.clipboard.writeText(newUrl)
         .then(() => {
@@ -271,19 +251,17 @@ const handleCopyAndShareButtonClick = async () => {
         })
         .catch((error) => console.error("Error copying to clipboard:", error));
 
-
-        if (typeof window !== 'undefined') {
-            if (navigator.share) { 
-              navigator.share({
-                title: 'PIRATE',
-                url: window.location.href
-              }).then(() => {
-                console.log('Thanks for being a Pirate!');
-              })
-              .catch(console.error);
-            }
-          }  
+    // Share the URL if supported by the browser
+    if (typeof window !== 'undefined' && navigator.share) {
+        navigator.share({
+            title: 'PIRATE',
+            url: newUrl
+        }).then(() => {
+            console.log('Thanks for being a Pirate!');
+        }).catch(console.error);
+    }
 };
+
 
 
 
