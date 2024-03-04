@@ -122,7 +122,7 @@ Setup Account
 {/* <ContactForm /> */}
 
 <a className="button" href="https://app.netlify.com/start/deploy?repository=https://github.com/piratesocial/pirate&amp;stack=cms&amp;SITE_LOGO=https://https://piratesocial.org/assets/logo.svg" target="_blank" rel="noreferrer">
-Setup Account
+Setup GitHub &amp; Build Your Web App
 </a>
 
 {/* <Link style={{display:'grid', placeContent:'center', margin:'0 auto 0 auto'}} state={{modal: true}} className="button" to="/contact">Tell us about yourself</Link> */}
