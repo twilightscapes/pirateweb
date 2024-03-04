@@ -43,7 +43,7 @@ skillsText:
 underlayImage: /assets/transparent.png
 bumpertext: x
 cta:
-  ctaText: Get Your FREE Ship!
+  ctaText: Get Your Ship Now!
   ctaLink: /install
   showCTA: true
 homecount: 5

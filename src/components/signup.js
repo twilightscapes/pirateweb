@@ -39,6 +39,8 @@ const SignUp = () => {
 
         {showContact ? (
           <div className="wrapper flexbutt" style={{ padding: "0 1% 10vh 1%", width: "100%", margin: "0 auto", display: "flex", flexDirection: "", justifyContent: "center" }}>
+
+            
             <form
               className={`contact-form flexcheek1`}
               name="pirate"
@@ -56,7 +58,7 @@ const SignUp = () => {
               }}
             >
               <input type="hidden" name="form-name" value="pirate" />
-
+<span style={{fontSize:'70%'}}>Enter Your details:</span>
     
                 <p>
                   <label htmlFor="name" aria-label="User Name">
@@ -90,7 +92,7 @@ const SignUp = () => {
 
               <label htmlFor="file" aria-label="Upload your file" style={{ padding: '0', color: 'inherit', textShadow: '1px 1px 0 #555', display: 'flex', flexDirection: 'column', width: '100%', fontSize: '90%', gap: '15px', justifyContent: 'center', alignItems: 'center' }}>
         
-              <span style={{ padding: '0', color: 'inherit', textShadow: '1px 1px 0 #555', display: 'flex', flexDirection: 'column', width: '100%', fontSize: '90%', gap: '15px', justifyContent: 'center', alignItems: 'center' }}>Upload Photo</span>
+              <div style={{ padding: '0', color: 'inherit', textShadow: '1px 1px 0 #555', display: 'flex', flexDirection: 'column', width: '100px', height:'100px', border:'1px solid', fontSize: '90%', gap: '15px', justifyContent: 'center', alignItems: 'center' }}>Upload Profile Photo</div>
             
       
                 <input className="file-input hidden" type="file" id="file" name="file" onChange={handleFileInputChange} />
