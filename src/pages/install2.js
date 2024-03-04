@@ -10,7 +10,7 @@ import { Helmet } from "react-helmet"
 // import Intro from "../../static/assets/textual.svg"
 // import Intro2 from "../../static/assets/install-intro.svg"
 // import Intro3 from "../../static/assets/intro-github.svg"
-import ContactForm from "../components/newssign"
+import ContactForm from "../components/signup"
 // import useNetlifyIdentity from '../components/useNetlifyIdentity';
 
 
@@ -61,7 +61,7 @@ function Install2() {
 
 
 
-<br /><br /><strong>There is no Step Two!</strong><br /><br />
+
 
 {/* <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
   <input type="hidden" name="cmd" value="_s-xclick" />

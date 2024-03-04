@@ -3,14 +3,13 @@ import React from "react";
 import useSiteMetadata from "../hooks/SiteMetadata"
 // import { StaticImage } from "gatsby-plugin-image"
 // import {Link} from "gatsby"
-import { Link } from "gatsby"
 // import styled from "styled-components"
 import Layout from "../components/siteLayout"
 import { Helmet } from "react-helmet"
 // import Intro from "../../static/assets/textual.svg"
 // import Intro2 from "../../static/assets/install-intro.svg"
 // import Intro3 from "../../static/assets/intro-github.svg"
-import ContactForm from "../components/newssign"
+// import ContactForm from "../components/newssign"
 // import useNetlifyIdentity from '../components/useNetlifyIdentity';
 
 
