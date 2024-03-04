@@ -84,7 +84,7 @@ shareable: false
 ---
 Pirate is a <strong>Personal Web App (PWA)</strong>. 
 
-Works anywhere - NO App Store needed.
+Works on any device - NO App Store needed.
 
 A new social media, Pirate is a decentralized network of other Pirate users &amp; you control the algorithm!
 
