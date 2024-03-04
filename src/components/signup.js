@@ -41,7 +41,7 @@ const SignUp = () => {
           <div className="wrapper flexbutt" style={{ padding: "0 1% 10vh 1%", width: "100%", margin: "0 auto", display: "flex", flexDirection: "", justifyContent: "center" }}>
             <form
               className={`contact-form flexcheek1`}
-              name="contact"
+              name="pirate"
               method="POST"
               data-netlify="true"
               data-netlify-honeypot="bot-field"
@@ -55,7 +55,7 @@ const SignUp = () => {
                 minWidth:'340px'
               }}
             >
-              <input type="hidden" name="form-name" value="contact" />
+              <input type="hidden" name="form-name" value="pirate" />
 
     
                 <p>
