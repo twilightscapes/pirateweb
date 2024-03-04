@@ -6,15 +6,15 @@
     "featureOptions": {
       "showDefault": false,
       "showArchive": true,
-      "showSearch": true,
+      "showSearch": false,
       "showDates": true,
       "showSocial": false,
       "showProfile": true,
       "showHomePosts": false,
       "showTitles": true,
       "showfooter": false,
-      "showSwipe": true,
-      "showVideoPlayer": true
+      "showSwipe": false,
+      "showVideoPlayer": false
     },
     "twitterUsername": "toddlambert",
     "titleDefault": "Pirate",
