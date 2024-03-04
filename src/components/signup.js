@@ -7,11 +7,11 @@ import useSiteMetadata from "../hooks/SiteMetadata"
 
 const SignUp = () => {
   const { language, proOptions } = useSiteMetadata();
-  const { dicName, dicEmail, dicMessage, dicSubmit, dicPhone } = language;
+  const { dicName, dicEmail, dicMessage, dicSubmit } = language;
   const { showContact } = proOptions;
 
 
-  const [fileAttached, setFileAttached] = useState(false);
+  const [ setFileAttached] = useState(false);
 
   const handleFileInputChange = (event) => {
     const files = event.target.files;
