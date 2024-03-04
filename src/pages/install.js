@@ -56,9 +56,12 @@ function Install() {
 
 <h3>STEP ONE (1 of 3)</h3>
 
-<br />Setup Account and Create YOUR Website<br />
+<br />Create YOUR Personal Web App (PWA)<br />
 
-<ul className="bulletlist">
+<br />
+Get ready to sail the open seas
+
+{/* <ul className="bulletlist">
   <li>You will need a valid email address to create your GitHub</li>
   <li>Everything is completely FREE and only take 3-4 minutes</li>
 </ul>
@@ -68,7 +71,7 @@ Simply follow the prompts and ignore the scary jargon
 <br />
 <br />
 <strong>Don't worry - we handle all the hard stuff for you!</strong>
-<br />
+<br /> */}
 {/* <a style={{display:'grid', placeContent:'center', margin:'0 auto 0 auto'}} class="button" href="https://app.netlify.com/start/deploy?repository=https://github.com/piratesocial/piratesocial&amp;stack=cms&amp;SITE_LOGO=https://https://piratesocial.org/assets/logo.svg" target="_blank" rel="nofollow">
 Setup Account
 </a> */}
@@ -80,6 +83,10 @@ Setup Account
 <Link className="button fire" state={{modal: true}} to="/install2" rel="nofollow">
 Become a PIRATE!
 </Link>
+
+<br />
+<br />
+<br />
 <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
   <input type="hidden" name="cmd" value="_s-xclick" />
   <input type="hidden" name="hosted_button_id" value="99GULJ7R9T68W" />

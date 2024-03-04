@@ -60,7 +60,20 @@ function Install2() {
 
 
 
-<br /><br /><strong>There is no Step Two!</strong><br /><br />
+<ul className="bulletlist">
+  <li>Respond to your email, to create your GitHub</li>
+  <li>Everything is completely FREE and only take 3-4 minutes</li>
+</ul>
+<br />
+
+
+
+In a few minutes your web app will be ready to login.
+<br /><br />
+<strong>Don't worry - we handle all the hard stuff for you!</strong>
+<br />
+Simply follow the prompts and ignore the scary jargon
+<br /><br />
 
 {/* <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
   <input type="hidden" name="cmd" value="_s-xclick" />
