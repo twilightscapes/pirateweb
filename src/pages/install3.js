@@ -3,18 +3,18 @@ import React from "react";
 import useSiteMetadata from "../hooks/SiteMetadata"
 // import { StaticImage } from "gatsby-plugin-image"
 // import {Link} from "gatsby"
-// import { Link } from "gatsby"
+import { Link } from "gatsby"
 // import styled from "styled-components"
 import Layout from "../components/siteLayout"
 import { Helmet } from "react-helmet"
 // import Intro from "../../static/assets/textual.svg"
 // import Intro2 from "../../static/assets/install-intro.svg"
 // import Intro3 from "../../static/assets/intro-github.svg"
-// import ContactForm from "../components/newssign"
+import ContactForm from "../components/newssign"
 // import useNetlifyIdentity from '../components/useNetlifyIdentity';
 
 
-function Install3() {
+function Install2() {
   const { showNav } = useSiteMetadata()
 
   
@@ -57,24 +57,33 @@ function Install3() {
   textAlign:'center'
 }}>
 
-<h3>STEP THREE (3 of 3)</h3>
-  <br />Setup Account and Create YOUR Website<br />
-  <br />
-{/* <ul className="bulletlist">
-  <li>You will need a valid email address to create your GitHub</li>
-  <li>Everything is completely FREE and only take 3-4 minutes</li>
-</ul>
-<br />
+<h3>STEP TWO (3 of 3)</h3>
 
-Simply follow the prompts and ignore the scary jargon
-<br />
-<br />
-<strong>Don't worry - we handle all the hard stuff for you!</strong>
+
+
+<br /><br /><strong>There is no Step Two!</strong><br /><br />
+
+{/* <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+  <input type="hidden" name="cmd" value="_s-xclick" />
+  <input type="hidden" name="hosted_button_id" value="KFH49DVS9AFQS" />
+  <input type="hidden" name="currency_code" value="USD" />
+  <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_subscribe_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Subscribe" />
+</form> */}
+
+
+{/* <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+  <input type="hidden" name="cmd" value="_s-xclick" />
+  <input type="hidden" name="hosted_button_id" value="99GULJ7R9T68W" />
+  <input type="hidden" name="currency_code" value="USD" />
+  <button className="button" type="submit" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Buy Now" >Get Pirate Plus</button>
+</form> */}
+
+
+{/* <Link className="button" state={{modal: true}} to="/install3" rel="nofollow">
+Continue with Free
+</Link>
 <br /> */}
-<a className="button" href="https://app.netlify.com/start/deploy?repository=https://github.com/piratesocial/pirate&amp;stack=cms&amp;SITE_LOGO=https://https://piratesocial.org/assets/logo.svg" target="_blank" rel="noreferrer">
-Setup Account
-</a>
-<br />
+
 
 {/* <br />Setup Account and Create YOUR Website<br />
 
@@ -95,13 +104,14 @@ Simply follow the prompts and ignore the scary jargon
 Setup Account
 </a> */}
 
-{/* <Link className="button" state={{modal: true}} to="/install3" rel="nofollow">
-Continue
-</Link>
-<br /> */}
+
 
 
 {/* <ContactForm /> */}
+
+<a className="button" href="https://app.netlify.com/start/deploy?repository=https://github.com/piratesocial/pirate&amp;stack=cms&amp;SITE_LOGO=https://https://piratesocial.org/assets/logo.svg" target="_blank" rel="noreferrer">
+Setup Account
+</a>
 
 {/* <Link style={{display:'grid', placeContent:'center', margin:'0 auto 0 auto'}} state={{modal: true}} className="button" to="/contact">Tell us about yourself</Link> */}
 </section>
@@ -133,6 +143,4 @@ Continue
   );
 }
 
-export default Install3;
-
-
+export default Install2;

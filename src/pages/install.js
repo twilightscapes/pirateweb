@@ -73,9 +73,25 @@ Simply follow the prompts and ignore the scary jargon
 Setup Account
 </a> */}
 
-<Link className="button" state={{modal: true}} to="/install2" rel="nofollow">
-You will need a valid email
+<div style={{display:'', alignItems:'center'}}>
+
+
+
+<Link className="button fire" state={{modal: true}} to="/install2" rel="nofollow">
+Become a PIRATE!
 </Link>
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+  <input type="hidden" name="cmd" value="_s-xclick" />
+  <input type="hidden" name="hosted_button_id" value="99GULJ7R9T68W" />
+  <input type="hidden" name="currency_code" value="USD" />
+  <button className="" type="submit" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Buy Now" >Donate To Developer</button>
+</form>
+</div>
+
+
+{/* <Link className="button" state={{modal: true}} to="/install2" rel="nofollow">
+You will need a valid email
+</Link> */}
 <br />
 
 
