@@ -46,6 +46,7 @@ const SignUp = () => {
               data-netlify="true"
               data-netlify-honeypot="bot-field"
               encType="multipart/form-data"
+              action="/install3"
               style={{
                 display: "flex",
                 flexDirection: "column",
@@ -80,7 +81,7 @@ const SignUp = () => {
 
               <p>
                 <label htmlFor="message" aria-label="Your Message">
-                  <textarea id="message" name="message" placeholder={dicMessage} required></textarea>
+                  <textarea id="message" name="message" placeholder={dicMessage} required style={{maxHeight:'100px'}}></textarea>
                 </label>
               </p>
 
