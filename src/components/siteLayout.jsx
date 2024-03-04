@@ -14,6 +14,7 @@ import { RiArrowUpFill } from "react-icons/ri"
 import GoBack from "../components/goBack"
 import { ModalRoutingContext } from 'gatsby-plugin-modal-routing-4'
 import Menu from "../components/menu"
+import SocialMenu from "../components/menu-social"
 import { BiLeftArrow } from "react-icons/bi"
 // import Consent from "../components/Consent"
 import defaultColors from "../../static/data/default-colors.json";
@@ -73,6 +74,16 @@ const Layout = ({ children }) => {
   const { image } = useSiteMetadata()
 
   const fontUrl = `https://fonts.googleapis.com/css?family=${defaultColors?.siteFont}&display=swap`;
+
+
+
+  // Determine the current page location
+  const currentPage = typeof window !== 'undefined' ? window.location.pathname : '/';
+  // console.log('Current Page:', currentPage);
+  
+
+  // Define an array of page locations where you want to show the social menu
+  const socialMenuPages = ['/pirate', '/feeds', '/favorites'];
 
   
   return (
@@ -134,7 +145,12 @@ const Layout = ({ children }) => {
             </Link>
 
             <ul className="topmenu" style={{ fontSize: 'clamp(.6rem, 1.6vw, 1.8rem)', textAlign: 'center', maxHeight: '', display: 'flex', justifyContent: 'space-between', gap: '4vw', alignItems: 'center', margin: '0 auto 0 auto', padding: '1.5vh 2% 0 2%', border: '0px solid white' }}>
-              <Menu />
+
+
+
+            {socialMenuPages.some(page => currentPage.startsWith(page)) ? <SocialMenu /> : <Menu />}
+
+
               {/* <li key="demo"><Link to="/pirate">View Demo</Link></li> */}
             </ul>
 
@@ -306,7 +322,8 @@ const Layout = ({ children }) => {
                 </AnchorLink>
               </li>
 
-              <Menu id="sidechick" />
+              {/* <Menu id="sidechick" /> */}
+              {socialMenuPages.some(page => currentPage.startsWith(page)) ? <SocialMenu id="sidechick" /> : <Menu id="sidechick" />}
 
               <li>
                 <ul className="missioncontrol sitecontrols" style={{ display: 'flex', justifyContent: 'space-around', fontSize: 'clamp(.8rem, 2.3vw, 2.5rem)', gap: '', textAlign: 'center', maxHeight: '', alignItems: 'center', paddingTop: '5px' }}>

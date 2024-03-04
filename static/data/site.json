@@ -13,7 +13,7 @@
       "showHomePosts": false,
       "showTitles": true,
       "showfooter": false,
-      "showSwipe": false,
+      "showSwipe": true,
       "showVideoPlayer": true
     },
     "twitterUsername": "toddlambert",
