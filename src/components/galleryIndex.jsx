@@ -2,8 +2,15 @@ import React, { useState, useEffect, useRef } from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import SimpleReactLightbox, { SRLWrapper } from "simple-react-lightbox";
-
+import useSiteMetadata from "../hooks/SiteMetadata";
 const GalleryIndex = ({ isSliderVisible }) => {
+
+  const { featureOptions, language  } = useSiteMetadata();
+  const { showTitles } = featureOptions
+  const { dicGallery } = language;
+
+
+
   const [selectedDirectory, setSelectedDirectory] = useState("favorites"); // Set the default
   const [sliderVisible, setSliderVisible] = useState(false);
   const scrollRef = useRef(null);
@@ -72,14 +79,22 @@ const GalleryIndex = ({ isSliderVisible }) => {
     resetScroll(); // Reset scroll when directory changes
   };
 
+  const extractTitle = (fileName) => {
+    // Extract title from the file name (remove extension)
+    const title = fileName.split(".")[0];
+    return title;
+  };
+
   const renderContent = () => {
     return (
+      <SimpleReactLightbox>
+        <SRLWrapper options={options}>
       <div
         id="posttop"
         className={sliderVisible ? "slider" : "grid-container contentpanel"}
         ref={scrollRef}
       >
-        <SimpleReactLightbox>
+        
           {data.allFile.edges
             .filter(({ node }) =>
               selectedDirectory
@@ -89,35 +104,49 @@ const GalleryIndex = ({ isSliderVisible }) => {
             .map(({ node }, index) => {
               if (node.childImageSharp) {
                 const imageData = node.childImageSharp.gatsbyImageData;
+                const title = extractTitle(node.name);
                 return (
                   <div key={index} className="post-card1">
-                    <SRLWrapper options={options}>
+                    
                       <GatsbyImage
                         image={imageData}
-                        alt={`Car ${index}`}
+                        alt={title}
                         className="featured-image1 galleryimage"
                       />
-                    </SRLWrapper>
+                    
+                    <div className="post-content" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '100%', height: '', position: 'relative', background: '', padding: '', margin: '0 auto 0 auto', textAlign: 'center', overFlow: 'hidden' }}>
+                      <div className="panel" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', alignContent:'center', margin: '10px auto', maxWidth: '', gap: '.4vw', maxHeight: '74px', textAlign: 'left', padding: '10px 5%', fontSize: 'clamp(.7rem,.8vh,12px)', outline:'0px solid #444', overFlow:'hidden', lineHeight:'2.5vh', borderRadius:'var(--theme-ui-colors-borderRadius)', background: showTitles ? 'var(--theme-ui-colors-headerColor)' : 'transparent', color:'var(--theme-ui-colors-headerColorText)' }}>
+                        <h2 className="title1">{title}</h2>
+                      </div>
+                    </div>
                   </div>
                 );
               } else if (node.publicURL) {
+                const title = extractTitle(node.name);
                 return (
                   <div key={index} className="post-card1">
-                    <SRLWrapper options={options}>
+              
                       <img
                         src={node.publicURL}
-                        alt={`Car ${index}`}
+                        alt={title}
                         className="featured-image1 galleryimage"
                       />
-                    </SRLWrapper>
+            
+                    <div className="post-content">
+                      <div className="panel">
+                        <h2 className="title1">{title}</h2>
+                      </div>
+                    </div>
                   </div>
                 );
               } else {
                 return null;
               }
             })}
-        </SimpleReactLightbox>
+            
       </div>
+      </SRLWrapper>
+  </SimpleReactLightbox>
     );
   };
 
@@ -126,13 +155,23 @@ const GalleryIndex = ({ isSliderVisible }) => {
       <div className="magicshell">
         <div className="magicisland">
           <div className="cattags font panel" style={{ width: "300px" }}>
-            Choose Gallery:
+          {dicGallery}
             <select
               value={selectedDirectory}
               onChange={handleDirectoryChange}
-              style={{ padding: '.5vh .2vw', minWidth:'75px', width: '100%', maxWidth: '500px', textAlign:'center', fontSize: 'clamp(.6rem,1vw,1rem)', transition: 'all .4s ease-in-out', background:'rgba(0,0,0,.2)', outline:'1px solid #999', border:'0px solid var(--theme-ui-colors-siteColor)', borderRadius: 'var(--theme-ui-colors-borderRadius)' 
-    // color:'var(--theme-ui-colors-siteColor)' 
-  }}
+              style={{
+                padding: ".5vh .2vw",
+                minWidth: "75px",
+                width: "100%",
+                maxWidth: "500px",
+                textAlign: "center",
+                fontSize: "clamp(.6rem,1vw,1rem)",
+                transition: "all .4s ease-in-out",
+                background: "rgba(0,0,0,.2)",
+                outline: "1px solid #999",
+                border: "0px solid var(--theme-ui-colors-siteColor)",
+                borderRadius: "var(--theme-ui-colors-borderRadius)",
+              }}
             >
               {data.allDirectory.nodes
                 .filter(({ name }) => name !== "assets") // Exclude the "assets" directory
@@ -156,11 +195,11 @@ const options = {
     boxShadow: "0px 0px 20px #000",
     disableKeyboardControls: false,
     disablePanzoom: false,
-    disableWheelControls: true,
+    disableWheelControls: false,
     hideControlsAfter: false,
     lightboxTransitionSpeed: 0.3,
     lightboxTransitionTimingFunction: "linear",
-    overlayColor: "rgba(0, 0, 0, 0.8)",
+    overlayColor: "rgba(0, 0, 0, 0.9)",
     slideAnimationType: "slide",
     slideSpringValues: [300, 50],
     slideTransitionSpeed: 0.6,
@@ -168,16 +207,16 @@ const options = {
     usingPreact: false,
   },
   buttons: {
-    backgroundColor: "#FA02B7",
+    backgroundColor: "var(--theme-ui-colors-siteColor)",
     iconColor: "rgba(255, 255, 255, 0.8)",
     iconPadding: "10px",
-    showAutoplayButton: false,
+    showAutoplayButton: true,
     showCloseButton: true,
     showDownloadButton: false,
-    showFullscreenButton: false,
-    showNextButton: false,
-    showPrevButton: false,
-    showThumbnailsButton: false,
+    showFullscreenButton: true,
+    showNextButton: true,
+    showPrevButton: true,
+    showThumbnailsButton: true,
     size: "40px",
   },
   caption: {
@@ -189,10 +228,10 @@ const options = {
     captionFontStyle: "inherit",
     captionFontWeight: "inherit",
     captionTextTransform: "inherit",
-    showCaption: false,
+    showCaption: true,
   },
   thumbnails: {
-    showThumbnails: false,
+    showThumbnails: true,
     thumbnailsAlignment: "center",
     thumbnailsContainerBackgroundColor: "#111",
     thumbnailsContainerPadding: "0",
@@ -203,8 +242,8 @@ const options = {
     thumbnailsSize: ["100px", "80px"],
   },
   progressBar: {
-    backgroundColor: "#000",
-    fillColor: "#333",
+    backgroundColor: "var(--theme-ui-colors-siteColor)",
+    fillColor: "#fff",
     height: "3px",
     showProgressBar: true,
   },
