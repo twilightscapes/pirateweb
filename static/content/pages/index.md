@@ -81,13 +81,9 @@ draft: true
 spotlight: false
 comments: false
 shareable: false
+externalLink: https://piratesocial.org
 ---
-Pirate is a <strong>Personal Web App (PWA)</strong>. 
-
-It works on any device - NO App Store needed.
-
-A new social media, Pirate is a decentralized network of other Pirate users &amp; you control the algorithm!
-
-Watch ad-free video, edit your page, profile, and publish content with FULL ownership and copyright.
-
-Pirate is Open-Source and it operates forever, with no contracts, commitments or costs of any kind.
+<p>Pirate is your <strong>Personal Web App (PWA)</strong> and it works on any device - NO App Store needed.</p>
+<p>A new social media, Pirate is a decentralized network of other Pirate users &amp; you control the algorithm!</p>
+<p>Watch ad-free video, edit your page, profile, and publish content with FULL ownership and copyright.</p>
+<p>Pirate is Open-Source and it operates forever, with no contracts, commitments or costs of any kind.</p>

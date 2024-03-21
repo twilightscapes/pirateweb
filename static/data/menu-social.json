@@ -1,16 +1,16 @@
 {
   "menuItems": [
     {
-      "menutitle": "Create",
-      "url": "/pirate"
+      "menutitle": "Explore",
+      "url": "/pirate/explore"
     },
     {
-      "menutitle": "Timeline",
-      "url": "/timeline"
+      "menutitle": "Feeds",
+      "url": "/pirate/feeds"
     },
     {
-      "menutitle": "Manage Feeds",
-      "url": "/favorites"
+      "menutitle": "Favorites",
+      "url": "/pirate/favorites"
     },
     {
       "menutitle": "End Demo?",

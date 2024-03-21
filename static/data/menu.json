@@ -3,6 +3,14 @@
     {
       "menutitle": "What is Pirate?",
       "url": "/about"
+    },
+    {
+      "menutitle": "View Demo",
+      "url": "/pirate"
+    },
+    {
+      "menutitle": "User Resources",
+      "url": "/about"
     }
   ]
 }
