@@ -653,6 +653,9 @@ style={{height:'auto', width:'100dvw', maxHeight:'100dvh', position:'relative', 
 
 {showHomePosts ? (
   <>
+  <div className="nameblock flexcheek" style={{position:'', top:'', marginTop: '', width:'90%', padding: '1vh 2vh', margin:'12vh auto 0 auto', maxHeight: '', fontSize: 'clamp(1.3rem, 3.5vw, 3.2rem)', textAlign:'center', textShadow: '0 2px 3px #000', color: '', background: 'var(--theme-ui-colors-headerColor)', backdropFilter: 'blur(12px)', borderRadius: '10px' }}>
+    <h2>User Spotlight</h2>
+  </div>
     <HomePosts isSliderVisible={isSliderVisible} className="scroll-area" id="posttop" name="posttop" style={{minHeight:'100dvh', width:'100vw'}} />
     <br /><br /><br />
     </>
