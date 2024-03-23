@@ -1,41 +1,48 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
-import SimpleReactLightbox, { SRLWrapper } from "simple-react-lightbox";
+
 import useSiteMetadata from "../hooks/SiteMetadata";
 const GalleryIndex = ({ isSliderVisible }) => {
 
   const { featureOptions, language  } = useSiteMetadata();
-  const { showTitles } = featureOptions
+  const { showTitles, defaultCollection } = featureOptions
   const { dicGallery } = language;
 
 
 
-  const [selectedDirectory, setSelectedDirectory] = useState("favorites"); // Set the default
+  const [selectedDirectory, setSelectedDirectory] = useState(defaultCollection); 
   const [sliderVisible, setSliderVisible] = useState(false);
   const scrollRef = useRef(null);
   const data = useStaticQuery(graphql`
-    query {
-      allDirectory(filter: { sourceInstanceName: { eq: "assets" } }) {
+  query {
+      allDirectory(filter: {sourceInstanceName: {eq: "assets"}}, sort: {name: ASC}) {
         nodes {
           name
         }
       }
-      allFile(filter: { extension: { ne: "svg" } }) {
+      allFile(
+        filter: {sourceInstanceName: {eq: "assets"}, extension: {regex: "/(jpg)|(jpeg)|(png)|(gif)|(webp)|(avif)/"}}
+      ) {
         edges {
           node {
             name
             id
             relativePath
             childImageSharp {
-              gatsbyImageData(placeholder: BLURRED, layout: CONSTRAINED)
+              gatsbyImageData(
+                placeholder: BLURRED
+                layout: CONSTRAINED
+                width: 1600
+                formats: [AUTO, WEBP]
+              )
             }
-            publicURL # Add this to handle non-image files
+            publicURL
           }
         }
       }
     }
-  `);
+`);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -87,11 +94,11 @@ const GalleryIndex = ({ isSliderVisible }) => {
 
   const renderContent = () => {
     return (
-      <SimpleReactLightbox>
-        <SRLWrapper options={options}>
+      
       <div
         id="posttop"
         className={sliderVisible ? "slider" : "grid-container contentpanel"}
+        style={{width:'100vw'}}
         ref={scrollRef}
       >
         
@@ -108,11 +115,19 @@ const GalleryIndex = ({ isSliderVisible }) => {
                 return (
                   <div key={index} className="post-card1">
                     
-                      <GatsbyImage
+                      {/* <GatsbyImage
                         image={imageData}
                         alt={title}
                         className="featured-image1 galleryimage"
-                      />
+                      /> */}
+
+<GatsbyImage
+  image={imageData}
+  alt={title}
+  className="featured-image1 galleryimage"
+  loading="lazy" // Add lazy loading
+  fadeIn={true} // Add fade-in effect
+/>
                     
                     <div className="post-content" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '100%', height: '', position: 'relative', background: '', padding: '', margin: '0 auto 0 auto', textAlign: 'center', overFlow: 'hidden' }}>
                       <div className="panel" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', alignContent:'center', margin: '10px auto', maxWidth: '', gap: '.4vw', maxHeight: '74px', textAlign: 'left', padding: '10px 5%', fontSize: 'clamp(.7rem,.8vh,12px)', outline:'0px solid #444', overFlow:'hidden', lineHeight:'2.5vh', borderRadius:'var(--theme-ui-colors-borderRadius)', background: showTitles ? 'var(--theme-ui-colors-headerColor)' : 'transparent', color:'var(--theme-ui-colors-headerColorText)' }}>
@@ -145,8 +160,7 @@ const GalleryIndex = ({ isSliderVisible }) => {
             })}
             
       </div>
-      </SRLWrapper>
-  </SimpleReactLightbox>
+      
     );
   };
 
@@ -189,64 +203,6 @@ const GalleryIndex = ({ isSliderVisible }) => {
   );
 };
 
-const options = {
-  settings: {
-    autoplaySpeed: 4000,
-    boxShadow: "0px 0px 20px #000",
-    disableKeyboardControls: false,
-    disablePanzoom: false,
-    disableWheelControls: false,
-    hideControlsAfter: false,
-    lightboxTransitionSpeed: 0.3,
-    lightboxTransitionTimingFunction: "linear",
-    overlayColor: "rgba(0, 0, 0, 0.9)",
-    slideAnimationType: "slide",
-    slideSpringValues: [300, 50],
-    slideTransitionSpeed: 0.6,
-    slideTransitionTimingFunction: "linear",
-    usingPreact: false,
-  },
-  buttons: {
-    backgroundColor: "var(--theme-ui-colors-siteColor)",
-    iconColor: "rgba(255, 255, 255, 0.8)",
-    iconPadding: "10px",
-    showAutoplayButton: true,
-    showCloseButton: true,
-    showDownloadButton: false,
-    showFullscreenButton: true,
-    showNextButton: true,
-    showPrevButton: true,
-    showThumbnailsButton: true,
-    size: "40px",
-  },
-  caption: {
-    captionAlignment: "start",
-    captionColor: "#FFFFFF",
-    captionContainerPadding: "20px 12% 30px 12%",
-    captionFontFamily: "inherit",
-    captionFontSize: "inherit",
-    captionFontStyle: "inherit",
-    captionFontWeight: "inherit",
-    captionTextTransform: "inherit",
-    showCaption: true,
-  },
-  thumbnails: {
-    showThumbnails: true,
-    thumbnailsAlignment: "center",
-    thumbnailsContainerBackgroundColor: "#111",
-    thumbnailsContainerPadding: "0",
-    thumbnailsGap: "0 2px",
-    thumbnailsIconColor: "#ffffff",
-    thumbnailsOpacity: 0.4,
-    thumbnailsPosition: "bottom",
-    thumbnailsSize: ["100px", "80px"],
-  },
-  progressBar: {
-    backgroundColor: "var(--theme-ui-colors-siteColor)",
-    fillColor: "#fff",
-    height: "3px",
-    showProgressBar: true,
-  },
-};
+
 
 export default GalleryIndex;
